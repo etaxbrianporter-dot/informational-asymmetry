@@ -65,31 +65,89 @@ nav a {
 }
 nav a:hover, nav a.active { color: var(--ink); }
 
-/* ── Hero ── */
+/* ── Hero: Two Equations ── */
 .hero {
-  padding: 8rem 0 4rem;
-  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
-  border-bottom: 1px solid var(--rule);
+  padding: 7.5rem 0 0;
+  background: var(--bg);
 }
-.hero-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+.hero-tagline {
+  font-family: var(--sans); font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent);
+  text-align: center; margin-bottom: 2.5rem;
 }
-.hero-text h1 {
-  font-family: var(--serif); font-size: 3rem; font-weight: 400;
-  line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem;
-  color: var(--ink);
+.equations-stage {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch;
+  max-width: 960px; margin: 0 auto;
 }
-.hero-text h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
-.hero-text .subtitle {
-  font-size: 1.05rem; color: var(--ink2); line-height: 1.75; max-width: 480px;
+.eq-card {
+  padding: 2.5rem 2.75rem;
+  position: relative;
 }
+.eq-card-left {
+  text-align: right;
+  border-right: 1px solid var(--rule);
+}
+.eq-card-right {
+  text-align: left;
+  border-left: 1px solid var(--rule);
+}
+.eq-connector {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 1.5rem; position: relative;
+}
+.eq-connector-arrow {
+  font-family: var(--serif); font-size: 1.5rem; color: var(--ink3);
+  font-weight: 300;
+}
+.eq-number {
+  font-family: var(--mono); font-size: 0.58rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink3);
+  margin-bottom: 1rem;
+}
+.eq-formula {
+  font-family: var(--serif); font-weight: 300; font-style: italic;
+  color: var(--ink); line-height: 1.4; margin-bottom: 1rem;
+}
+.eq-card-left .eq-formula { font-size: 2rem; }
+.eq-card-right .eq-formula { font-size: 1.55rem; }
+.eq-formula .hl { color: var(--accent); font-weight: 500; }
+.eq-formula sub { font-size: 0.65em; }
+.eq-result {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500;
+  color: var(--green); line-height: 1.7;
+}
+.eq-desc {
+  font-size: 0.82rem; color: var(--ink2); line-height: 1.6;
+  max-width: 340px;
+}
+.eq-card-left .eq-desc { margin-left: auto; }
 
-/* ── Graph Cards ── */
-.graph-panel { display: flex; flex-direction: column; gap: 0.75rem; }
-.graph-row { display: flex; gap: 0.75rem; justify-content: center; }
+/* ── Bridge text ── */
+.hero-bridge {
+  text-align: center; padding: 3rem 0 2.5rem;
+  max-width: 640px; margin: 0 auto;
+}
+.hero-bridge p {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 400;
+  color: var(--ink2); line-height: 1.65; font-style: italic;
+  max-width: none;
+}
+.hero-bridge p em { color: var(--ink); font-weight: 500; }
+
+/* ── Graph Row ── */
+.graph-strip {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg2);
+  padding: 2.25rem 0;
+}
+.graph-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  max-width: 860px; margin: 0 auto;
+}
 .graph-card {
   background: var(--bg); border: 1px solid var(--rule); border-radius: 8px;
-  padding: 1.25rem; text-align: center; flex: 1;
+  padding: 1.5rem 1rem 1.25rem; text-align: center;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 .graph-card:hover {
@@ -98,16 +156,46 @@ nav a:hover, nav a.active { color: var(--ink); }
 }
 .graph-card svg { display: block; margin: 0 auto 0.75rem; }
 .graph-label {
-  font-family: var(--mono); font-size: 0.7rem; font-weight: 600; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.3rem;
 }
-.graph-desc { font-size: 0.75rem; color: var(--ink2); line-height: 1.4; }
+.graph-desc { font-size: 0.74rem; color: var(--ink2); line-height: 1.45; }
 .graph-edge { stroke: #d5d3cc; stroke-width: 1.5; }
 .graph-match { stroke-width: 2.5; stroke-linecap: round; }
 .graph-node { fill: var(--ink); }
 .match-1 { stroke: var(--accent); }
 .match-2 { stroke: var(--green); }
 .match-3 { stroke: var(--blue); }
+
+/* ── Overflow table ── */
+.overflow-strip {
+  padding: 2rem 0; border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.overflow-table {
+  width: 100%; max-width: 780px; margin: 0 auto;
+  border-collapse: collapse; font-size: 0.82rem;
+}
+.overflow-table th {
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink3);
+  padding: 0.5rem 0.75rem; text-align: center;
+  border-bottom: 2px solid var(--rule);
+}
+.overflow-table th:first-child { text-align: left; }
+.overflow-table td {
+  padding: 0.55rem 0.75rem; text-align: center;
+  border-bottom: 1px solid var(--rule); color: var(--ink2);
+  font-family: var(--mono); font-size: 0.78rem;
+}
+.overflow-table td:first-child {
+  text-align: left; font-family: var(--sans); font-weight: 500; color: var(--ink);
+}
+.overflow-table td:last-child {
+  font-family: var(--sans); font-size: 0.78rem; color: var(--ink2); text-align: left;
+}
+.overflow-table .sat { color: var(--green); font-weight: 600; }
+.overflow-table .over { color: var(--accent); font-weight: 600; }
 
 /* ── Verification Strip ── */
 .verify-strip {
@@ -123,10 +211,7 @@ nav a:hover, nav a.active { color: var(--ink); }
   box-shadow: 0 0 8px rgba(26,122,66,0.3);
   animation: pulse 2.5s ease-in-out infinite;
 }
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
 .verify-number {
   font-family: var(--mono); font-size: 1.6rem; font-weight: 700;
   color: var(--green); line-height: 1;
@@ -143,18 +228,6 @@ nav a:hover, nav a.active { color: var(--ink); }
   font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: 500;
 }
 .verify-link:hover { text-decoration: underline; }
-
-/* ── Equation Banner ── */
-.equation-banner {
-  padding: 2.5rem 0; text-align: center; border-bottom: 1px solid var(--rule);
-  background: var(--bg);
-}
-.equation-main {
-  font-family: var(--serif); font-size: 1.75rem; font-weight: 300;
-  font-style: italic; color: var(--ink); margin-bottom: 0.4rem;
-}
-.equation-main .hl { color: var(--accent); font-weight: 500; }
-.equation-note { font-size: 0.82rem; color: var(--ink3); }
 
 /* ── Sections ── */
 section { padding: 4rem 0; }
@@ -294,15 +367,25 @@ footer a { color: var(--ink3); text-decoration: none; }
 footer a:hover { color: var(--accent); }
 
 /* ── Responsive ── */
+@media (max-width: 900px) {
+  .equations-stage { grid-template-columns: 1fr; gap: 0; max-width: 480px; }
+  .eq-card-left, .eq-card-right { text-align: center; border: none; padding: 2rem 1.5rem; }
+  .eq-card-left .eq-desc, .eq-card-right .eq-desc { margin: 0 auto; }
+  .eq-connector { padding: 0.5rem 0; }
+  .eq-connector-arrow { transform: rotate(90deg); }
+  .eq-card-left { border-bottom: 1px solid var(--rule); }
+  .eq-card-right { border-top: 1px solid var(--rule); }
+}
 @media (max-width: 768px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
-  .hero-text h1 { font-size: 2.2rem; }
-  .graph-row { flex-direction: column; }
+  .graph-row { grid-template-columns: 1fr; max-width: 300px; margin: 0 auto; }
   .verify-grid { grid-template-columns: 1fr; gap: 1rem; }
   .layers { grid-template-columns: 1fr; }
   .papers-grid { grid-template-columns: 1fr; }
   nav { gap: 1rem; }
-  .equation-main { font-size: 1.3rem; }
+  .eq-card-left .eq-formula { font-size: 1.5rem; }
+  .eq-card-right .eq-formula { font-size: 1.2rem; }
+  .hero { padding: 6.5rem 0 0; }
+  .overflow-table { font-size: 0.72rem; }
 }
 </style>
 </head>
@@ -322,113 +405,239 @@ footer a:hover { color: var(--accent); }
   </div>
 </header>
 
+<!-- ════════════════════════════════════════════════════
+     HERO: TWO EQUATIONS
+     ════════════════════════════════════════════════════ -->
+
 <section class="hero">
   <div class="container">
-    <div class="hero-inner">
-      <div class="hero-text">
-        <h1>Three axioms.<br>Zero parameters.<br><em>All of particle physics.</em></h1>
-        <p class="subtitle">
-          Matching combinatorics on complete graphs K<sub>2n</sub> uniquely determine
-          Lorentzian signature, the gauge group, three fermion generations, the Higgs mass,
-          and the Yukawa hierarchy. Every claim is computationally verified. Run it yourself.
-        </p>
-      </div>
-      <div class="graph-panel">
-        <div class="graph-row">
-          <div class="graph-card">
-            <svg width="120" height="100" viewBox="0 0 120 100">
-              <line x1="60" y1="10" x2="20" y2="90" class="graph-edge"/>
-              <line x1="60" y1="10" x2="100" y2="90" class="graph-edge"/>
-              <line x1="60" y1="10" x2="60" y2="70" class="graph-edge"/>
-              <line x1="20" y1="90" x2="100" y2="90" class="graph-edge"/>
-              <line x1="20" y1="90" x2="60" y2="70" class="graph-edge"/>
-              <line x1="100" y1="90" x2="60" y2="70" class="graph-edge"/>
-              <line x1="60" y1="10" x2="20" y2="90" class="graph-match match-1"/>
-              <line x1="100" y1="90" x2="60" y2="70" class="graph-match match-1"/>
-              <line x1="60" y1="10" x2="100" y2="90" class="graph-match match-2"/>
-              <line x1="20" y1="90" x2="60" y2="70" class="graph-match match-2"/>
-              <line x1="60" y1="10" x2="60" y2="70" class="graph-match match-3"/>
-              <line x1="20" y1="90" x2="100" y2="90" class="graph-match match-3"/>
-              <circle cx="60" cy="10" r="4" class="graph-node"/>
-              <circle cx="20" cy="90" r="4" class="graph-node"/>
-              <circle cx="100" cy="90" r="4" class="graph-node"/>
-              <circle cx="60" cy="70" r="4" class="graph-node"/>
-            </svg>
-            <div class="graph-label">K&#x2084; &middot; 3 matchings</div>
-            <div class="graph-desc">Lorentzian signature<br>Arrow of time &middot; (1,3)</div>
-          </div>
+    <div class="hero-tagline">The Informational Asymmetry Program</div>
+
+    <div class="equations-stage">
+
+      <!-- LEFT: The Saturation Equation -->
+      <div class="eq-card eq-card-left">
+        <div class="eq-number">I &middot; The Geometry</div>
+        <div class="eq-formula">
+          (2n &minus; 1)!! = <span class="hl">I(n)</span>
         </div>
-        <div class="graph-row">
-          <div class="graph-card">
-            <svg width="120" height="110" viewBox="0 0 120 110">
-              <line x1="60" y1="5" x2="105" y2="30" class="graph-edge"/>
-              <line x1="105" y1="30" x2="105" y2="80" class="graph-edge"/>
-              <line x1="105" y1="80" x2="60" y2="105" class="graph-edge"/>
-              <line x1="60" y1="105" x2="15" y2="80" class="graph-edge"/>
-              <line x1="15" y1="80" x2="15" y2="30" class="graph-edge"/>
-              <line x1="15" y1="30" x2="60" y2="5" class="graph-edge"/>
-              <line x1="60" y1="5" x2="105" y2="80" class="graph-edge"/>
-              <line x1="60" y1="5" x2="15" y2="80" class="graph-edge"/>
-              <line x1="105" y1="30" x2="15" y2="80" class="graph-edge"/>
-              <line x1="105" y1="30" x2="60" y2="105" class="graph-edge"/>
-              <line x1="15" y1="30" x2="105" y2="80" class="graph-edge"/>
-              <line x1="15" y1="30" x2="60" y2="105" class="graph-edge"/>
-              <line x1="60" y1="5" x2="60" y2="105" class="graph-match match-1" opacity="0.9"/>
-              <line x1="105" y1="30" x2="15" y2="80" class="graph-match match-1" opacity="0.9"/>
-              <line x1="15" y1="30" x2="105" y2="80" class="graph-match match-1" opacity="0.9"/>
-              <circle cx="60" cy="5" r="3.5" class="graph-node"/>
-              <circle cx="105" cy="30" r="3.5" class="graph-node"/>
-              <circle cx="105" cy="80" r="3.5" class="graph-node"/>
-              <circle cx="60" cy="105" r="3.5" class="graph-node"/>
-              <circle cx="15" cy="80" r="3.5" class="graph-node"/>
-              <circle cx="15" cy="30" r="3.5" class="graph-node"/>
-            </svg>
-            <div class="graph-label">K&#x2086; &middot; 15 matchings</div>
-            <div class="graph-desc">Higgs mass 126.1 GeV<br>Gauge group &middot; Generations</div>
-          </div>
-          <div class="graph-card">
-            <svg width="120" height="110" viewBox="0 0 120 110">
-              <line x1="60" y1="5" x2="95" y2="17" class="graph-edge"/>
-              <line x1="95" y1="17" x2="110" y2="52" class="graph-edge"/>
-              <line x1="110" y1="52" x2="95" y2="87" class="graph-edge"/>
-              <line x1="95" y1="87" x2="60" y2="100" class="graph-edge"/>
-              <line x1="60" y1="100" x2="25" y2="87" class="graph-edge"/>
-              <line x1="25" y1="87" x2="10" y2="52" class="graph-edge"/>
-              <line x1="10" y1="52" x2="25" y2="17" class="graph-edge"/>
-              <line x1="25" y1="17" x2="60" y2="5" class="graph-edge"/>
-              <line x1="60" y1="5" x2="110" y2="52" class="graph-edge"/>
-              <line x1="60" y1="5" x2="95" y2="87" class="graph-edge"/>
-              <line x1="60" y1="5" x2="60" y2="100" class="graph-edge"/>
-              <line x1="60" y1="5" x2="25" y2="87" class="graph-edge"/>
-              <line x1="60" y1="5" x2="10" y2="52" class="graph-edge"/>
-              <line x1="95" y1="17" x2="95" y2="87" class="graph-edge"/>
-              <line x1="95" y1="17" x2="25" y2="87" class="graph-edge"/>
-              <line x1="95" y1="17" x2="10" y2="52" class="graph-edge"/>
-              <line x1="110" y1="52" x2="60" y2="100" class="graph-edge"/>
-              <line x1="110" y1="52" x2="25" y2="17" class="graph-edge"/>
-              <line x1="25" y1="17" x2="95" y2="87" class="graph-edge"/>
-              <line x1="10" y1="52" x2="95" y2="87" class="graph-edge"/>
-              <line x1="60" y1="5" x2="60" y2="100" class="graph-match match-2"/>
-              <line x1="95" y1="17" x2="25" y2="87" class="graph-match match-2"/>
-              <line x1="110" y1="52" x2="10" y2="52" class="graph-match match-2"/>
-              <line x1="95" y1="87" x2="25" y2="17" class="graph-match match-2"/>
-              <circle cx="60" cy="5" r="3" class="graph-node"/>
-              <circle cx="95" cy="17" r="3" class="graph-node"/>
-              <circle cx="110" cy="52" r="3" class="graph-node"/>
-              <circle cx="95" cy="87" r="3" class="graph-node"/>
-              <circle cx="60" cy="100" r="3" class="graph-node"/>
-              <circle cx="25" cy="87" r="3" class="graph-node"/>
-              <circle cx="10" cy="52" r="3" class="graph-node"/>
-              <circle cx="25" cy="17" r="3" class="graph-node"/>
-            </svg>
-            <div class="graph-label">K&#x2088; &middot; 105 matchings</div>
-            <div class="graph-desc">Yukawa hierarchy<br>415 : 135 : 1</div>
-          </div>
+        <div class="eq-result">
+          n = 2 &rarr; K&#x2084; &nbsp;(gravity)<br>
+          n = 3 &rarr; K&#x2086; &nbsp;(gauge + Higgs)<br>
+          n &ge; 4 &rarr; K&#x2088; &nbsp;(matter)
+        </div>
+        <br>
+        <div class="eq-desc">
+          For which complete graphs do perfect matchings saturate the Lie algebra so(2n)?
+          Exactly two solutions. K&#x2088; overflows&mdash;and the overflow is the fermion content.
         </div>
       </div>
+
+      <!-- CONNECTOR -->
+      <div class="eq-connector">
+        <div class="eq-connector-arrow">&rarr;</div>
+      </div>
+
+      <!-- RIGHT: The Spectral Action -->
+      <div class="eq-card eq-card-right">
+        <div class="eq-number">II &middot; The Physics</div>
+        <div class="eq-formula">
+          S = Tr <span class="hl">f</span>(D&sup2;/&Lambda;&sup2;) + &langle;&Psi;, D&Psi;&rangle;
+        </div>
+        <div class="eq-result">
+          D built from matchings of K&#x2084; &otimes; K&#x2086; &otimes; K&#x2088;<br>
+          all coefficients combinatorial<br>
+          free parameters: 0 (particle physics)
+        </div>
+        <br>
+        <div class="eq-desc">
+          The spectral action on the matching chain reproduces Einstein gravity,
+          SU(3)&times;SU(2)&times;U(1), the Higgs mechanism, three generations, and the
+          Yukawa hierarchy. Nothing is assumed. Everything is derived.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bridge statement -->
+    <div class="hero-bridge">
+      <p>
+        The first equation selects the geometry.
+        The second extracts the physics.<br>
+        <em>Every coupling constant, mass ratio, and symmetry-breaking pattern</em>
+        lives in the matching combinatorics that connects them.
+      </p>
     </div>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════
+     GRAPH STRIP: K₄, K₆, K₈
+     ════════════════════════════════════════════════════ -->
+
+<div class="graph-strip">
+  <div class="container">
+    <div class="graph-row">
+
+      <!-- K₄ -->
+      <div class="graph-card">
+        <svg width="120" height="100" viewBox="0 0 120 100">
+          <line x1="60" y1="10" x2="20" y2="90" class="graph-edge"/>
+          <line x1="60" y1="10" x2="100" y2="90" class="graph-edge"/>
+          <line x1="60" y1="10" x2="60" y2="70" class="graph-edge"/>
+          <line x1="20" y1="90" x2="100" y2="90" class="graph-edge"/>
+          <line x1="20" y1="90" x2="60" y2="70" class="graph-edge"/>
+          <line x1="100" y1="90" x2="60" y2="70" class="graph-edge"/>
+          <line x1="60" y1="10" x2="20" y2="90" class="graph-match match-1"/>
+          <line x1="100" y1="90" x2="60" y2="70" class="graph-match match-1"/>
+          <line x1="60" y1="10" x2="100" y2="90" class="graph-match match-2"/>
+          <line x1="20" y1="90" x2="60" y2="70" class="graph-match match-2"/>
+          <line x1="60" y1="10" x2="60" y2="70" class="graph-match match-3"/>
+          <line x1="20" y1="90" x2="100" y2="90" class="graph-match match-3"/>
+          <circle cx="60" cy="10" r="4" class="graph-node"/>
+          <circle cx="20" cy="90" r="4" class="graph-node"/>
+          <circle cx="100" cy="90" r="4" class="graph-node"/>
+          <circle cx="60" cy="70" r="4" class="graph-node"/>
+        </svg>
+        <div class="graph-label">K&#x2084; &middot; 3 matchings</div>
+        <div class="graph-desc">3 = 3 = dim su(2)<br>Lorentzian signature &middot; Arrow of time</div>
+      </div>
+
+      <!-- K₆ -->
+      <div class="graph-card">
+        <svg width="120" height="110" viewBox="0 0 120 110">
+          <line x1="60" y1="5" x2="105" y2="30" class="graph-edge"/>
+          <line x1="105" y1="30" x2="105" y2="80" class="graph-edge"/>
+          <line x1="105" y1="80" x2="60" y2="105" class="graph-edge"/>
+          <line x1="60" y1="105" x2="15" y2="80" class="graph-edge"/>
+          <line x1="15" y1="80" x2="15" y2="30" class="graph-edge"/>
+          <line x1="15" y1="30" x2="60" y2="5" class="graph-edge"/>
+          <line x1="60" y1="5" x2="105" y2="80" class="graph-edge"/>
+          <line x1="60" y1="5" x2="15" y2="80" class="graph-edge"/>
+          <line x1="105" y1="30" x2="15" y2="80" class="graph-edge"/>
+          <line x1="105" y1="30" x2="60" y2="105" class="graph-edge"/>
+          <line x1="15" y1="30" x2="105" y2="80" class="graph-edge"/>
+          <line x1="15" y1="30" x2="60" y2="105" class="graph-edge"/>
+          <line x1="60" y1="5" x2="60" y2="105" class="graph-match match-1" opacity="0.9"/>
+          <line x1="105" y1="30" x2="15" y2="80" class="graph-match match-1" opacity="0.9"/>
+          <line x1="15" y1="30" x2="105" y2="80" class="graph-match match-1" opacity="0.9"/>
+          <circle cx="60" cy="5" r="3.5" class="graph-node"/>
+          <circle cx="105" cy="30" r="3.5" class="graph-node"/>
+          <circle cx="105" cy="80" r="3.5" class="graph-node"/>
+          <circle cx="60" cy="105" r="3.5" class="graph-node"/>
+          <circle cx="15" cy="80" r="3.5" class="graph-node"/>
+          <circle cx="15" cy="30" r="3.5" class="graph-node"/>
+        </svg>
+        <div class="graph-label">K&#x2086; &middot; 15 matchings</div>
+        <div class="graph-desc">15 = 15 = dim su(4)<br>Higgs mass 126.1 GeV &middot; Gauge group</div>
+      </div>
+
+      <!-- K₈ -->
+      <div class="graph-card">
+        <svg width="120" height="110" viewBox="0 0 120 110">
+          <line x1="60" y1="5" x2="95" y2="17" class="graph-edge"/>
+          <line x1="95" y1="17" x2="110" y2="52" class="graph-edge"/>
+          <line x1="110" y1="52" x2="95" y2="87" class="graph-edge"/>
+          <line x1="95" y1="87" x2="60" y2="100" class="graph-edge"/>
+          <line x1="60" y1="100" x2="25" y2="87" class="graph-edge"/>
+          <line x1="25" y1="87" x2="10" y2="52" class="graph-edge"/>
+          <line x1="10" y1="52" x2="25" y2="17" class="graph-edge"/>
+          <line x1="25" y1="17" x2="60" y2="5" class="graph-edge"/>
+          <line x1="60" y1="5" x2="110" y2="52" class="graph-edge"/>
+          <line x1="60" y1="5" x2="95" y2="87" class="graph-edge"/>
+          <line x1="60" y1="5" x2="60" y2="100" class="graph-edge"/>
+          <line x1="60" y1="5" x2="25" y2="87" class="graph-edge"/>
+          <line x1="60" y1="5" x2="10" y2="52" class="graph-edge"/>
+          <line x1="95" y1="17" x2="95" y2="87" class="graph-edge"/>
+          <line x1="95" y1="17" x2="25" y2="87" class="graph-edge"/>
+          <line x1="95" y1="17" x2="10" y2="52" class="graph-edge"/>
+          <line x1="110" y1="52" x2="60" y2="100" class="graph-edge"/>
+          <line x1="110" y1="52" x2="25" y2="17" class="graph-edge"/>
+          <line x1="25" y1="17" x2="95" y2="87" class="graph-edge"/>
+          <line x1="10" y1="52" x2="95" y2="87" class="graph-edge"/>
+          <line x1="60" y1="5" x2="60" y2="100" class="graph-match match-2"/>
+          <line x1="95" y1="17" x2="25" y2="87" class="graph-match match-2"/>
+          <line x1="110" y1="52" x2="10" y2="52" class="graph-match match-2"/>
+          <line x1="95" y1="87" x2="25" y2="17" class="graph-match match-2"/>
+          <circle cx="60" cy="5" r="3" class="graph-node"/>
+          <circle cx="95" cy="17" r="3" class="graph-node"/>
+          <circle cx="110" cy="52" r="3" class="graph-node"/>
+          <circle cx="95" cy="87" r="3" class="graph-node"/>
+          <circle cx="60" cy="100" r="3" class="graph-node"/>
+          <circle cx="25" cy="87" r="3" class="graph-node"/>
+          <circle cx="10" cy="52" r="3" class="graph-node"/>
+          <circle cx="25" cy="17" r="3" class="graph-node"/>
+        </svg>
+        <div class="graph-label">K&#x2088; &middot; 105 matchings</div>
+        <div class="graph-desc">105 &gt;&gt; 28 = dim so(8)<br>Yukawa hierarchy 415 : 135 : 1</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     OVERFLOW TABLE: Saturation → Overflow → Matter
+     ════════════════════════════════════════════════════ -->
+
+<div class="overflow-strip">
+  <div class="container">
+    <table class="overflow-table">
+      <thead>
+        <tr>
+          <th>Graph</th>
+          <th>(2n&minus;1)!!</th>
+          <th>I(n)</th>
+          <th>Match?</th>
+          <th>Physical subspace</th>
+          <th>Kernel</th>
+          <th>Physics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>K&#x2084;</td>
+          <td>3</td>
+          <td>3</td>
+          <td class="sat">= &nbsp;Saturated</td>
+          <td>3</td>
+          <td>0</td>
+          <td>Pure gauge &rarr; gravity, Lorentz signature</td>
+        </tr>
+        <tr>
+          <td>K&#x2086;</td>
+          <td>15</td>
+          <td>15</td>
+          <td class="sat">= &nbsp;Saturated</td>
+          <td>9</td>
+          <td>5</td>
+          <td>Higgs doublet, SU(3)&times;SU(2)&times;U(1)</td>
+        </tr>
+        <tr>
+          <td>K&#x2088;</td>
+          <td>105</td>
+          <td>28</td>
+          <td class="over">&gt;&gt; Overflow</td>
+          <td>20</td>
+          <td>84</td>
+          <td>Three generations, Yukawa couplings</td>
+        </tr>
+        <tr>
+          <td>K&#x2081;&#x2080;</td>
+          <td>945</td>
+          <td>45</td>
+          <td class="over">&gt;&gt; Overflow</td>
+          <td colspan="2" style="color:var(--ink3);">Galois-disjoint from K&#x2088;</td>
+          <td>No new physics</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════
+     VERIFICATION STRIP
+     ════════════════════════════════════════════════════ -->
 
 <div class="verify-strip">
   <div class="container">
@@ -446,12 +655,9 @@ footer a:hover { color: var(--accent); }
   </div>
 </div>
 
-<div class="equation-banner">
-  <div class="container">
-    <div class="equation-main">(2n &minus; 1)!! = I(n) &nbsp;&rarr;&nbsp; <span class="hl">exactly two solutions</span></div>
-    <div class="equation-note">The saturation equation admits only n = 1 (trivial) and n = 3 (the universe). Everything follows.</div>
-  </div>
-</div>
+<!-- ════════════════════════════════════════════════════
+     FRAMEWORK
+     ════════════════════════════════════════════════════ -->
 
 <section id="framework">
   <div class="container">
@@ -476,20 +682,24 @@ footer a:hover { color: var(--accent); }
         <h4>Moduli &amp; Coupling</h4>
         <p>BZ averaging on T&sup2; determines electroweak-scale &lambda;/g&sup2;.
            Gram matrix eigenvalues fix the Higgs spectral ratio a&#x2084;/a&#x2082; = 0.3722.
-           Heat kernels confirm convergence.</p>
+           Gauge couplings from c<sub>i</sub> = dim(K<sub>2i</sub>).</p>
         <div class="params">Free parameters: 0</div>
       </div>
       <div class="layer">
         <div class="layer-num">Layer 3 &middot; Gravity</div>
         <h4>Gravitational Interface</h4>
-        <p>f&#x2082;&Lambda;&sup2; sets M<sub>Pl</sub>. f&#x2084;&Lambda;&#x2074; sets &Lambda;<sub>CC</sub>.
-           The hierarchy problem and cosmological constant live here.
-           No information flows back into Layers 1&ndash;2.</p>
+        <p>f&#x2082;&Lambda;&sup2; sets M<sub>Pl</sub>.
+           Arrow of time converts &epsilon;&#x2074; &rarr; &epsilon;&sup2;, giving &Lambda;<sub>CC</sub> ~ 10<sup>&minus;122</sup>.
+           Cutoff &Lambda; &asymp; 10&#x2078; GeV, not GUT scale.</p>
         <div class="params">Free parameters: 1 (&Lambda;)</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════
+     PAPERS
+     ════════════════════════════════════════════════════ -->
 
 <section id="papers">
   <div class="container">
@@ -523,6 +733,10 @@ footer a:hover { color: var(--accent); }
     </div>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════
+     VERIFICATION
+     ════════════════════════════════════════════════════ -->
 
 <section id="verification">
   <div class="container">
@@ -558,16 +772,20 @@ footer a:hover { color: var(--accent); }
         <strong>Test 22 is deliberate.</strong> It demonstrates two bugs we found in our own
         code &mdash; a <code>.real</code> truncation and a non-deterministic enumeration &mdash;
         that accidentally produced m<sub>H</sub> = 125 GeV. We document our own bugs because
-        that's how science works.
+        that&rsquo;s how science works.
       </p>
     </div>
   </div>
 </section>
 
+<!-- ════════════════════════════════════════════════════
+     STATUS
+     ════════════════════════════════════════════════════ -->
+
 <section id="status">
   <div class="container">
     <div class="section-label">Program Status</div>
-    <h2>What's Resolved, What's Predicted, What's Open</h2>
+    <h2>What&rsquo;s Resolved, What&rsquo;s Predicted, What&rsquo;s Open</h2>
 
     <h3>Resolved</h3>
     <table class="status-table">
@@ -577,9 +795,12 @@ footer a:hover { color: var(--accent); }
         <tr><td>Gauge group SU(3)&times;SU(2)&times;U(1)</td><td><span class="badge badge-resolved">Resolved</span></td><td>From (2n&minus;1)!! = I(n) + complexifier</td></tr>
         <tr><td>Three generations</td><td><span class="badge badge-resolved">Resolved</span></td><td>&phi;(7)/2 = 3 from K&#x2088; vacuum rank</td></tr>
         <tr><td>Parity violation</td><td><span class="badge badge-resolved">Resolved</span></td><td>Self-dual matchings span su(2)<sub>L</sub> only</td></tr>
-        <tr><td>Arrow of time</td><td><span class="badge badge-resolved">Resolved</span></td><td>D &ne; D* prior to dynamics (Z&#x2083; flux)</td></tr>
+        <tr><td>Arrow of time</td><td><span class="badge badge-resolved">Resolved</span></td><td>D &ne; D* prior to dynamics (Z&#x2083; flux, C = &minus;2)</td></tr>
         <tr><td>3+1 dimensions</td><td><span class="badge badge-resolved">Resolved</span></td><td>Observer finitude: d<sub>eff</sub> &rarr; 3</td></tr>
-        <tr><td>Einstein equations</td><td><span class="badge badge-resolved">Resolved</span></td><td>Jacobson's derivation (Steps 1&ndash;3 closed)</td></tr>
+        <tr><td>Einstein equations</td><td><span class="badge badge-resolved">Resolved</span></td><td>Jacobson&rsquo;s derivation (Steps 1&ndash;3 closed)</td></tr>
+        <tr><td>Gauge couplings c<sub>i</sub> = dim(K<sub>2i</sub>)</td><td><span class="badge badge-resolved">Resolved</span></td><td>Spectator mechanism: c&#x2083;:c&#x2082;:c&#x2081; = 4:6:8</td></tr>
+        <tr><td>Non-unification of couplings</td><td><span class="badge badge-resolved">Resolved</span></td><td>Predicted: couplings never meet. &Lambda; &asymp; 10&#x2078; GeV</td></tr>
+        <tr><td>&Lambda;<sub>CC</sub> ~ 10<sup>&minus;122</sup></td><td><span class="badge badge-resolved">Resolved</span></td><td>Arrow of time: &epsilon;&#x2074; &rarr; &epsilon;&sup2; (122 orders, 0 parameters)</td></tr>
       </tbody>
     </table>
 
@@ -589,6 +810,7 @@ footer a:hover { color: var(--accent); }
       <tbody>
         <tr><td>Higgs mass</td><td><span class="badge badge-predicted">Predicted</span></td><td>126.1 GeV (0.81% from experiment), zero parameters</td></tr>
         <tr><td>Yukawa hierarchy</td><td><span class="badge badge-predicted">Predicted</span></td><td>415 : 135 : 1 (middle ratio 1.5% from SM)</td></tr>
+        <tr><td>sin&sup2;&theta;<sub>W</sub></td><td><span class="badge badge-predicted">Predicted</span></td><td>0.2349 (1.6% from 0.23122, zero parameters)</td></tr>
         <tr><td>Cosmic birefringence</td><td><span class="badge badge-predicted">Predicted</span></td><td>&alpha;&#x2080; &le; 0.41&deg; &mdash; five falsifiable predictions for LiteBIRD</td></tr>
       </tbody>
     </table>
@@ -598,12 +820,16 @@ footer a:hover { color: var(--accent); }
       <thead><tr><th>Problem</th><th>Status</th><th>Path Forward</th></tr></thead>
       <tbody>
         <tr><td>Higher-spin decoupling (&gamma;&#x2083; &gt; 2)</td><td><span class="badge badge-open">Open</span></td><td>QMC computation at K&#x2084; critical point</td></tr>
-        <tr><td>Higgs normalization constant c</td><td><span class="badge badge-open">Open</span></td><td>Full product geometry Seeley&ndash;DeWitt expansion</td></tr>
+        <tr><td>Gauge coupling 2.5% residual</td><td><span class="badge badge-open">Open</span></td><td>Self-consistent boundary problem (f&#x2080; + RG)</td></tr>
         <tr><td>&Lambda; (hierarchy problem)</td><td><span class="badge badge-reclassified">Reclassified</span></td><td>Gravity-only parameter; decoupled from particle physics</td></tr>
       </tbody>
     </table>
   </div>
 </section>
+
+<!-- ════════════════════════════════════════════════════
+     DOCS
+     ════════════════════════════════════════════════════ -->
 
 <section id="docs">
   <div class="container">
@@ -611,14 +837,14 @@ footer a:hover { color: var(--accent); }
     <h2>Published in Real Time</h2>
     <p>
       Every working document from the program &mdash; successful results, failed approaches,
-      and honest assessments of what works and what doesn't. All timestamped by git.
+      and honest assessments of what works and what doesn&rsquo;t. All timestamped by git.
     </p>
 
     <h3>Core Framework</h3>
     <ul class="doc-list">
       <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">&mdash; One-paragraph claim through five-axiom chain</span></li>
       <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">&mdash; FORCED / SILENT / REDUCED taxonomy</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_addendum_feb18.html">Progress Addendum</a> <span class="doc-desc">&mdash; Complete status as of Feb 18</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_feb19.html">Progress Report (Feb 19)</a> <span class="doc-desc">&mdash; Gauge couplings, &Lambda;<sub>CC</sub>, spectral geometry, boundary problem</span></li>
     </ul>
 
     <h3>K&#x2086; Higgs Sector</h3>
@@ -655,6 +881,7 @@ footer a:hover { color: var(--accent); }
       <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_terminated.html">c = &pi;&sup2;/8 derivation</a> <span class="doc-desc">&mdash; Computationally falsified, terminated</span></li>
       <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall_analysis.html">Polynomial/Series Wall</a> <span class="doc-desc">&mdash; Terminal obstruction identified</span></li>
       <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">&mdash; Classical motivic path blocked</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rg_corrected_verdict.html">RG Corrected Verdict</a> <span class="doc-desc">&mdash; 2-loop moves c&#x2081; wrong way; f&#x2080; identified</span></li>
     </ul>
   </div>
 </section>
