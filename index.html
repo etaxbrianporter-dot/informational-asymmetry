@@ -840,8 +840,52 @@ footer a:hover { color: var(--accent); }
       and honest assessments of what works and what doesn&rsquo;t. All timestamped by git.
     </p>
     <div id="docs-container">
-      <p style="color:var(--ink3); font-style:italic;">Loading documents&hellip;</p>
-    </div>
+
+    <h3>Core Framework</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">&mdash; One-paragraph claim through five-axiom chain</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">&mdash; FORCED / SILENT / REDUCED taxonomy</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_feb19.html">Progress Report (Feb 19)</a> <span class="doc-desc">&mdash; Gauge couplings, &Lambda;<sub>CC</sub>, spectral geometry, boundary problem</span></li>
+    </ul>
+
+    <h3>K&#x2086; Higgs Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.html">K&#x2086; Higgs Paper v2</a> <span class="doc-desc">&mdash; Bug discovery, 50k Monte Carlo, honest audit</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.html">Normalization v9</a> <span class="doc-desc">&mdash; R proved, c undetermined, 41 near-misses</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination_analysis.html">c-Derivation Termination</a> <span class="doc-desc">&mdash; Why the &pi;&sup2;/8 path was abandoned</span></li>
+    </ul>
+
+    <h3>K&#x2088; Fermion Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.html">K&#x2088; Fermion Results</a> <span class="doc-desc">&mdash; Three generations, Z&#x2087; decomposition</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.html">K&#x2088; Higgs Results</a> <span class="doc-desc">&mdash; Sector separation: K&#x2086; &ne; K&#x2088; for Higgs</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge_results.html">&#x03C1;&#x2082; Hypercharge</a> <span class="doc-desc">&mdash; Selection rule and neutrino mass implications</span></li>
+    </ul>
+
+    <h3>Mathematical Structure</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.html">Spectral Budget Identity</a> <span class="doc-desc">&mdash; Johnson scheme forces three eigenvalues</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction_theorem.html">Polynomial Reduction Theorem</a> <span class="doc-desc">&mdash; Super-exponential &rarr; polynomial complexity</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.html">Galois Disjointness</a> <span class="doc-desc">&mdash; Number fields at each level share only &#x211A;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.html">Discriminant Atlas</a> <span class="doc-desc">&mdash; Arithmetic structure K&#x2086; through K&#x2081;&#x2086;</span></li>
+    </ul>
+
+    <h3>Gravitational Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements_v2.html">Computation Requirements</a> <span class="doc-desc">&mdash; &gamma;&#x2083; QMC specification</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence_theorem.html">Light Emergence Theorem</a> <span class="doc-desc">&mdash; Thermodynamic preference for massless modes</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence_t_derivation.html">Time Emergence</a> <span class="doc-desc">&mdash; t derivation from Z&#x2083; flux</span></li>
+    </ul>
+
+    <h3>Killed Approaches</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_terminated.html">c = &pi;&sup2;/8 derivation</a> <span class="doc-desc">&mdash; Computationally falsified, terminated</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall_analysis.html">Polynomial/Series Wall</a> <span class="doc-desc">&mdash; Terminal obstruction identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">&mdash; Classical motivic path blocked</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rg_corrected_verdict.html">RG Corrected Verdict</a> <span class="doc-desc">&mdash; 2-loop moves c&#x2081; wrong way; f&#x2080; identified</span></li>
+    </ul>
+
+    </div><!-- /docs-container -->
   </div>
 </section>
 
@@ -861,43 +905,32 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click'
 const sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('nav a');
 window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)c=s.id});navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
 
-/* ── Auto-load docs from docs.json ── */
-(async function loadDocs(){
-  const container = document.getElementById('docs-container');
-  if (!container) return;
+/* ── Progressive enhancement: replace static docs with docs.json if available ── */
+(async function(){
+  const c = document.getElementById('docs-container');
+  if (!c) return;
   try {
-    const res = await fetch('docs.json');
-    if (!res.ok) throw new Error(res.status);
-    const manifest = await res.json();
-    container.innerHTML = '';
-    manifest.forEach(group => {
-      const h3 = document.createElement('h3');
-      h3.textContent = group.category;
-      container.appendChild(h3);
-      const ul = document.createElement('ul');
-      ul.className = 'doc-list';
-      group.docs.forEach(doc => {
+    const r = await fetch('docs.json');
+    if (!r.ok) return; /* static HTML stays */
+    const m = await r.json();
+    c.innerHTML = '';
+    m.forEach(g => {
+      const h = document.createElement('h3');
+      h.textContent = g.category;
+      c.appendChild(h);
+      const u = document.createElement('ul');
+      u.className = 'doc-list';
+      g.docs.forEach(d => {
         const li = document.createElement('li');
-        const date = document.createElement('span');
-        date.className = 'doc-date';
-        date.textContent = doc.date;
-        const a = document.createElement('a');
-        a.href = doc.href;
-        a.textContent = doc.title;
-        const desc = document.createElement('span');
-        desc.className = 'doc-desc';
-        desc.textContent = doc.desc ? '\u2014 ' + doc.desc : '';
-        li.appendChild(date);
-        li.appendChild(a);
-        li.appendChild(desc);
-        ul.appendChild(li);
+        li.innerHTML =
+          '<span class="doc-date">' + d.date + '</span>' +
+          '<a href="' + d.href + '">' + d.title + '</a>' +
+          '<span class="doc-desc">' + (d.desc ? '\u2014 ' + d.desc : '') + '</span>';
+        u.appendChild(li);
       });
-      container.appendChild(ul);
+      c.appendChild(u);
     });
-  } catch(e) {
-    container.innerHTML = '<p style="color:var(--ink3)">Could not load docs.json \u2014 check console.</p>';
-    console.error('Failed to load docs.json:', e);
-  }
+  } catch(e) { /* fetch failed — static HTML stays, no error shown */ }
 })();
 </script>
 </body>
