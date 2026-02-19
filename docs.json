@@ -1,0 +1,52 @@
+[
+  {
+    "category": "Core Framework",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/executive_summary.html", "title": "Executive Summary", "desc": "One-paragraph claim through five-axiom chain" },
+      { "date": "Feb 2026", "href": "docs/classification_theorem.html", "title": "Classification Theorem", "desc": "FORCED / SILENT / REDUCED taxonomy" },
+      { "date": "Feb 2026", "href": "docs/progress_feb19.html", "title": "Progress Report (Feb 19)", "desc": "Gauge couplings, \u039b_CC, spectral geometry, boundary problem" }
+    ]
+  },
+  {
+    "category": "K\u2086 Higgs Sector",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/K6_Higgs_Paper_v2.html", "title": "K\u2086 Higgs Paper v2", "desc": "Bug discovery, 50k Monte Carlo, honest audit" },
+      { "date": "Feb 2026", "href": "docs/normalization_derivation_v9.html", "title": "Normalization v9", "desc": "R proved, c undetermined, 41 near-misses" },
+      { "date": "Feb 2026", "href": "docs/c_derivation_termination_analysis.html", "title": "c-Derivation Termination", "desc": "Why the \u03c0\u00b2/8 path was abandoned" }
+    ]
+  },
+  {
+    "category": "K\u2088 Fermion Sector",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/k8_fermion_results.html", "title": "K\u2088 Fermion Results", "desc": "Three generations, Z\u2087 decomposition" },
+      { "date": "Feb 2026", "href": "docs/k8_higgs_results.html", "title": "K\u2088 Higgs Results", "desc": "Sector separation: K\u2086 \u2260 K\u2088 for Higgs" },
+      { "date": "Feb 2026", "href": "docs/rho2_hypercharge_results.html", "title": "\u03c1\u2082 Hypercharge", "desc": "Selection rule and neutrino mass implications" }
+    ]
+  },
+  {
+    "category": "Mathematical Structure",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/spectral_budget_identity.html", "title": "Spectral Budget Identity", "desc": "Johnson scheme forces three eigenvalues" },
+      { "date": "Feb 2026", "href": "docs/polynomial_reduction_theorem.html", "title": "Polynomial Reduction Theorem", "desc": "Super-exponential \u2192 polynomial complexity" },
+      { "date": "Feb 2026", "href": "docs/galois_disjointness.html", "title": "Galois Disjointness", "desc": "Number fields at each level share only \u211a" },
+      { "date": "Feb 2026", "href": "docs/discriminant_atlas.html", "title": "Discriminant Atlas", "desc": "Arithmetic structure K\u2086 through K\u2081\u2086" }
+    ]
+  },
+  {
+    "category": "Gravitational Sector",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/computation_requirements_v2.html", "title": "Computation Requirements", "desc": "\u03b3\u2083 QMC specification" },
+      { "date": "Feb 2026", "href": "docs/light_emergence_theorem.html", "title": "Light Emergence Theorem", "desc": "Thermodynamic preference for massless modes" },
+      { "date": "Feb 2026", "href": "docs/time_emergence_t_derivation.html", "title": "Time Emergence", "desc": "t derivation from Z\u2083 flux" }
+    ]
+  },
+  {
+    "category": "Killed Approaches",
+    "docs": [
+      { "date": "Feb 2026", "href": "docs/c_derivation_terminated.html", "title": "c = \u03c0\u00b2/8 derivation", "desc": "Computationally falsified, terminated" },
+      { "date": "Feb 2026", "href": "docs/polynomial_wall_analysis.html", "title": "Polynomial/Series Wall", "desc": "Terminal obstruction identified" },
+      { "date": "Feb 2026", "href": "docs/spectral_function_verdict.html", "title": "Spectral Function Verdict", "desc": "Classical motivic path blocked" },
+      { "date": "Feb 2026", "href": "docs/rg_corrected_verdict.html", "title": "RG Corrected Verdict", "desc": "2-loop moves c\u2081 wrong way; f\u2080 identified" }
+    ]
+  }
+]
