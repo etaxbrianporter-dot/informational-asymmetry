@@ -1,0 +1,29 @@
+name: Verify
+
+on:
+  push:
+    paths:
+      - 'verification_suite/**'
+      - 'code/**'
+      - 'docs/**'
+  pull_request:
+
+jobs:
+  verify:
+    name: Run Verification Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install numpy scipy
+
+      - name: Run verification suite
+        run: |
+          cd verification_suite
+          python run_all.py -v

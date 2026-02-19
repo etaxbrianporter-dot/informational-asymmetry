@@ -1,0 +1,426 @@
+**Progress Report Addendum**
+
+Fixing Λ: The Last Free Parameter
+
+Brian Porter --- February 18, 2026
+
+Executive Summary
+
+The single remaining free parameter Λ (the lattice/GUT scale) was
+subjected to comprehensive computational analysis. The result is cleaner
+than expected: Λ drops out of the Higgs mass prediction entirely. The
+ratio a₄/a₂ is a combinatorial invariant of K₆ matchings, independent of
+any energy scale. The BZ averaging already performs the full
+momentum-shell integration. The formula m_H = √(2a₄/a₂) × m_W involves
+only combinatorial data and one experimental input.
+
+Λ enters the framework exclusively through the gravitational sector:
+f₂Λ²a₂ determines M_Pl, and f₄Λ⁴a₀ determines the cosmological constant.
+The matching framework's particle physics predictions are
+zero-parameter. The one remaining free parameter is the
+Planck/electroweak hierarchy --- the same open question every theory of
+quantum gravity faces.
+
+This addendum documents the full computation, updates the parameter
+count, assesses what remains for the gravitational sector, and states
+the unified field theory claim.
+
+1\. The Λ Computation
+
+1.1 Setup
+
+A comprehensive Python computation was constructed combining: K₆
+spectral data (a₂ = 3.3060, a₄ = 4.0682, R = 0.3722), Standard Model
+gauge couplings at m_Z in GUT normalization, full 1-loop and 2-loop SM
+renormalization group equations including gauge, top Yukawa, and Higgs
+quartic running, and the spectral action's gauge coupling boundary
+conditions.
+
+1.2 SM Gauge Coupling Running
+
+The SM gauge couplings were run from m_Z to 10¹⁹ GeV at 2-loop
+precision. The well-known non-unification was confirmed:
+
+  --------------------- ------------------------ ------------------------
+  **Crossing**          **Scale (GeV)**          **log₁₀(μ/GeV)**
+
+  **g₁ = g₂**           1.09 × 10¹³              13.04
+
+  **g₁ = g₃**           1.72 × 10¹⁴              14.23
+
+  **g₂ = g₃**           2.89 × 10¹⁶              16.46
+  --------------------- ------------------------ ------------------------
+
+The triangle gap spans 3.4 decades. No gauge coupling unification occurs
+within the SM alone, confirming that Λ cannot be fixed by requiring
+exact unification.
+
+1.3 The 7/48 Boundary Condition
+
+The democratic K₆ spectral ratio gives λ/g² = 7/48 = 0.1458 at the
+unification scale. The SM running of λ/g₂² was tracked from m_Z upward.
+The ratio starts at 0.304 and falls, crossing 7/48 at μ ≈ 2.8 TeV ---
+not at a GUT scale. It continues falling and λ goes negative around 10⁶
+GeV (vacuum instability). The 7/48 condition is a threshold condition
+near the EW scale, not a high-energy boundary.
+
+Setting λ/g₂² = 7/48 at any GUT scale and running down always gives m_H
+≈ 153 GeV, insensitive to Λ_GUT:
+
+  ----------------------------------- -----------------------------------
+  **Λ_GUT**                           **m_H (predicted)**
+
+  10¹³ GeV                            152.6 GeV
+
+  10¹⁴ GeV                            152.8 GeV
+
+  10¹⁵ GeV                            153.0 GeV
+
+  10¹⁶ GeV                            153.1 GeV
+
+  10¹⁷ GeV                            153.2 GeV
+  ----------------------------------- -----------------------------------
+
+This is the CCM (2006) problem: running from any GUT-scale boundary
+condition hits the top Yukawa quasi-fixed point and always overshoots.
+The BZ formula avoids this entirely because the BZ averaging IS the
+momentum-shell integration.
+
+1.4 The Key Finding: Λ Drops Out
+
+The Higgs mass formula m_H = √(2a₄/a₂) × m_W is built from:
+
+-   a₄/a₂ = combinatorial invariant of K₆ matchings (Λ-independent)
+
+-   m_W = 80.379 GeV (experimental input)
+
+Λ cancels in the ratio. Four independent arguments (from the v6
+derivation) establish that this is an EW-scale formula, not a
+unification-scale boundary condition: RG impossibility (the result sits
+below the IR quasi-fixed point), BZ = renormalization (the T² average IS
+the momentum integration), k-independence (a₂ and a₄ are constant across
+the Brillouin zone at the sorted vacuum), and gauge kinetic = a₂ exactly
+(the lattice scale is set by m_W).
+
+Λ enters the framework only through the gravitational sector:
+
+-   f₂Λ²a₂ → M_Pl (Newton's constant, the hierarchy problem)
+
+-   f₄Λ⁴a₀ → Λ_CC (the cosmological constant problem)
+
+If Λ = M_Pl, then f₂ = π³/(6a₂) ≈ 1.56, a reasonable O(1) number. The
+hierarchy m_W/M_Pl ≈ 10⁻¹⁷ is the one quantity the matching framework
+does not determine from internal structure.
+
+2\. Updated Parameter Count
+
+  ---------------- ------------ ------------------------------------------
+  **Parameter**    **Status**   **What Determines It**
+
+  **a₂**           Fixed        K₆ Gram matrix smallest eigenvalue =
+                                3.3060
+
+  **a₄**           Fixed        K₆ quartic form at vacuum = 4.0682
+
+  **m_H**          Predicted    √(2a₄/a₂) × m_W = 126.10 GeV (0.81%
+                                residual)
+
+  **N_gen**        Predicted    φ(7)/2 = 3 from K₈ vacuum rank
+
+  **Yukawa**       Predicted    415:135:1 from K₈ vacuum eigenvector
+
+  **t**            Fixed        d² from K₄ geodesic flow on moduli sphere
+
+  **c**            Fixed        4/a₂ = 1.210 from BZ formula structure
+
+  **J_C**          Fixed        Ψ₂ from K₄ (forced, unique complexifier)
+
+  **Λ**            Free         Determines M_Pl/m_W hierarchy (gravity,
+                                not particles)
+  ---------------- ------------ ------------------------------------------
+
+**Effective free parameter count for particle physics: ZERO.**
+
+**Effective free parameter count for the full theory: ONE (the Planck/EW
+hierarchy f₂Λ²).**
+
+3\. What Remains for the Gravitational Sector
+
+3.1 Higher-Spin Decoupling (γ₃ \> 2)
+
+The gravity derivation is complete through Steps 1--3: Fisher metric →
+Wick rotation → Jacobson's entanglement argument → Einstein equations.
+Step 4 asks whether the K₄ model at its quantum critical point gives
+pure Einstein gravity or Einstein plus higher-spin fields. The free K₄
+model is dual to Vasiliev higher-spin gravity; V₄-invariant interactions
+at strong coupling should gap out the higher-spin tower.
+
+The diagnostic is γ₃ = Δ₃ − 4, the anomalous dimension of the lowest
+spin-3 operator. Algebraic analysis narrows γ₃ to \[1.0, 2.5\].
+Structural arguments favor γ₃ \> 2: the Chern-Simons parameter λ = 1/2
+is forced by D ≠ D\* → ℤ₃ → C = −2, placing the theory at the self-dual
+point that maximizes higher-spin symmetry breaking. Parity breaking from
+the ℤ₃ flux provides additional enhancement. A confinement argument
+(V₄-invariant strong coupling confining all higher-spin modes with mass
+\~ U_c) would give effective γ₃ → ∞ regardless of perturbative
+estimates.
+
+Three parallel computational paths exist:
+
+  ------------------ ---------------------------------- ------------------
+  **Method**         **Description**                    **Resources**
+
+  **QMC +            DQMC measures c_T and Δ_σ; SDPB    GPU cluster + SDPB
+  Bootstrap**        proves rigorous bound on Δ₃.       workstation
+                     Neither alone suffices; together   
+                     they should close the gap.         
+
+  **Padé-Borel**     Resum the 1/N series at the        Analysis only,
+                     self-dual point λ = 1/2 using      1--2 weeks
+                     duality constraints. Fastest       
+                     analytical path.                   
+
+  **iDMRG**          Tensor network on cylinders.       Workstation
+                     Avoids sign problem. Cross-check   
+                     for QMC.                           
+  ------------------ ---------------------------------- ------------------
+
+This is a cleanliness question, not an existence question. Gravity
+exists regardless (Step 3 is closed). γ₃ determines whether it exists
+cleanly.
+
+3.2 Cosmological Constant Scaling
+
+Observer finitude gives d_eff = 2 + H(E\|k)/H(E), approaching 3 as
+resolution ε → ∞. The residual correction d_eff = 3 − f(ε) at finite
+observer resolution would manifest as dark energy. If f(ε) \~ 1/ε², this
+gives Λ_CC \~ (L_Planck/L_Hubble)² \~ 10⁻¹²² --- the correct magnitude
+and positive sign.
+
+What is needed: higher-precision computation of d_eff at large ε.
+Current data shows d_eff = 2.60 at ε = 10⁻⁴ and d_eff = 2.995 at ε =
+0.5. Characterizing the approach to 3 precisely (1/ε² vs 1/ε vs
+exponential) is a workstation-scale lattice computation on the K₄
+model's conditional entropy. No GPU cluster needed, but high numerical
+precision required.
+
+3.3 Cosmic Birefringence (Observational)
+
+Paper II derives five parameter-free predictions from the K₄ spectral
+action's torsion sector, testable by LiteBIRD (launch \~2028) and
+CMB-S4:
+
+  -------- ------------------------------------------------ ------------------
+  **\#**   **Prediction**                                   **Test**
+
+  1        Birefringence dipole aligned with TT asymmetry   LiteBIRD \>8σ
+
+  2        Dipolar amplitude δα/α₀ = (2−√3)² = 0.0718       CMB-S4
+
+  3        EB BiPoSH parity alternation (−1)\^{ℓ+1}         CMB-S4
+
+  4        TT/EB shape split with sign change at ℓ \~ 20    Planck reanalysis
+
+  5        TB/EB ratio = C\^{TE}\_ℓ / C\^{EE}\_ℓ            LiteBIRD
+  -------- ------------------------------------------------ ------------------
+
+The isotropic birefringence α₀ ≤ 0.41° is consistent with the measured
+0.30° ± 0.11° (Planck, 3σ). The EB parity alternation (prediction 3) is
+the most distinctive signature --- no simple scalar modulation produces
+it.
+
+3.4 The Hierarchy Problem
+
+The one free parameter f₂Λ² determines M_Pl/m_W \~ 10¹⁷. The matching
+framework isolates this as the precise interface between combinatorial
+geometry (particle physics) and quantum gravity (absolute scales). It
+does not solve the hierarchy problem --- it identifies it as the
+irreducible meeting point where the matching construction stops and
+gravitational physics begins. This is a sharper statement of the problem
+than any previous framework provides, but it is not a solution.
+
+4\. The Unified Field Theory Claim
+
+The framework constitutes a unified field theory in the precise sense
+that a single algebraic structure --- matching combinatorics on complete
+graphs, governed by the equation (2n−1)!! = I(n) --- produces both
+gravity and the Standard Model. The two solutions n = 2 (K₄) and n = 3
+(K₆) exhaust the equation. No other complete graphs contribute. The
+product K₄(spacetime) × K₆(color) × K₄(electroweak) carries the full
+spectral action that yields the Einstein-Hilbert action plus the
+complete SM Lagrangian.
+
+**What is unified:**
+
+  ----------------------- ----------------------- -----------------------
+  **Sector**              **Origin**              **Realization**
+
+  Gravity                 K₄ (n = 2)              Commutative: M² = +I
+
+  Color + Generations     K₆ (n = 3)              Anticommutative: Ω² =
+                                                  −I
+
+  Electroweak + Parity    K₄ (n = 2)              Anticommutative: Ω² =
+                                                  −I
+
+  Lorentzian signature    K₄ Pfaffian             Forced by Pf(D) ≠ 0
+
+  Arrow of time           K₄ ℤ₃ flux              D ≠ D\* (Axiom 3)
+
+  3+1 dimensions          K₄ + observer finitude  d_eff → 3 for finite
+                                                  observers
+
+  Higgs mechanism         K₆ spectral action      Mexican hat from D₄
+                                                  quaternionic radius
+
+  Higgs mass              K₆ on T²                126.1 GeV (zero free
+                                                  parameters)
+
+  3 generations           K₈ vacuum rank          φ(7)/2 = 3
+
+  Yukawa hierarchy        K₈ vacuum eigenvector   415:135:1
+  ----------------------- ----------------------- -----------------------
+
+What is not unified: the Planck/EW hierarchy (one free parameter),
+specific CKM/PMNS entries (require full 10-parameter deformation of K₆),
+and the cosmological constant (mechanism identified but scaling not yet
+computed).
+
+5\. Revised Architecture
+
+The framework separates cleanly into three layers:
+
+Layer 1: Matching Combinatorics (zero free parameters). K₆ produces a₂,
+a₄, the Higgs mass, the gauge group, three generations, and the Yukawa
+hierarchy. K₄ produces Lorentzian signature, the arrow of time, parity
+violation, and the Einstein equations. All combinatorial/topological.
+All forced by the saturation equation. No tuneable parameters.
+
+Layer 2: Spectral Geometry (zero free parameters). K₄ moduli flow
+determines t, c, and J_C. The BZ averaging on T² determines the EW-scale
+coupling ratio λ/g² = a₄/(4a₂). The heat kernel at higher K₂ₙ confirms
+R_eff convergence. All derived from the combinatorial data of Layer 1.
+
+Layer 3: Gravitational Interface (one free parameter). f₂Λ² determines
+M_Pl. f₄Λ⁴ determines Λ_CC. The hierarchy problem and cosmological
+constant problem live here. The matching framework identifies these
+problems sharply but does not solve them.
+
+The interface between Layers 2 and 3 is clean: no information flows from
+Layer 3 back into Layers 1--2. The particle physics predictions are
+insulated from the gravitational unknowns.
+
+6\. Complete Status Table
+
+  --------------------------- -------------- -------------------------------
+  **Problem**                 **Status**     **Notes**
+
+  Gauge group                 RESOLVED       From (2n−1)!! = I(n) +
+  SU(3)×SU(2)×U(1)                           complexifier
+
+  Three generations           RESOLVED       φ(7)/2 = 3 from K₈ vacuum rank
+
+  Parity violation            RESOLVED       Self-dual matchings span
+                                             su(2)\_L only
+
+  Higgs mass                  PREDICTED      126.1 GeV (0.81% residual),
+                                             zero parameters
+
+  Yukawa hierarchy            PREDICTED      415:135:1 (middle ratio 1.5%
+                                             from SM)
+
+  Arrow of time               RESOLVED       D ≠ D\* prior to dynamics
+
+  Lorentzian signature        RESOLVED       Forced by Pfaffian structure on
+                                             K₄
+
+  3+1 dimensions              RESOLVED       Observer finitude: d_eff → 3
+
+  Einstein equations          RESOLVED       Jacobson's derivation (Steps
+                                             1--3 closed)
+
+  Cosmic birefringence        PREDICTED      α₀ ≤ 0.41° (5 falsifiable
+                                             predictions)
+
+  Λ (last free parameter)     RECLASSIFIED   Not a particle physics
+                                             parameter. Gravity only.
+
+  Higher-spin decoupling      OPEN           γ₃ ∈ \[1.0, 2.5\], structural
+                                             cards favor \> 2
+
+  Cosmological constant       REDUCED        Mechanism identified; scaling
+                                             f(ε) not computed
+
+  Hierarchy problem           INHERITED      f₂Λ² = one free parameter =
+                                             M_Pl/m_W
+
+  Extra U(1) breaking         OPEN           B−L mechanism and scale
+                                             undetermined
+
+  CKM/PMNS entries            SILENT         Requires 10-parameter K₆
+                                             deformation
+  --------------------------- -------------- -------------------------------
+
+7\. What Today Changed
+
+Before today's computation, Λ was listed as "the one remaining free
+parameter" with the expectation that gauge coupling unification from the
+spectral action's gauge sector might fix it, closing the program to zero
+free parameters for everything. The computation showed this expectation
+was wrong in a good way:
+
+1.  Λ never entered the Higgs mass prediction. The ratio a₄/a₂ is a
+    combinatorial invariant. The particle physics was already
+    zero-parameter; we just didn't realize Λ was irrelevant to it.
+
+2.  The SM gauge couplings don't unify, so the matching framework cannot
+    use unification to pin Λ. This is consistent: the framework produces
+    the SM, and the SM doesn't unify (SUSY or other BSM physics would be
+    needed).
+
+3.  The 7/48 boundary condition from democratic K₆ lives at the TeV
+    scale (μ ≈ 2.8 TeV), not at a GUT scale. This may have physical
+    significance for threshold corrections or new physics at the TeV
+    scale.
+
+4.  Λ is reclassified: it is the free parameter of the hierarchy problem
+    (gravitational sector), not the last free parameter of the Higgs
+    mass prediction (particle sector). This cleanly separates what the
+    framework determines from what it does not.
+
+5.  The framework can be honestly described as a unified field theory:
+    one equation, two solutions, gravity plus the Standard Model from
+    matching combinatorics on complete graphs, with zero free parameters
+    for particle physics and one for gravity.
+
+8\. Priority Next Steps
+
+  -------- ------------------------- ------------------ ---------- ---------------
+  **\#**   **Task**                  **Method**         **Time**   **Resources**
+
+  1        Padé-Borel resummation    Analysis           1--2 wk    None
+           for γ₃ at self-dual point                               
+
+  2        d_eff(ε) scaling at large Lattice            2--4 wk    Workstation
+           ε                         computation                   
+
+  3        QMC Phase 0 (sign         DQMC               1 wk       Small GPU
+           diagnostic)                                             
+
+  4        Full CLASS/CAMB with      Boltzmann code     2--3 wk    Workstation
+           torsion perturbations                                   
+
+  5        QMC Computation 1 + 2     DQMC + SDPB        4--6 wk    GPU cluster
+           (γ₃)                                                    
+  -------- ------------------------- ------------------ ---------- ---------------
+
+Tasks 1 and 2 can proceed immediately with no computational
+infrastructure. Task 3 gates the expensive Tasks 5. Task 4 resolves the
+birefringence shape function tension before LiteBIRD data arrives.
+
+*One equation. Two solutions. Gravity and the Standard Model.*
+
+*Zero free parameters for particle physics. One for gravity.*
+
+*The derivation of both is complete. What remains is cleanliness,
+precision, a U(1), and a hierarchy.*

@@ -1,0 +1,115 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Job 1: Run verification suite
+  # ─────────────────────────────────────────────
+  verify:
+    name: Verification Suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install numpy scipy sympy
+
+      - name: Run verification suite
+        run: |
+          cd verification_suite
+          python run_all.py
+        
+      - name: Generate verification badge data
+        if: github.ref == 'refs/heads/main'
+        run: |
+          cd verification_suite
+          python run_all.py > /tmp/verify_output.txt 2>&1 || true
+          if grep -q "ALL TESTS PASSED" /tmp/verify_output.txt; then
+            CLAIMS=$(grep -oP '\d+(?= claims verified)' /tmp/verify_output.txt)
+            echo "{\"schemaVersion\":1,\"label\":\"verification\",\"message\":\"${CLAIMS} claims passing\",\"color\":\"brightgreen\"}" > ../site_build/badge.json
+          else
+            echo "{\"schemaVersion\":1,\"label\":\"verification\",\"message\":\"FAILING\",\"color\":\"red\"}" > ../site_build/badge.json
+          fi
+        continue-on-error: true
+
+  # ─────────────────────────────────────────────
+  # Job 2: Build site from markdown sources
+  # ─────────────────────────────────────────────
+  build:
+    name: Build Site
+    runs-on: ubuntu-latest
+    needs: verify
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git dates
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install build dependencies
+        run: pip install markdown pygments pyyaml numpy scipy
+
+      - name: Build site
+        run: python scripts/build_site.py
+
+      - name: Run verification suite for badge
+        run: |
+          cd verification_suite
+          python run_all.py > ../site_build/verification_log.txt 2>&1 || true
+          if grep -q "ALL TESTS PASSED" ../site_build/verification_log.txt; then
+            CLAIMS=$(grep -oP '\d+(?= claims verified)' ../site_build/verification_log.txt)
+            echo "{\"schemaVersion\":1,\"label\":\"verification\",\"message\":\"${CLAIMS} claims passing\",\"color\":\"brightgreen\"}" > ../site_build/badge.json
+          else
+            echo "{\"schemaVersion\":1,\"label\":\"verification\",\"message\":\"FAILING\",\"color\":\"red\"}" > ../site_build/badge.json
+          fi
+
+      - name: Copy static assets
+        run: |
+          cp index.html site_build/
+          cp -r verification_suite site_build/verification_suite/
+          cp -r code site_build/code/ 2>/dev/null || true
+          cp -r papers site_build/papers/ 2>/dev/null || true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site_build
+
+  # ─────────────────────────────────────────────
+  # Job 3: Deploy to GitHub Pages
+  # ─────────────────────────────────────────────
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

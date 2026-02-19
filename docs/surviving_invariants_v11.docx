@@ -1,0 +1,1342 @@
+**Surviving Invariants of the Informational Asymmetry Program**
+
+*Formalization of Stress-Tested Structural Content*
+
+*Including K₄ Verification, CPT, T--C Duality, Reality Boundary, Index
+Theorem, K₄ Derivation, Six-Face Equivalence, Arithmetic Realization,
+Function Field Bridge, Dimensional Extension, and Observer Finitude*
+
+Brian Porter
+
+February 15, 2026 --- v11
+
+**Abstract.** This document records the structural invariants surviving
+systematic stress-testing within the informational asymmetry program.
+Results cover eleven domains: (I--VIII) Clifford structure, Penrose
+connection, K₄ algebra, CPT, T--C duality, reality boundary, index
+theorem, K₄ derivation with six-face equivalence; (IX) arithmetic
+realization of V₄ in (Z/8Z)\*, with four structural gaps pushed to
+termination; (X) the function field bridge, where integer invariants
+exist because L-functions are polynomials on compact domains; and (XI)
+dimensional extension, where the order-5 obstruction proves 3+1 is
+unreachable from matching algebra, but observer finitude (axiom 4)
+produces effective dimension d_eff = 3 for finite subsystem observers,
+with the Fisher information metric on the observer's data space (k₁, k₂,
+E) yielding an isotropic 3×3 metric (g_EE/g_kk = 0.985). The five-axiom
+framework (quadratic closure, first-order, D ≠ D\*, observer finitude,
+interaction criticality) maps a concrete path from 2+1 Dirac to 3+1
+geometry, with three of four steps closable and one (higher-spin
+decoupling at strong coupling) identified as the bottleneck.
+
+1\. Methodology
+
+The working method promotes metaphor to provisional ontology, then
+subjects it to structural collapse tests. Only invariant algebraic
+content is retained. The method is iterative: generate candidates,
+formalize, break, retain survivors. Speed of elimination is a feature.
+Discoveries often emerge from what the algebra reveals during testing
+rather than from prior expectations.
+
+2\. Invariant I: Quadratic Closure Forces Clifford Structure
+
+2.1 The Question
+
+What axiom uniquely forces the generators of a first-order informational
+operator D into a Clifford algebra?
+
+2.2 Candidates and Verdicts
+
+  --------------------- ---------------------------- --------------------
+  **Candidate**         **Mechanism**                **Verdict**
+
+  Quadratic closure     D² = scalar; hierarchy       **SURVIVES (unique
+                        terminates at second order   driver)**
+
+  Tight propagation     Saturation of propagation    COLLAPSES
+  bound                 rate requires specific       
+                        algebra                      
+
+  Directional           Non-interference of          COLLAPSES
+  independence          measurements forces          
+                        orthogonality                
+
+  Irreducibility        Minimal representation       Secondary only
+                        forces Clifford uniquely     
+
+  Spectral balance      Involutive symmetry forces   COLLAPSES
+                        structure                    
+  --------------------- ---------------------------- --------------------
+
+2.3 Surviving Statement
+
+> *Quadratic closure --- D² proportional to identity --- is the unique
+> axiom forcing Clifford structure. Its informational content:
+> directional information extraction terminates at second order. First
+> order carries all directional content; second order is pure scalar
+> cost.*
+
+Consequence chain: hierarchy termination → D² = scalar → Clifford
+algebra → Lorentzian signature → Lorentz invariance as symmetry group of
+the algebra.
+
+3\. Invariant II: Ordered Initial Condition as Selection Rule
+
+3.1 Surviving Statement
+
+> *Quadratic closure holds exactly at the initial state (conformally
+> flat, Weyl = 0). The Clifford algebra emerges cleanly there.
+> Subsequent evolution introduces non-scalar corrections to D²,
+> identifiable with spacetime curvature. The ordered beginning is a
+> selection condition: only initial states with sufficient informational
+> simplicity permit exact hierarchy termination.*
+
+Curvature is the measure of departure from exact quadratic closure. This
+maps onto established physics: flat-space Dirac equation has exact
+Clifford structure; curved-space acquires connection corrections
+governed by curvature.
+
+4\. Invariant III: The K₄ --- Informational Map
+
+4.1 Klein Four-Group Discovery
+
+Explicit computation reveals: the three perfect matchings M₁, M₂, M₃ of
+K₄, as permutation operators, satisfy Mᵢ² = I, \[Mᵢ, Mⱼ\] = 0, and MᵢMⱼ
+= Mₖ. The set {I, M₁, M₂, M₃} is the Klein four-group V₄ = Z₂ × Z₂. V₄
+has four one-dimensional representations, so D(k) completely
+diagonalizes into four independent scalar channels.
+
+4.2 D² = 2D̄ on Internal Space
+
+**Verified:** D² = 2D̄ on the 4D internal space, where D̄ denotes D with
+conjugated Z₃ phases. D² is not proportional to identity. The derivation
+uses only: (i) ω² + ω + 1 = 0, (ii) Mᵢ² = I, (iii) MᵢMⱼ = Mₖ. In the V₄
+eigenbasis, this constrains each eigenvalue d to satisfy d² = 2d\*,
+forcing \|d\| ∈ {0, 2} and arg(d) ∈ {0, 2π/3, 4π/3}.
+
+4.3 Two-Layer Factorization
+
+**Layer 1 --- Combinatorial (V₄):** Matching algebra diagonalizes
+internal space into four scalar channels. Provides multiplicity of Dirac
+cones.
+
+**Layer 2 --- Geometric (sublattice/Clifford):** Sublattice degrees of
+freedom provide off-diagonal 2×2 couplings with Pauli-matrix structure.
+Creates symmetry-protected Dirac crossings (class AIII chiral symmetry).
+
+V₄ (commuting) and Clifford (anticommuting) are algebraically
+incompatible structures on independent degrees of freedom. No bridge
+exists between them at any scale. Both are necessary; neither contains
+or becomes the other.
+
+4.4 Surviving Unification
+
+> *Both programs construct Dirac operators as first-order square roots
+> of second-order operators. The informational program achieves this
+> through a single axiom (quadratic closure → Clifford). The K₄ program
+> achieves it through two-layer factorization: V₄ provides combinatorial
+> decomposition, sublattice geometry provides Clifford coupling. K₄ is a
+> concrete discrete factorization of the informational program's
+> abstract axiom.*
+
+5\. Invariant IV: Discrete Symmetry Decomposition (CPT)
+
+5.1 Layer-Separated Operations
+
+**Charge conjugation C** = vertex permutation (2↔3) on K₄. Unitary,
+order 2, acts purely on internal space (Layer 1). Swaps M₂ ↔ M₃,
+implementing Z₃ conjugation ω ↔ ω̄. Verified: CDC⁻¹ = D̄ on internal
+algebra.
+
+**Parity P** = σₓ in sublattice space. Acts purely on Layer 2. Exchanges
+sublattices A ↔ B.
+
+**Chiral symmetry S** = I₄ ⊗ σᵪ. Purely Layer 2. Anticommutes with H.
+Protects Dirac cones.
+
+Verified computationally: \[C, P\] = \[C, S\] = 0. The Layer 1 and Layer
+2 discrete symmetries are algebraically orthogonal.
+
+5.2 T-breaking and CPT
+
+**Time reversal T** = complex conjugation K with k → −k. Antiunitary.
+Acts on both layers. **T is broken** by the Z₃ flux, as required for
+Chern insulator (\|C\| = 2). CPT = (C ⊗ P) · T is also broken.
+
+5.3 The D² = 2CDC⁻¹ Identity
+
+Since D̄ = CDC⁻¹ on the internal algebra, the universal identity D² = 2D̄
+reads:
+
+> *D² = 2 CDC⁻¹: squaring the Dirac operator is proportional to
+> charge-conjugating it.*
+
+This ties operator dynamics (iteration) to discrete symmetry structure
+(charge conjugation) through V₄ × Z₃.
+
+5.4 Spectral Symmetry Table
+
+  --------------- ------------------ ------------------- -------------------
+  **Operation**   **Layer**          **Spectrum          **H invariant?**
+                                     preserved?**        
+
+  C               Layer 1 (internal) Yes (all k)         No
+
+  P               Layer 2            Yes (all k)         No
+                  (sublattice)                           
+
+  S (chiral)      Layer 2            Yes (pairs ±E)      Anticommutes
+                  (sublattice)                           
+
+  T               Both (via K)       No                  No (broken)
+
+  CP              L1 ⊗ L2            Yes (all k)         No
+
+  CPT             (C⊗P)·T            No                  No (broken)
+  --------------- ------------------ ------------------- -------------------
+
+6\. Invariant V: T--C Duality and the Self-Conjugacy Boundary
+
+6.1 The Question
+
+The CPT analysis revealed that T is broken and C is nontrivial in the K₄
+model. Both involve the Z₃ phase structure. What is their precise
+algebraic relationship?
+
+6.2 Candidates Tested
+
+  --------------------- ------------------------- -----------------------
+  **Candidate**         **Claim**                 **Verdict**
+
+  T1: Single mechanism  Choosing ω over ω̄         **SURVIVES;
+                        simultaneously defines C  strengthened to
+                        and breaks T              algebraic identity**
+
+  T2: C without         C exists algebraically    COLLAPSES: when ω=ω̄, C
+  T-breaking            regardless of ordering    = identity
+
+  T3: T-breaking        C is derivative of        COLLAPSES: identity is
+  primary               T-breaking                symmetric in C and T
+
+  T4: C primary         T-breaking is derivative  COLLAPSES: identity is
+                        of C                      symmetric in C and T
+
+  T5:                   Both from Z₃ being        **SURVIVES AS DEEPEST**
+  Non-self-conjugacy    complex (Z_N with N\>2)   
+  --------------------- ------------------------- -----------------------
+
+6.3 The Algebraic Identity
+
+For any Z_N phase assignment ω on the K₄ matchings, the Dirac operator
+on the lattice is D(k) = M₁ f₁(k) + ω M₂ f₂(k) + ω² M₃ f₃(k), where
+fᵢ(k) = exp(ik·δᵢ). Since the matching matrices Mᵢ are real:
+
+> *D(−k)\* = M₁ f₁(k) + ω̄ M₂ f₂(k) + ω̄² M₃ f₃(k) = D̄(k)*
+
+That is: time reversal (complex conjugation plus momentum reversal) maps
+D(k) to D̄(k). Charge conjugation (the vertex permutation swapping M₂ ↔
+M₃ plus the associated lattice reflection) also maps D(k) to D̄(k).
+Therefore:
+
+> *T and C reach the same destination --- both map D to D̄. On the
+> internal algebra they are literally the same map, since unitary C and
+> antiunitary K have identical effect on the real matrices Mᵢ with
+> complex coefficients ω⁺. On the lattice, they differ only in their
+> action on momentum space: T reverses k, while C reflects k through a
+> lattice symmetry.*
+
+6.4 The Self-Conjugacy Boundary
+
+The identity was tested across Z_N for N = 1, 2, 3, 4, 6. The results
+partition cleanly at N = 2:
+
+  --------- --------------- ------------ ----------- -------------- ---------------
+  **Z_N**   **ω = ω̄?**      **C**        **T**       **Topology**   **Physics**
+
+  Z₁        Yes (trivially) Trivial      Preserved   None           No flux
+
+  Z₂        Yes (−1 is      Trivial      Preserved   None           Graphene-like
+            real)                                                   
+
+  Z₃        No              Nontrivial   Broken      \|C\| = 2      Chern insulator
+
+  Z₄        No              Nontrivial   Broken      Possible       Higher flux
+
+  Z₆        No              Nontrivial   Broken      Possible       Higher flux
+  --------- --------------- ------------ ----------- -------------- ---------------
+
+The boundary at N = 2 separates self-conjugate groups (Z₁, Z₂: ω = ω̄, C
+trivial, T preserved, no Chern number) from non-self-conjugate groups (N
+≥ 3: ω ≠ ω̄, C nontrivial, T broken, topological phases possible).
+
+6.5 Why Z₃ Specifically
+
+Z₃ is not special because it breaks T --- any Z_N with N \> 2 does that.
+Z₃ is special because K₄'s combinatorial structure forces it. K₄ has
+exactly 3 perfect matchings, so the natural cyclic group is Z₃. The
+chain is:
+
+> *K₄ minimal (unique 1-factorization) → 3 matchings → Z₃ phase
+> structure → Z₃ not self-conjugate (3 \> 2) → T broken + C nontrivial →
+> Chern insulator possible*
+
+Combinatorial minimality forces the crossing of the self-conjugacy
+boundary.
+
+6.6 Lattice Refinement
+
+On the internal algebra (k = 0), C and T are literally the same map:
+unitary C and antiunitary K have identical effect because the matching
+matrices Mᵢ are real. On the full lattice, C must swap both internal DOF
+(M₂ ↔ M₃) and hopping directions (δ₂ ↔ δ₃), acting on momentum space as
+(kₓ, kᵧ) → (kₓ, −kₓ − kᵧ). Both T and Cₗₐₜ map D(k) to D̄(k), but via
+different routes through k-space. Verified at all tested k-points.
+
+6.7 Connection to the Informational Program
+
+The self-conjugacy boundary (Z₂ → Z₃) in the combinatorial program maps
+to the **reality boundary** in the informational program. A real
+distinguishability operator (D = D\*) has trivial C, preserved T, and no
+topological content. A genuinely complex operator (D ≠ D\*) has
+nontrivial C, broken T, and topology enabled.
+
+> *Topological content requires D to be genuinely complex. K₄ forces
+> this because its 3 matchings generate Z₃, which is complex. The
+> informational program forces this if the operator has irreducibly
+> complex structure. The self-conjugacy boundary is the shared threshold
+> between trivial and topological physics in both programs.*
+
+6.8 Surviving Statement on T--C Duality
+
+> *T-breaking and charge conjugation are the same algebraic operation
+> (both map D to D̄), arising from the non-self-conjugacy of Z₃. Neither
+> is primary; the identity D(−k)\* = C·D(k)·C⁻¹ = D̄(k) is symmetric
+> between them. The root is that K₄ has 3 matchings, 3 \> 2, and Z₃ is
+> complex. This forces T-breaking, enables nontrivial C, and permits
+> topological content. The self-conjugacy boundary (N = 2 vs. N = 3) is
+> the combinatorial origin of the trivial/topological phase boundary.*
+
+7\. Invariant VI: The Reality Boundary --- Informational Asymmetry Is
+Topological Content
+
+7.1 The Question
+
+The T--C duality shows that D complex ⇔ topology possible. The
+informational asymmetry program is named for the spectral asymmetry of
+D. What is the precise relationship between the program's founding
+concept and the topological content of the K₄ model?
+
+7.2 Candidates Tested
+
+  ------------------------ ------------------------ ----------------------
+  **Candidate**            **Claim**                **Verdict**
+
+  R1: Informational        D ≠ D\* means forward ≠  **SURVIVES as root**
+  asymmetry                backward                 
+
+  R2: Directed flow        Chern number ≠ 0         Consequence of R1
+                           requires D complex       
+
+  R3: Phase-sensitive      Complex D enables        Consequence of R1
+  distinguishability       interference             
+
+  R4: Broken detailed      Complex amplitudes break Consequence of R1
+  balance                  reversibility            
+
+  R5: All are one          They form an ordered     **SURVIVES**
+  statement                chain, not competitors   
+  ------------------------ ------------------------ ----------------------
+
+7.3 The Consequence Chain
+
+All four descriptions reduce to D ≠ D\*. They form an ordered chain, not
+competing alternatives:
+
+> *D complex (D ≠ D\*) ⇒ D(−k)\* = D̄(k) ≠ D(k) \[informational
+> asymmetry\] ⇒ T broken ⇒ Berry curvature unconstrained ⇒ Chern number
+> nonzero \[directed flow\] ⇒ Hall conductance without dissipation
+> \[broken detailed balance\]*
+
+R1 (informational asymmetry) is the root. R2--R4 are consequences at
+increasing levels of physical specificity. Verified numerically: the
+BZ-averaged informational asymmetry \|\|D(k) − D(−k)\*\|\| is exactly
+zero for Z₂ (real phases) and exactly √2 for Z₃ (complex phases). The
+asymmetry is either absent or present; there is no continuum.
+
+7.4 Five Descriptions of One Fact
+
+  ------------------------ ----------------------------------------------
+  **Viewpoint**            **Statement**
+
+  Operator                 D ≠ D\*
+
+  Transport                Chern number C ≠ 0
+
+  Symmetry                 T broken, C nontrivial
+
+  Algebraic                ω ≠ ω̄ (non-self-conjugate)
+
+  Combinatorial            K₄ has 3 matchings (3 \> 2)
+  ------------------------ ----------------------------------------------
+
+7.5 The Informational Content of 3 \> 2
+
+The most primitive statement is: 3 \> 2. K₄ has 3 matchings. Z₃ is the
+smallest cyclic group that is not self-conjugate. Two objects can be
+paired with each other (self-conjugate). Three cannot: one is always
+left over relative to any pairing. This leftover is the asymmetry. The
+inability to self-conjugate is the directionality. The excess over
+self-pairing is the topology.
+
+In the language of the informational program: "2" represents perfect
+reversibility (every process has an exact reverse). "3" introduces
+irreversibility (the third matching creates a directed cycle with no
+reverse-partner among the other two). The passage from 2 to 3 is the
+passage from symmetric to asymmetric information processing. K₄ is the
+minimal combinatorial object that forces this crossing.
+
+7.6 Surviving Statement
+
+> *The informational asymmetry that names the program (D ≠ D\*) and the
+> topological content of the K₄ model (Chern number ≠ 0) are the same
+> structural fact. They reduce to the non-self-conjugacy of Z₃, which
+> traces to K₄ having 3 matchings. The consequence chain is: K₄ minimal
+> → 3 matchings → Z₃ (not self-conjugate) → D complex → informational
+> asymmetry = T-breaking = C nontrivial = topology enabled → Chern
+> insulator with \|C\| = 2. The self-conjugacy boundary is the shared
+> threshold between trivial and topological physics in both programs.
+> The minimal combinatorial statement is "3 \> 2": the passage from
+> self-conjugate to non-self-conjugate, from reversible to irreversible,
+> from trivial to topological.*
+
+8\. Invariant VII: The Index Theorem Unification
+
+8.1 The Question
+
+The informational program's spectral asymmetry η and the K₄ program's
+Chern number C are both topological invariants derived from the Dirac
+operator. Are they the same mathematical object, computed in different
+frameworks?
+
+8.2 Candidates Tested
+
+  --------------------- ------------------------- -----------------------
+  **Candidate**         **Claim**                 **Verdict**
+
+  I1: Direct            Lattice index theorem     **SURVIVES**
+  identification        equates spectral flow to  
+                        Chern number              
+
+  I2: Merely analogous  Different objects with    COLLAPSES: connection
+                        superficial resemblance   is mathematical, not
+                                                  analogical
+
+  I3: Complementary     Different terms in the    COLLAPSES: no boundary
+  terms                 APS equation              on the BZ torus
+
+  I4: Identical on      On closed BZ torus: index **SURVIVES**
+  compact space         = Chern = spectral flow   
+  --------------------- ------------------------- -----------------------
+
+8.3 The Winding Number of det(D(k))
+
+For a 2D chiral Dirac operator, the correct spectral quantity is not the
+η-invariant of H (which vanishes by chiral symmetry) but the winding
+number of det(D(k)) as k traverses the Brillouin zone torus. Since D(k)
+diagonalizes in the V₄ eigenbasis as diag(d₁(k), d₂(k), d₃(k), d₄(k)),
+this factorizes: det(D) = ∏dᵢ, and the total winding decomposes into
+channel-by-channel contributions.
+
+8.4 V₄ Channel Decomposition of the Index
+
+Computed via winding of individual V₄ band functions dᵢ(k) on a 200×200
+grid (results exact to machine precision):
+
+  ------------- ----------- ------------------------- ------------- ------------
+  **Channel**   **Irrep**   **Band function**         **Winding**   **Status**
+
+  1             χ₁ (+++)    d₁ = f₁ + ωf₂ + ω²f₃      **−1**        Active
+
+  2             χ₂ (+−−)    d₂ = f₁ − ωf₂ − ω²f₃      0             Inert
+
+  3             χ₃ (−+−)    d₃ = −f₁ + ωf₂ − ω²f₃     **−1**        Active
+
+  4             χ₄ (−−+)    d₄ = −f₁ − ωf₂ + ω²f₃     0             Inert
+
+  **Total**                                           **−2 = C**    
+  ------------- ----------- ------------------------- ------------- ------------
+
+The winding is exactly −1.000000 for channels 1 and 3, and exactly
+0.000000 for channels 2 and 4. The sign pattern of the V₄ character
+determines whether a channel carries topology: channels where all three
+matchings contribute with uniform sign (χ₁) or the correct alternating
+pattern (χ₃) have winding; channels with mixed signs that cancel the
+winding (χ₂, χ₄) are topologically inert.
+
+For Z₂ (ω = −1), all four channels have winding exactly 0. The reality
+of the phases eliminates all winding --- confirming that the
+self-conjugacy boundary is the topological boundary, channel by channel.
+
+8.5 Two-Layer Structure of the Index
+
+The index theorem unifies the two layers:
+
+**Layer 1 (V₄):** decomposes the total index into four channel
+contributions. The V₄ irreducible representations sort channels into
+topologically active (complex eigenvalues, \|wᵢ\| = 1) and topologically
+inert (real eigenvalues, wᵢ = 0).
+
+**Layer 2 (Clifford/sublattice):** provides the spectral flow within
+each channel. The winding of dᵢ(k) arises from the zero-crossings of the
+band function, which are the Dirac points --- created by the sublattice
+off-diagonal coupling.
+
+**Index theorem:** C = Σᵢ wᵢ = (Layer 1 decomposition) × (Layer 2
+spectral flow per channel).
+
+8.6 Surviving Statement
+
+> *The informational program's spectral asymmetry and the K₄ program's
+> Chern number are the same topological invariant, connected by the
+> lattice index theorem. The Chern number C = −2 decomposes exactly into
+> V₄ channel windings: (−1) + 0 + (−1) + 0 = −2. Only channels whose V₄
+> character produces coherent Z₃ winding contribute; channels with sign
+> cancellation are topologically inert. In the continuum limit, each
+> active channel becomes a chiral Dirac cone with chirality −1, while
+> inert channels become massive modes. The total index equals the sum of
+> chiralities --- the lattice version of the Atiyah--Singer index
+> theorem. V₄ provides the combinatorial mechanism that sorts Dirac
+> cones by topological charge: η = C = Σ wᵢ = −2.*
+
+8.7 Numerical Status
+
+**Definitive:** The V₄ band-by-band winding computation is exact to
+machine precision: (−1, 0, −1, 0) = −2 for Z₃ and (0, 0, 0, 0) = 0 for
+Z₂. Systematic testing confirms band 2 winding = 0 across all grid sizes
+(N = 50 to 800), all skip thresholds (0 to 10⁻⁴), and both computation
+methods (matrix diagonalization and character formula). The result is
+robust and grid-independent.
+
+8.8 Continuum Limit
+
+Each V₄ channel has 6 Dirac points (zeros of dᵢ(k)) in the Brillouin
+zone, all with identical Fermi velocity \|v\| = √3 and proper Clifford
+structure {γ¹, γ²} = 6δᵃᵇ. Near each zero K, the band function
+linearizes: dᵢ(K+q) ≈ vₓqₓ + vᵧqᵧ, producing a 2D Dirac cone when
+coupled with the sublattice structure.
+
+The 6 Dirac points of each channel carry local chiralities ±1. For
+active channels (1, 3), the chiralities sum to −1. For inert channels
+(2, 4), the chiralities cancel to 0. The global winding wᵢ equals this
+chirality sum, confirming: C = Σᵢ wᵢ = (−1) + 0 + (−1) + 0 = −2.
+
+In the continuum limit, active channels become net chiral Dirac fermions
+(Weyl fermions with chirality −1), while inert channels become Dirac
+fermions with both chiralities (massive in the infrared). The total
+index = sum of chiralities = Chern number. This is the Atiyah--Singer
+index theorem: the K₄ lattice construction provides a combinatorial
+factorization of the continuum index through V₄ channel sorting.
+
+9\. Invariant VIII: K₄ from Informational Axioms
+
+9.1 The Question
+
+Can the informational program derive K₄ as the unique minimal discrete
+substrate, without reference to graph theory as an independent input?
+
+9.2 Candidates Tested
+
+  --------------------- ------------------------- -----------------------
+  **Candidate**         **Claim**                 **Verdict**
+
+  4a: Minimal vertex    Fewest states → K₄        Survives as part of
+  count                                           chain
+
+  4b: Dimensional       Cl(1,2) requires K₄       Partially: constrains
+  constraint                                      sublattice only
+
+  4c: The number 3      Z₃ → 3 matchings → K₄     **SURVIVES as key
+                                                  driver**
+
+  4d: Not derivable     K₄ is extra input         **COLLAPSES: K₄ IS
+                                                  derivable**
+
+  4e: Information       4 vertices = 2 bits       Survives as
+  capacity                                        reformulation
+  --------------------- ------------------------- -----------------------
+
+9.3 The Derivation Chain
+
+Each step is forced by informational axioms with no choice points:
+
+**Step 1.** Quadratic closure (D² = scalar) forces Clifford algebra,
+requiring a first-order operator D on a discrete substrate with vertices
+(distinguishable states) and edges (transitions).
+
+**Step 2.** Nontrivial content (D ≠ D\*) requires non-self-conjugate
+phase structure. The minimal such group is Z₃, requiring exactly 3
+matchings.
+
+**Step 3.** The 3 matchings must form a 1-factorization (every edge in
+exactly one matching). On n = 4 vertices: 3 × 2 = 6 edges = all edges of
+K₄. This forces K₄ for n = 4.
+
+**Step 4 (key).** But n = 6 also admits 3-matching 1-factorizations. In
+particular, K₃,₃ (complete bipartite graph on 3+3 vertices) has exactly
+3 matchings forming a 1-factorization. *K₄ is not the unique such
+graph.*
+
+9.4 The K₃,₃ Competitor and Its Elimination
+
+K₃,₃ satisfies all constraints so far: 3 matchings, valid
+1-factorization, Z₃ phase structure. What eliminates it?
+
+**Matching algebra.** The K₄ matchings generate V₄ = Z₂ × Z₂ (abelian,
+order 4). The K₃,₃ matchings generate S₃ (non-abelian, order 6).
+Verified computationally: the K₃,₃ matchings M₁M₂ ≠ M₂M₁, giving
+permutation cycles of order 3 rather than involutions.
+
+**Why abelian is required.** The V₄ decomposition that enables
+channel-by-channel spectral analysis requires simultaneously
+diagonalizable matching operators. This is equivalent to commutativity
+(abelian). If the matching algebra is non-abelian (S₃ for K₃,₃), D(k)
+cannot be decomposed into independent scalar channels, and the spectral
+interpretation of D² = 2D̄ fails.
+
+**Informational interpretation.** Abelian matching algebra means
+measurements along different matchings commute --- they are
+independently extractable. Non-abelian algebra means directional
+information from different matchings interferes. The abelian condition
+is an informational axiom: *independent extractability of directional
+information.*
+
+9.5 Uniqueness of K₄
+
+With the abelian requirement added:
+
+K₂ is eliminated (1 matching, trivially self-conjugate, no topology).
+K₃,₃ is eliminated (S₃ non-abelian). K₆ is eliminated (non-unique
+1-factorization, requiring additional choice). K₄ is the unique
+survivor: the smallest graph with a unique 1-factorization whose
+matching algebra is abelian (V₄) and whose matching count (3) gives the
+minimal non-self-conjugate phase group (Z₃).
+
+9.6 The Six-Face Equivalence
+
+The K₃,₃ analysis reveals that the abelian requirement is not an
+additional axiom. Six statements are equivalent:
+
+  ---------- ---------------------------- ---------------------------------
+  **Face**   **Statement**                **Domain**
+
+  \(A\)      D² = scalar per V₄ channel   Quadratic closure / Clifford
+
+  \(B\)      MᵢMⱼ = MⱼMᵢ for all i,j      Abelian matching algebra
+
+  \(C\)      MᵢMⱼ = Mₖ for i≠j            V₄ = Z₂ × Z₂ structure
+
+  \(D\)      Measurements along Mᵢ and Mⱼ Independent extractability
+             commute                      
+
+  \(E\)      D(k) decomposes into scalar  Simultaneous diagonalizability
+             channels                     
+
+  \(F\)      Graph is K₄ (not K₃,₃ or     Combinatorial substrate
+             other)                       
+  ---------- ---------------------------- ---------------------------------
+
+The key link is (A)→(C): D² = Σ MᵢMⱼ fᵢfⱼ. For this to be scalar per
+channel at all k, the off-diagonal products MᵢMⱼ (i≠j) must themselves
+be matchings (involutions in V₄), not rotations (order-3 elements in
+S₃). For K₃,₃, the products MᵢMⱼ are 3-cycle rotations; D² contains
+non-trivial S₃ rotation terms that cannot be absorbed into scalar
+channels.
+
+This means the K₄ derivation (Section 9.3) requires only the original
+three axioms: quadratic closure, first-order structure, and nontrivial
+content (D ≠ D\*). The abelian requirement is already contained in
+quadratic closure. No additional axiom is needed.
+
+9.7 K₃,₃ Topology
+
+K₃,₃ with Z₃ phases is topologically trivial. The winding of det(D) = 0,
+and all individual eigenvalue windings vanish. D² ≠ scalar, so the
+system has no Clifford structure and no Dirac operator. K₃,₃ does not
+produce a Chern insulator or any Dirac-type topological phase. The S₃
+matching algebra prevents the V₄ channel decomposition that enables
+topology in K₄.
+
+The K₄/K₃,₃ split thus maps to: K₄ → V₄ (abelian) → Clifford → Dirac →
+topology. K₃,₃ → S₃ (non-abelian) → no Clifford → no Dirac → trivial.
+Quadratic closure is the gate: systems that satisfy it get topology;
+systems that don't, don't.
+
+9.8 Surviving Statement
+
+> *K₄ is derivable from informational axioms alone, using only: (1)
+> quadratic closure, (2) first-order structure, (3) D ≠ D\*. The abelian
+> matching algebra required to eliminate K₃,₃ is not an additional
+> axiom; it is equivalent to quadratic closure (the six-face
+> equivalence). The complete derivation: quadratic closure → V₄ → K₄ → 3
+> matchings → Z₃ → D ≠ D\* → topology. K₃,₃ (the only competitor) is
+> topologically trivial: no Clifford structure, no Dirac operator, zero
+> winding on all bands. The combinatorial substrate and the topological
+> content are both consequences of the same starting axioms.*
+
+10\. Invariant IX: Arithmetic Realization of V₄
+
+10.1 The Discovery
+
+The group of units modulo 8, (Z/8Z)\* = {1, 3, 5, 7}, is isomorphic to
+V₄ = Z₂ × Z₂. The three non-trivial units act as perfect matchings on
+the four-element set:
+
+  --------------------- ------------------------ -------------------------
+  **Matching**          **K₄ lattice**           **Arithmetic (Z/8Z)\***
+
+  M₁                    0↔1, 2↔3                 ×3: 1↔3, 5↔7
+
+  M₂                    0↔2, 1↔3                 ×5: 1↔5, 3↔7
+
+  M₃                    0↔3, 1↔2                 ×7: 1↔7, 3↔5
+  --------------------- ------------------------ -------------------------
+
+The algebra is identical: M₁M₂ = M₃ maps to ×3 · ×5 = ×15 ≡ ×7 mod 8.
+Every odd prime p maps to a V₄ element via p mod 8, contributing the
+matching M\_{p mod 8} with amplitude p⁻ˢ.
+
+10.2 Dirichlet Characters as V₄ Eigenvectors
+
+The four V₄ characters are exactly the four Dirichlet characters modulo
+8. These correspond to four quadratic number fields:
+
+  ------------- ---------------- ---------------- -------------------------
+  **Channel**   **V₄ signs**     **Field**        **L-function**
+
+  χ₀ (trivial)  (+,+,+,+)        Q                ζ(s) (with local factor)
+
+  χ₁            (+,−,+,−)        Q(√−1)           L(s, (−4/·))
+
+  χ₂            (+,+,−,−)        Q(√2)            L(s, (8/·))
+
+  χ₃            (+,−,−,+)        Q(√−2)           L(s, (−8/·))
+  ------------- ---------------- ---------------- -------------------------
+
+The Dedekind zeta function of the biquadratic field Q(√−1, √2), whose
+Galois group is V₄, factorizes as ζ_K(s) = ζ(s) · L(s,χ₁) · L(s,χ₂) ·
+L(s,χ₃). This is the arithmetic analogue of det D(k) = d₁(k) · d₂(k) ·
+d₃(k) · d₄(k).
+
+10.3 The Exact Dictionary
+
+**Exact correspondences (isomorphisms).** K₄ vertices ↔ (Z/8Z)\*
+elements. V₄ matching algebra ↔ V₄ unit group. V₄ characters ↔ Dirichlet
+characters mod 8. Band functions dᵢ(k) ↔ L-functions L(s,χᵢ). det D(k) ↔
+ζ\_{Q(√-1,√2)}(s). Dirac points (dᵢ = 0) ↔ L-function zeros.
+
+**Structural parallels (same form, different content).** T--C duality
+D(−k)\* = D̄(k) ↔ functional equation Λ(s,χ) = ε · Λ(1−s̄, χ̄). Root number
+ε(χ) ↔ active/inert channel selector: ε = −1 forces a zero at s = 1/2
+(active channel), ε = +1 does not (inert channel). For mod 8, all ε = +1
+(all channels inert, no Z₃ flux).
+
+10.4 Four Structural Gaps --- Termination Analysis
+
+**Gap 1 (Z₃ flux): TERMINAL for active channels.** Z₃ acts on the three
+matchings as an outer automorphism of V₄ (since Aut(V₄) ≅ S₃); the Z₃
+action exists identically in both settings. The choice of cyclic
+ordering (ω vs ω̄) is the same in lattice and arithmetic. But (Z/NZ)\* is
+always abelian, so the semidirect product Z₃ ⋋ V₄ cannot be realized as
+a unit group. No canonical Potts-like ordering selects ω over ω̄ in
+arithmetic. Furthermore, all real Dirichlet characters have root number
+ε = +1, so no channel is ever forced to vanish at s = 1/2. The
+active/inert distinction (ε = −1 forcing a zero) requires L-functions of
+elliptic curves or higher-weight modular forms, which do not live in the
+(Z/8Z)\* framework.
+
+**Gap 2 (Quadratic closure): TERMINAL.** D² = 2D̄ requires two
+independent conditions: (a) equal-amplitude matchings \|fⱼ\| = 1, and
+(b) the geometric constraint arg(f₁) + arg(f₂) + arg(f₃) = 0. In
+arithmetic, condition (a) fails because \|p⁻ˢ\| = p⁻½ ≠ 1 on the
+critical line. Condition (b) fails because log 3 + log 5 + log 7 = log
+105 ≠ 0, and the Q-linear independence of log primes means no
+non-trivial integer combination of log primes vanishes. The unitary
+version (unit-modulus phases, discarding amplitudes) recovers the
+lattice model exactly but loses the arithmetic content. Quadratic
+closure is not a V₄ property; it requires lattice geometry that
+arithmetic does not possess.
+
+**Gap 3 (Compactness): TERMINAL.** The adelic torus T∞ = ∏\_p S¹ is
+compact. The critical line t → (t·log p)ₚ embeds as a 1-dimensional
+curve in T∞. By Kronecker's theorem and the Q-linear independence of log
+primes (which follows from unique factorization), this curve is dense
+and never closes. The zero counting function N(T,χ) grows as T·log T
+because the curve wraps infinitely. No finite arithmetic Chern number
+exists in the lattice sense. The lattice BZ is a 2-torus with closed
+loops giving integer winding; the arithmetic 'BZ' has a dense
+non-periodic embedding giving unbounded winding.
+
+**Gap 4 (Sublattice): TERMINAL.** Complex conjugation σ: s → s̄ provides
+a natural Z₂ paralleling sublattice exchange. The functional equation
+encodes this Z₂ as the relation Λ(1/2+it)̄ = ε⁻¹·Λ(1/2+it). But this acts
+within the critical line (as t → −t), not between two independent
+copies. The lattice sublattice doubles degrees of freedom (4 → 8); the
+functional equation constrains existing degrees of freedom. Spatial
+bipartition and spectral symmetry are fundamentally different
+structures.
+
+10.5 What Transfers, What Does Not
+
+**Exact transfers.** V₄ matching algebra. Channel decomposition into
+four band functions/L-functions. Dedekind zeta factorization ζ_K = ∏
+L(s,χᵢ). Root number ε as active/inert channel selector. T--C duality
+structure (functional equation ↔ lattice time-reversal). These provide
+exact structural language for L-function decomposition.
+
+**Terminal failures.** Quadratic closure (requires lattice geometry).
+Integer winding numbers (requires compact closed curves). Dirac cones
+and index theorem (require sublattice and Clifford structure). Active
+channel selection (requires ε = −1, absent for Dirichlet characters).
+The topological proof force of the lattice model --- the ability to
+derive C = −2 as a robust integer --- does not transfer.
+
+10.6 Surviving Statement
+
+> *(Z/8Z)\* is an exact arithmetic realization of K₄ with V₄ matching
+> algebra. Dirichlet characters mod 8 are V₄ eigenvectors, L-functions
+> L(s,χᵢ) are band functions, and the Dedekind zeta function of
+> Q(√−1,√2) factorizes as their product. Root numbers parallel the
+> active/inert channel selector. Four structural gaps (Z₃ flux,
+> quadratic closure, compactness, sublattice) have been pushed to
+> termination: each is a structural impossibility arising from the
+> difference between lattice geometry and arithmetic. The V₄ framework
+> illuminates L-function structure (providing exact decomposition and
+> language) but cannot prove L-function properties (like GRH) because
+> the topological machinery that gives the lattice its proof force
+> depends on geometric properties that arithmetic lacks.*
+
+10.7 Invariant X: Function Field Bridge
+
+Over the rational function field F_q(t), the V₄ framework recovers
+integer invariants. A biquadratic extension with Galois group V₄
+decomposes its Dedekind zeta function into four L-polynomials, one per
+V₄ channel. The key structural difference from number fields: over F_q,
+L-functions are **polynomials** in u = q⁻ˢ, not infinite series. This
+single fact closes Gap 3 and changes everything.
+
+10.8 Gap Closure over Function Fields
+
+**Gap 3 (Compactness): CLOSES.** Over F_q\[t\], all 'log primes' are
+deg(P)·log q --- integer multiples of log q. The critical circle u =
+q⁻½·e\^{iθ} has period 2π/log q. After one period, ALL phases return
+simultaneously (because deg(P) ∈ Z). The curve closes. Winding numbers
+are integers. The winding of L(u,χᵢ) around the critical circle =
+deg(Lᵢ) = the number of zeros. This is the **arithmetic Chern number**:
+an integer determined by conductor degrees, summing over V₄ channels to
+give the genus of the covering curve.
+
+Compare: over Q, log primes are Q-linearly independent (by unique
+factorization), so the curve on T∞ never closes and winding grows
+without bound. The structural root of the difference: deg(P) ∈ Z
+(function field) vs log p ∈ R\\Q (number field).
+
+**Gap 4 (Sublattice): PARTIALLY CLOSES.** Each quadratic subextension
+F_q(t)(√a) gives a hyperelliptic covering y² = a(t) with two geometric
+sheets. The Galois involution y → −y exchanges sheets. This is a genuine
+spatial bipartition (not spectral symmetry), implemented by étale
+cohomology.
+
+**Gap 2 (Quadratic closure): DOES NOT CLOSE.** Amplitudes q\^{−deg(P)/2}
+still vary by prime degree. But this is *bypassed*: the polynomial
+nature of L(u) guarantees integer degree regardless of quadratic
+closure. Over function fields, polynomial structure replaces Clifford
+structure as the source of integer invariants.
+
+**Gap 1 (Z₃ flux): DOES NOT CLOSE.** No canonical cyclic ordering of
+matchings. However, root numbers ε CAN be −1 for function field
+characters (when the discriminant has odd degree), so active channels
+exist.
+
+10.9 The Three-Column Bridge
+
+  ------------------ ------------------ ------------------ ----------------
+  **Feature**        **K₄ Lattice**     **Function Field** **Number Field**
+
+  V₄ algebra         K₄ matchings       (Z/NZ)\* ≅ V₄      (Z/8Z)\*
+
+  Band functions     dᵢ(k) polynomial   L(u,χ) polynomial  L(s,χ) series
+
+  Domain             T² (BZ torus)      S¹ (closed circle) R (non-compact)
+
+  Winding            C = −2 (integer)   deg(L) (integer)   N(T) → ∞
+
+  Sublattice         A/B sites          y²=a(t) sheets     spectral only
+                     (spatial)                             
+
+  RH status          Dirac pinning (✓)  Weil proved (✓)    GRH open (✗)
+  ------------------ ------------------ ------------------ ----------------
+
+The load-bearing wall is the polynomial/series distinction. Where band
+functions are polynomials on compact domains (lattice BZ, function field
+circle), integer winding numbers exist and zeros are pinned. Where band
+functions are infinite series on non-compact domains (number field
+line), winding diverges and zero-pinning is unproved. The V₄ channel
+decomposition is exact in all three columns; it is the *analytic
+character* of the band functions that determines whether the
+decomposition has topological force.
+
+10.10 Surviving Statement for the Bridge
+
+> *The V₄ framework produces integer invariants over function fields:
+> the arithmetic Chern number Σ deg(Lᵢ) counts zeros across V₄ channels,
+> the critical circle is compact (period 2π/log q), and the Weil
+> conjectures prove all zeros lie on it. This is the proof of concept
+> for the lattice--arithmetic bridge. The bridge breaks for number
+> fields at the polynomial/series wall: L(s,χ) is an infinite series,
+> the critical line never closes (log primes are Q-independent), and GRH
+> is open. The function field case shows that the V₄ machinery produces
+> exact topological content when the analytic setting supports it.*
+
+10.11 Parity Obstruction (Q12.20)
+
+For any V₄ extension of F_q(t) with three quadratic subextensions
+defined by square-free discriminants a₁, a₂, a₃ = sqfree(a₁·a₂): if a₁ =
+f·g and a₂ = f·h with f = gcd, then a₃ = g·h and Σ deg(aᵢ) = 2(deg f +
+deg g + deg h), which is always even. Since deg(Lᵢ) = deg(aᵢ) − 1, the
+arithmetic Chern number Σ deg(Lᵢ) = Σ deg(aᵢ) − 3 is always **odd**.
+Possible values: 1, 3, 5, 7, ... The lattice \|C\| = 2 (even) cannot be
+matched by any V₄ extension of F_q(t). This is a parity obstruction:
+lattice winding is signed (wᵢ ∈ {−1, 0}), while function field L-degree
+is unsigned (deg(Lᵢ) ∈ {0, 1, 2, ...}). The signed/unsigned distinction
+produces different parity classes.
+
+10.12 Weil Through V₄ (Q12.21)
+
+The V₄ decomposition splits H¹ of the covering surface into character
+eigenspaces: H¹ = H¹(χ₁) ⊕ H¹(χ₂) ⊕ H¹(χ₃). Each eigenspace separately
+satisfies Weil's RH via the Hodge index theorem on the surface. V₄
+*organizes* the result (channel-by-channel Frobenius eigenvalues) but
+does not *simplify* the positivity argument. The positivity is intrinsic
+to each channel and comes from intersection theory, not from V₄
+structure.
+
+10.13 The Polynomial/Series Wall (Q12.22)
+
+**Three known frameworks attempt to cross the wall.** (1) Motivic
+cohomology: the correct framework (L-functions as det(1−u·Frob\|H¹) over
+function fields), but the motivic Frobenius over Q is not known to
+exist. (2) Connes' trace formula: identifies the correct positivity
+condition on adèlic space, but positivity is unproved in infinite
+dimensions. (3) The Langlands program: unifies automorphic L-functions
+across number fields and function fields, but even where proved (Wiles
+for GL₂/Q), does not give RH.
+
+The V₄ framework is **orthogonal** to the wall. V₄ works identically on
+both sides (polynomial and series). The wall concerns the analytic
+character of L-functions, not their algebraic decomposition. To cross
+would require: (a) finite-dimensional det representation of L(s) over Q
+(motivic Frobenius), (b) compactification of the critical line (blocked
+by log prime Q-independence), or (c) infinite-dimensional positivity
+proof (Connes' open problem). None are advanced by V₄ structure.
+
+10.14 Terminal Assessment of the Arithmetic Direction
+
+**What the V₄ framework provides:** (1) exact algebraic isomorphism
+(Z/8Z)\* = K₄; (2) exact channel decomposition of L-functions as V₄ band
+functions; (3) function field proof of concept with integer invariants;
+(4) identification of the parity obstruction (Chern always odd over
+function fields); (5) identification of the polynomial/series wall as
+the load-bearing distinction.
+
+**What it does not provide:** (1) a path to GRH (the wall is orthogonal
+to V₄); (2) matching Chern numbers (parity obstruction); (3)
+simplification of Weil's proof (positivity is per-channel, not
+structural); (4) resolution of any millennium problem. The arithmetic
+direction terminates here. What remains is exact, what fails is
+identified, and the boundary between them is precisely mapped.
+
+11\. Invariant XI: Dimensional Extension and Observer Finitude
+
+11.1 The 3+1 Question
+
+The six-face equivalence (Section 9.6) proves that quadratic closure
+uniquely forces K₄ and hence 2+1 Dirac. The natural question: does the
+same mechanism extend to 3+1? Clifford(3,1) requires four anticommuting
+generators, hence four matchings. What graph provides exactly four
+matchings with closed abelian algebra?
+
+11.2 The Z₂ᵏ Ladder
+
+The complete graph K\_{2\^k} has matching algebra Z₂ᵏ with 2ᵏ − 1
+matchings. The dimensional ladder: K₂ (1 matching, 0+1), K₄ (3
+matchings, 2+1), K₈ (7 matchings, 6+1), K₁₆ (15 matchings, 14+1). The
+spatial dimension is 2ᵏ − 2. Since 3 = 2ᵏ − 2 requires k = log₂(5) ≈
+2.32, which is not an integer, 3+1 is not in the K\_{2\^k} family.
+Verified computationally: K₈ on Z₂³ produces exactly 7 matchings, all
+products close within the algebra, and the character table yields 8
+channels. Selecting 4 of 7 matchings produces off-diagonal products that
+leak into the remaining 3 matchings, breaking algebraic closure.
+
+11.3 The Order-5 Impossibility
+
+***Theorem.*** No set of exactly 4 matchings can form a closed abelian
+algebra.
+
+*Proof.* Suppose M₁, M₂, M₃, M₄ are involutions (Mᵢ² = I), commuting
+(MᵢMⱼ = MⱼMᵢ), with all pairwise products in {I, M₁, M₂, M₃, M₄}. Then
+{I, M₁, M₂, M₃, M₄} is closed under multiplication, hence a group of
+order 5. But 5 is prime, so the group is Z₅, which has no elements of
+order 2. This contradicts Mᵢ² = I. ∎
+
+Consequence: the informational axiom framework (with quadratic closure)
+cannot produce 3+1 Dirac by the same mechanism that produces 2+1. The
+obstruction is algebraic, not technical. The allowed dimensions from
+complete graphs are 2ᵏ − 2 = {0, 2, 6, 14, \...}. The number 3 is
+permanently absent.
+
+11.4 Observer Finitude as Fourth Axiom
+
+Five candidate fourth axioms were tested for forcing 2+1 → 3+1: (A)
+entanglement area law (necessary but not sufficient, generic for all
+CFTs), (B) large N / many copies (parameter, not axiom), (C) observer
+finitude (independent, natural, forces d_eff = 3), (D) Bekenstein bound
+(already implied by 2+1), (E) MERA/tensor network (already implied by
+conformal structure). Only (C) passes all tests.
+
+**Axiom 4 (Observer Finitude):** The observer is a finite subsystem of
+the total system.
+
+A finite subsystem observer has resolution ε \~ bandwidth / L_obs. The
+effective dimension d_eff = 2 + H(E\|k)/H(E) was computed via
+conditional entropy across the K₄ spectral function. Results: ε = 0.01
+gives d_eff = 2.60; ε = 0.1 gives 2.92; ε = 0.5 gives 2.995; ε ≥ 1.0
+gives d_eff = 3.00. A finite observer in an infinite 2+1 system
+perceives d_eff = 3 because the dispersion relation E(k) becomes
+unresolvable, and energy appears as an independent coordinate.
+
+11.5 The Fisher Information Metric
+
+The Fisher information metric on the observer's data space (k₁, k₂, E)
+was computed by sampling ∂ₘᵤ log A across 400 points. At observer
+resolution ε = 0.3: Gₘᵤ is 3×3 positive-definite with eigenvalues {2.32,
+2.43, 2.57}, eigenvalue ratio 1.11, g_EE/g_kk = 0.985, and off-diagonal
+mixing \|g_kE/g_kk\| \< 0.04. The energy direction is metrically
+indistinguishable from the spatial directions: the observer perceives
+isotropic 3D space. At small ε (sharp observer), g_EE/g_kk → 0 and the E
+direction collapses metrically, recovering 2D. This is the metric
+version of the dimensional crossover.
+
+11.6 The Five-Axiom Framework
+
+The gap between information-theoretic 3D and geometric 3+1 Einstein
+gravity breaks into four steps:
+
+**Step 1 (Info → Metric):** Fisher information metric on (k₁, k₂, E).
+Status: COMPUTED. Positive-definite, isotropic, resolution-dependent.
+
+**Step 2 (Metric → Spacetime):** Wick rotation t → it gives Lorentzian
+signature. Time from D ≠ D\* (Axiom 3). Status: STANDARD procedure.
+
+**Step 3 (Spacetime → Einstein):** Jacobson's thermodynamic derivation:
+if entanglement entropy satisfies δS = δQ/T across causal horizons,
+Einstein equations follow. S = (2/3)L·log(L/ε) from CFT gives L_AdS/G_N
+= 4/3. Status: PLAUSIBLE, requires explicit verification of first law
+for K₄ correlation matrix.
+
+**Step 4 (Higher-spin → Einstein):** Free fermion boundary duals to
+Vasiliev higher-spin gravity (Klebanov--Polyakov 2002). Einstein gravity
+requires higher-spin decoupling via strong coupling. Status: HARD.
+Requires Axiom 5 (interaction criticality): the system is at its quantum
+critical point with V₄-invariant interactions. At critical coupling U_c,
+higher-spin fields acquire masses and decouple, leaving only spin-2.
+
+The five axioms: (1) quadratic closure → K₄, V₄, 2+1; (2) first-order →
+Dirac; (3) D ≠ D\* → time direction; (4) observer finitude → d_eff = 3,
+Fisher metric, 3+1 geometry; (5) interaction criticality → higher-spin
+decoupling → Einstein gravity. Three of four steps are closable with
+known methods. The bottleneck is Step 4: whether the K₄ lattice with
+Hubbard interaction, at its quantum critical point, has a holographic
+dual where only spin-2 survives.
+
+11.7 Surviving Statement
+
+> *The informational axiom framework uniquely forces 2+1 (proved). 3+1
+> is algebraically unreachable via matching algebra (order-5
+> obstruction, proved). Observer finitude produces effective dimension
+> d_eff → 3 for finite subsystem observers (computed). The Fisher
+> information metric on (k₁, k₂, E) is isotropic at the crossover scale
+> (g_EE/g_kk = 0.985, computed). The five-axiom framework maps a
+> concrete path from informational axioms to 3+1 geometry: three steps
+> closable, one hard (interaction criticality). The program derives 2+1
+> as a theorem and identifies the precise additional structure needed
+> for 3+1.*
+
+12\. Complete Structural Summary
+
+  ------------------------------ ---------------- ------------------------------
+  **Element**                    **Status**       **Notes**
+
+  Quadratic closure → Clifford   **SURVIVES**     Unique driver; resolves Q2 and
+                                                  Q5
+
+  Hierarchy termination          **SURVIVES**     Informational content of
+                                                  closure
+
+  Approximate closure →          **SURVIVES**     Flat/curved Dirac
+  curvature                                       correspondence
+
+  Ordered initial condition =    **SURVIVES**     Answers Penrose's question
+  selection                                       
+
+  K₄ matchings form V₄ = Z₂×Z₂   **DISCOVERED**   Not anticipated; from
+                                                  algebraic verification
+
+  Two-layer factorization (V₄ ×  **DISCOVERED**   Orthogonal layers; no bridge
+  Clifford)                                       
+
+  D² = 2D̄ (universal identity)   **DISCOVERED**   Algebraic shadow of charge
+                                                  conjugation
+
+  C = vertex permutation (23) on **DISCOVERED**   Unitary, Layer 1, swaps ω↔ω̄
+  K₄                                              
+
+  C and P layer-separated,       **VERIFIED**     \[C,P\] = \[C,S\] = 0
+  commuting                                       
+
+  T broken by Z₃ flux            **VERIFIED**     Required for Chern insulator
+
+  T--C duality: D(−k)\* = CDC⁻¹  **DISCOVERED**   T and C are the same operation
+                                                  on D
+
+  Self-conjugacy boundary (N=2   **DISCOVERED**   Trivial/topological phase
+  vs N=3)                                         boundary
+
+  Reality boundary =             **DISCOVERED**   Bridge between programs on
+  self-conjugacy                                  this question
+
+  Informational asymmetry =      **DISCOVERED**   D ≠ D\* ⇔ C ≠ 0; same
+  topological content                             structural fact
+
+  Consequence chain (asymmetry → **DISCOVERED**   Ordered: R1 root, R2--R4
+  topology)                                       consequences
+
+  3 \> 2 as minimal              **DISCOVERED**   Passage from reversible to
+  combinatorial root                              irreversible
+
+  η = C via lattice index        **VERIFIED**     Spectral asymmetry = Chern
+  theorem                                         number = −2
+
+  V₄ channel decomposition of    **DISCOVERED**   C = (−1)+0+(−1)+0; exact to
+  index                                           machine precision
+
+  Only coherent-sign channels    **DISCOVERED**   V₄ character sign pattern
+  carry topology                                  determines winding
+
+  Continuum limit: Dirac cones   **VERIFIED**     Active channels → Weyl; inert
+  per V₄ channel                                  → massive
+
+  K₄ derivable from              **DISCOVERED**   Not independent input; forced
+  informational axioms                            by axiom chain
+
+  K₃,₃ elimination (S₃           **DISCOVERED**   Only competitor; killed by
+  non-abelian)                                    abelian requirement
+
+  Independent extractability as  **DISCOVERED**   Commuting matchings =
+  informational axiom                             independent measurements
+
+  Six-face equivalence           **DISCOVERED**   Quadratic closure = V₄ =
+                                                  abelian = K₄
+
+  K₃,₃ topologically trivial     **VERIFIED**     W = 0 all bands; no Clifford,
+                                                  no Dirac
+
+  (Z/8Z)\* = K₄ (arithmetic      **DISCOVERED**   Exact isomorphism, not analogy
+  realization)                                    
+
+  Dirichlet characters mod 8 =   **VERIFIED**     Four L-functions = four band
+  V₄ eigenvectors                                 functions
+
+  Root number ε = active/inert   **DISCOVERED**   ε = −1 forces zero; ε = +1
+  selector                                        does not
+
+  Four structural gaps           **TERMINAL**     Each a structural
+  terminated                                      impossibility, not technical
+
+  Function field bridge closes   **VERIFIED**     deg(P)∈Z → curve closes →
+  Gap 3                                           integer winding
+
+  Arithmetic Chern number = Σ    **DISCOVERED**   Integer invariant over V₄
+  deg(Lᵢ)                                         channels
+
+  Polynomial/series wall         **DISCOVERED**   Load-bearing distinction:
+  identified                                      lattice↔Weil vs GRH
+
+  Parity obstruction (Chern      **PROVED**       Σ deg(aᵢ) even → Chern odd;
+  always odd)                                     \|C\|=2 impossible
+
+  V₄ orthogonal to               **TERMINAL**     Motivic, Connes, Langlands
+  polynomial/series wall                          each fail to cross
+
+  Order-5 obstruction (3+1       **PROVED**       4 matchings → group order 5 =
+  impossible)                                     Z₅ → no involutions
+
+  Observer finitude → d_eff = 3  **COMPUTED**     H(E\|k)/H(E) → 1 as ε → ∞;
+                                                  Fisher metric isotropic
+
+  Five-axiom framework to        **MAPPED**       3/4 steps closable; Step 4
+  Einstein                                        (strong coupling) open
+
+  Square root as common          **SURVIVES**     Deepest structural identity
+  operation                                       
+
+  D² = scalar on K₄ internal     COLLAPSED        D² = 2D̄ ≠ scalar·I
+  space                                           
+
+  V₄ as Clifford subalgebra      COLLAPSED        Commuting vs anticommuting
+                                                  incompatible
+
+  Low-energy V₄ → Clifford       COLLAPSED        V₄ derivatives purely diagonal
+  emergence                                       
+
+  CPT as exact symmetry          COLLAPSED        T broken by Z₃ flux
+
+  C exists without T-breaking    COLLAPSED        When ω=ω̄, C = identity
+
+  T-breaking primary (or C       COLLAPSED        Identity symmetric; neither
+  primary)                                        primary
+  ------------------------------ ---------------- ------------------------------
+
+13\. Open Questions for Next Iteration
+
+**12.1** Curvature from non-scalar D². Can the corrections to D² =
+scalar reproduce the spin-connection structure of the curved-space Dirac
+equation?
+
+**12.2** 3+1 generalization. Does hierarchy termination in four
+dimensions produce Cl(1,3)? What determines spatial dimensionality?
+
+**12.3** Entropy and time orientation. Does entropy monotonicity select
+the unique timelike Clifford generator?
+
+**12.4** CPT on the full lattice model. Does the full K₄ lattice with
+both layers exhibit any hidden CPT-like symmetry?
+
+**12.5** D² = 2CDC⁻¹ in the informational program. The informational
+Clifford structure has D² = scalar. Is there an analogous identity
+linking dynamics to charge conjugation?
+
+**12.6** Reality boundary in full generality. Does the self-conjugacy
+boundary extend beyond the K₄ model? Is there a general theorem: "Z_N
+gauge theory on bipartite lattice is topological iff N \> 2"?
+
+**12.7** T⁻¹C as lattice symmetry. On the lattice, T and C reach D̄(k)
+via different k-space routes. What is the geometric meaning of their
+composition?
+
+**12.8 *Resolved: K₄ derivation (Section 9). ***K₄ is the unique graph
+forced by informational axioms. K₃,₃ eliminated by abelian matching
+algebra requirement.
+
+**12.9 *Resolved: continuum limit (Section 8.8). ***V₄ winding numbers
+flow to continuum Dirac cone chiralities. Active channels → Weyl
+fermions; inert → massive. Total chirality = C = −2.
+
+**12.10 *Resolved: independent extractability (Section 9.6). ***Not a
+separate axiom. Equivalent to quadratic closure via six-face
+equivalence.
+
+**12.11 *Resolved: K₃,₃ physics (Section 9.7). ***Topologically trivial.
+No Clifford, no Dirac, zero winding. S₃ prevents channel decomposition.
+
+**12.12** Non-abelian topological phases from non-V₄ matching algebras.
+K₃,₃ is trivial, but are there other graphs with non-abelian matching
+algebras that produce topology by a different mechanism (not Chern
+insulator)?
+
+**12.13 *Partially resolved: spacetime emergence (Section 11). ***The
+six-face equivalence forces 2+1 uniquely. 3+1 is algebraically
+unreachable (order-5 obstruction). Observer finitude produces d_eff = 3
+and an isotropic Fisher metric. The five-axiom framework maps the path
+to 3+1 Einstein gravity. Remaining: whether strong coupling at the K₄
+critical point produces higher-spin decoupling.
+
+**12.14 *Resolved: adelic compactification (Section 10.4, Gap 3). ***T∞
+is compact but the critical line embeds densely and never closes. N(T,χ)
+grows as T·log T. No finite arithmetic Chern number exists. Terminal.
+
+**12.15 *Resolved: active channels (Section 10.4, Gap 1). ***All real
+Dirichlet characters have ε = +1. Active channels (ε = −1) require
+elliptic curve L-functions, outside the (Z/8Z)\* framework. Terminal.
+
+**12.16 *Resolved: sublattice (Section 10.4, Gap 4). ***Complex
+conjugation gives Z₂ parallel but acts within same space (spectral
+symmetry ≠ spatial bipartition). Terminal.
+
+**12.17 *Resolved: quadratic closure in Euler product (Section 10.4, Gap
+2). ***Requires \|fᵢ\| = 1 and Σ arg(fᵢ) = 0. Both fail in arithmetic:
+\|p⁻ˢ\| ≠ 1, and log primes are Q-independent. Terminal.
+
+**12.18 *Resolved: V₄ in other settings (Section 10.7--10.10). ***The
+function field F_q(t) closes Gap 3 (compactness) and partially closes
+Gap 4 (sublattice via hyperelliptic sheets). Gap 2 (quadratic closure)
+is bypassed by polynomial structure. The bridge works over function
+fields.
+
+**12.19 *Resolved: function field analogue (Section 10.8--10.9). ***V₄
+channel decomposition recovers integer winding numbers (= deg(Lᵢ)) over
+function fields. The critical circle is compact (period 2π/log q)
+because deg(P) ∈ Z. The Weil conjectures prove zero-pinning. The
+polynomial/series wall is the load-bearing distinction between function
+fields (bridge works) and number fields (bridge breaks).
+
+**12.20 *Resolved: Chern = 2 (Section 10.11). ***Impossible. Parity
+obstruction: Σ deg(aᵢ) always even → arithmetic Chern always odd.
+Lattice \|C\| = 2 (even) cannot be matched.
+
+**12.21 *Resolved: Weil through V₄ (Section 10.12). ***V₄ organizes but
+does not simplify. Positivity is per-channel (Hodge index theorem), not
+a V₄ consequence.
+
+**12.22 *Resolved: polynomial/series wall (Section 10.13). ***Terminal.
+V₄ is orthogonal to the wall. Motivic cohomology, Connes, and Langlands
+each identify but do not cross it. The arithmetic direction terminates.
+
+**12.23** First law of entanglement for K₄. Verify that δS = δQ/T holds
+for the K₄ free-fermion correlation matrix under small perturbations
+(particle addition, filling change). This is Step 3 of the gap closure
+chain and determines whether Jacobson's thermodynamic route to Einstein
+equations applies.
+
+**12.24** V₄-invariant interactions and quantum critical point. Identify
+the most general V₄-symmetric interaction on the K₄ lattice. Determine
+whether a quantum critical point U_c exists between the Dirac semimetal
+and gapped phases. Compute operator dimensions at U_c via conformal
+bootstrap or mean-field theory.
+
+**12.25** Higher-spin gap at the K₄ critical point. At U = U_c, does the
+operator spectrum have a large gap above spin-2? This is the bottleneck
+for Einstein gravity: large gap → higher-spin decoupling → Einstein.
+Small or no gap → Vasiliev higher-spin gravity (wrong universe).
+
+**12.26** Observer finitude as fundamental axiom. Is observer finitude
+(Axiom 4) logically prior to D ≠ D\* (Axiom 3)? A finite subsystem
+observer necessarily has incomplete information. Does this imply D ≠
+D\*, reducing the independent axioms from four to three?
+
+14\. Methodological Note
+
+Of the major results in this document: Invariants I and II were
+anticipated targets confirmed by stress-testing. Invariants III--XI were
+*not anticipated* --- they emerged from algebraic verification during
+stress-testing. The function field bridge (Invariant X) arose from
+pushing four terminal gaps to their logical conclusion. The dimensional
+extension (Invariant XI) arose from asking whether the 2+1 uniqueness
+result is a limitation or a statement: the order-5 obstruction (a
+three-line proof) killed the direct route to 3+1, but the question 'what
+does the observer actually perceive?' led to observer finitude, the
+Fisher metric, and the five-axiom framework. The deepest structural
+finding across the full program: the algebra forces 2+1 as a theorem,
+identifies 3+1 as requiring additional structure, and maps the precise
+path from one to the other. The value of systematic stress-testing is
+demonstrated not by what it proves, but by the precision with which it
+maps boundaries --- between proof and conjecture, between forced and
+optional, between what the axioms give and what they leave open.

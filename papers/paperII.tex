@@ -1,0 +1,504 @@
+% ============================================================================
+% Paper II: Cosmic Birefringence and Hemispherical Asymmetry
+%           from Axial Torsion on K_4
+% ============================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{float}
+
+\geometry{margin=1in}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Shortcuts
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Pf}{\operatorname{Pf}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\diag}{\operatorname{diag}}
+
+% BibTeX
+\usepackage[numbers,sort&compress]{natbib}
+
+\title{Cosmic Birefringence and Hemispherical Asymmetry\\from Axial Torsion on $K_4$}
+\author{Brian Porter}
+\date{February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We derive parameter-free predictions for cosmic birefringence and CMB hemispherical asymmetry from the spectral action on $K_4$ developed in the companion paper~\cite{PaperI}.
+The internal spectral triple on $K_4$ fixes the Chern--Simons coupling of an axial torsion pseudoscalar to gravity, giving a cosmic birefringence angle
+\[
+  \alpha_0 = \frac{(2-\sqrt{3})^2}{10}\,F(m_A) \leq 0.41^\circ,
+\]
+where $F(m_A)$ is the cosmological evolution factor and $(2-\sqrt{3})^2 = 0.0718$ is the inverse eigenvalue ratio of $K_4$.
+This is consistent with the measured $0.30^\circ \pm 0.11^\circ$ (Planck/ACT, $3\sigma$) and will be tested at $> 8\sigma$ by LiteBIRD.
+
+The contorsion coupling to photon geodesics vanishes identically for axial torsion ($K^\mu{}_{\nu\rho}\,p^\nu p^\rho = 0$), eliminating the direct temperature modulation.
+A separate-universe Boltzmann computation gives the shape function $r_{TT}(\ell) \approx 2.2\,\ell^{-1.3}$ for $\ell \lesssim 15$, crossing zero near $\ell \sim 20$, with the correct amplitude ($A \sim 0.08$) at low~$\ell$ but tension at $\ell_{\max} = 64$.
+The EB shape is exactly $r_{EB} = 1$.
+
+We state five parameter-free, falsifiable predictions for LiteBIRD and CMB-S4: (1) birefringence dipole aligned with TT asymmetry, (2) dipolar amplitude $\delta\alpha/\alpha_0 = (2-\sqrt{3})^2$, (3) EB BiPoSH parity alternation $(-1)^{\ell+1}$, (4) TT/EB shape split with sign change at $\ell \sim 20$, and (5) TB/EB ratio = $C^{TE}_\ell / C^{EE}_\ell$.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+
+% ============================================================================
+% SECTION 1: INTRODUCTION
+% ============================================================================
+\section{Introduction}\label{sec:intro}
+
+The isotropic cosmic birefringence angle has been measured at $\alpha_0 = 0.30^\circ \pm 0.11^\circ$ by Minami and Komatsu~\cite{Minami2020} using Planck HFI polarization data, with corroboration from independent analyses~\cite{Eskilt2022}.
+The significance stands at approximately $3\sigma$.
+Meanwhile, the CMB hemispherical power asymmetry---a dipolar modulation of the temperature power spectrum---has been detected at $3.3\sigma$ by Planck~\cite{Planck2015XVI,Planck2019VII} with amplitude $A = 0.066 \pm 0.021$ at $\ell_{\max} = 64$.
+
+We show that both signals can originate from a single mechanism: a cosmological axial torsion pseudoscalar whose coupling constants are fixed by the spectral action on $K_4$.
+The mathematical framework is developed in the companion paper~\cite{PaperI}, which proves that Lorentzian signature $(1,3)$ emerges generically from the Pfaffian structure of antisymmetric matrices on four vertices, with the key structural numbers---the eigenvalue ratio $R = 7 + 4\sqrt{3}$ and its inverse $A_0^* = (2-\sqrt{3})^2$---determined by the $K_4$ combinatorics.
+
+Within the Einstein--Cartan extension of general relativity, the axial part of the torsion tensor behaves as a pseudoscalar field $\mathcal{A}$ with a gravitational Chern--Simons coupling.
+The $K_4$ spectral action fixes the coupling constants that are normally free parameters:
+\begin{enumerate}[label=(\roman*)]
+\item The kinetic coefficient $\alpha_T = 1/8$ (from the $K_4$ heat kernel).
+\item The parity ratio $b_0/a_0 = -1/5$ (from the chirality-weighted trace).
+\item The amplitude scale $A_0^* = (2-\sqrt{3})^2$ (from the $D^2$ eigenvalue ratio).
+\end{enumerate}
+Together, these yield the birefringence prediction $\alpha_0 \leq 0.41^\circ$ with no adjustable parameters beyond the torsion mass $m_A$, which is a hierarchy problem shared with all ultralight scalar models.
+
+The paper is organized as follows.
+Section~\ref{sec:K4review} summarizes the relevant results from Paper~I.
+Section~\ref{sec:birefringence} derives the birefringence angle.
+Section~\ref{sec:predictions} develops the shape functions and states five falsifiable predictions.
+Section~\ref{sec:tension} confronts the predictions with Planck data.
+Section~\ref{sec:quadoct} assesses the quadrupole--octupole alignment.
+Section~\ref{sec:product} discusses the product geometry and grading violation.
+Section~\ref{sec:discussion} summarizes the status and outlook.
+
+
+% ============================================================================
+% SECTION 2: K_4 SPECTRAL ACTION REVIEW
+% ============================================================================
+\section{Summary of the $K_4$ Spectral Action}\label{sec:K4review}
+
+We collect the results from Paper~I~\cite{PaperI} that are needed for the cosmological applications.
+
+\paragraph{The Dirac operator.}
+Each four-edge subgraph $\sigma$ of the complete graph $K_4$ carries a real skew-symmetric matrix $D_\sigma \in \so(4)$, with entries $D_{ij} = w_e$ for edge $e = (i,j)$ and $D_{ji} = -w_e$.
+
+\paragraph{Lorentzian signature.}
+The spectral action $I[w] = \Tr\exp(D^2/2)$ has Hessian with signature $(1,3)$ for 13 of 15 subgraphs, with failures at $\Pf(D) = 0$.  The critical scale is $s_{\mathrm{crit}} \approx 1.233$.
+
+\paragraph{Key structural numbers.}
+For hub-spoke subgraphs (12 of the 13 Lorentzian subgraphs), the $D^2$ eigenvalues split into pairs with ratio
+\begin{equation}
+  R = \frac{|\mu_1|}{|\mu_2|} = \frac{2+\sqrt{3}}{2-\sqrt{3}} = 7 + 4\sqrt{3} \approx 13.93.
+\end{equation}
+The inverse ratio
+\begin{equation}
+  A_0^* = 1/R = (2-\sqrt{3})^2 \approx 0.0718
+\end{equation}
+sets the scale of the birefringence amplitude and hemispherical asymmetry.
+
+\paragraph{Heat kernel coefficients.}
+The internal spectral triple on $K_4$ has eigenvalues $\lambda_n = n$ with degeneracy $D(n) = 2n$ for $n = 1,2,3,4$.  The chirality $\gamma_5$ assigns grading $(-1)^{n+1}$.  The traces are
+\begin{align}
+  a_0 &= \Tr(\mathbf{1}) = \sum_{n=1}^{4} 2n = 20, \\
+  b_0 &= \Tr(\gamma_5) = 2 - 4 + 6 - 8 = -4.
+\end{align}
+The parity ratio $b_0/a_0 = -1/5$ is a purely combinatorial invariant of $K_4$.
+
+
+% ============================================================================
+% SECTION 3: COSMIC BIREFRINGENCE
+% ============================================================================
+\section{Cosmic Birefringence from Axial Torsion}\label{sec:birefringence}
+
+\subsection{Spectral Action Couplings}
+
+The spectral action on $M^4 \times K_4$ yields the effective gravitational Lagrangian with torsion:
+\begin{equation}\label{eq:eff-lagrangian}
+  \mathcal{L} = \frac{1}{16\pi G}\,R + \frac{\alpha_T}{2}\,(\partial_\mu \mathcal{A})^2
+    - \frac{m_A^2}{2}\,\mathcal{A}^2
+    + \frac{\beta}{4}\,\frac{\mathcal{A}}{f_A}\,\tilde{R}R + \cdots
+\end{equation}
+where $\tilde{R}R = \varepsilon^{\alpha\beta\gamma\delta}R_{\alpha\beta\mu\nu}R_{\gamma\delta}^{\phantom{\gamma\delta}\mu\nu}$ is the Pontryagin density.
+The coupling constants are fixed by the $K_4$ traces:
+\begin{align}
+  \alpha_T &= \frac{1}{8}, \qquad
+  \frac{\beta}{\alpha_T} = \frac{b_0}{a_0} = -\frac{1}{5}, \qquad
+  f_A = \frac{M_P}{\sqrt{\alpha_T}} = 2\sqrt{2}\,M_P.
+\end{align}
+These three numbers are fixed by the $K_4$ eigenvalue structure and Newton's constant.
+
+\subsection{The Birefringence Angle}
+
+The Chern--Simons term rotates the CMB polarisation plane by $\alpha_0 = \Delta\mathcal{A}/f_A$.
+Setting the initial displacement $\mathcal{A}_i = A_0^* f_A/2$ with $A_0^* = (2-\sqrt{3})^2$:
+\begin{equation}\label{eq:alpha0}
+  \boxed{\alpha_0 = \frac{(2-\sqrt{3})^2}{10}\;F(m_A) = 0.411^\circ \times F(m_A),}
+\end{equation}
+where $F(m_A)$ is the cosmological evolution factor measuring the fractional field change between recombination and today.
+
+The coefficient combines two structural numbers: the eigenvalue ratio $(2-\sqrt{3})^2 = 0.0718$ and the parity coefficient $|b_0/a_0| = 1/5$.
+
+Matching the central observed value $\alpha_0 = 0.30^\circ$ requires $F = 0.729$, achieved at $m_A = 2.7\,H_0 \approx 3.9 \times 10^{-33}$~eV.
+The firm upper bound is $\alpha_0^{\max} = 0.411^\circ$ (for $F \to 1$), which LiteBIRD will test at $> 8\sigma$ significance with its projected $\sigma(\alpha_0) \sim 0.05^\circ$.
+
+\subsection{The Mass Is Not Predicted}
+
+The torsion mass $m_A \sim H_0$ must arise from a non-perturbative mechanism analogous to the shift symmetry protecting the QCD axion mass.
+The spectral action at face value gives $m_A \sim M_P$, far too heavy.
+The ultralight mass $m_A \sim 10^{-33}$~eV is the same hierarchy problem faced by all ultralight scalar models.
+The framework's prediction is the \emph{coefficient}, not the mass: $\alpha_0 < 0.41^\circ$ for any $m_A \gtrsim H_0$.
+Any future measurement of $\alpha_0 > 0.5^\circ$ would exclude the framework.
+
+
+% ============================================================================
+% SECTION 4: PREDICTIONS
+% ============================================================================
+\section{Falsifiable Predictions}\label{sec:predictions}
+
+The axial torsion field couples to the CMB through two physically distinct operators: the contorsion correction to photon geodesics (modifying temperature) and the Chern--Simons gravitational term (rotating polarisation).
+Because these operators have different spin and derivative structures, they produce BiPoSH coefficients with different multipole dependence---a mechanism split that cannot be mimicked by a single scalar modulation field.
+
+\subsection{The $m$-Sum Cancellation Theorem}
+
+\begin{proposition}[$m$-sum cancellation]\label{prop:m-cancel}
+The ratio of tensor ($s=2$) to scalar ($s=0$) BiPoSH coefficients is $m$-independent:
+\begin{equation}\label{eq:m-cancel}
+  \frac{A^{(2)}_{10}(\ell,\ell{+}1)}{A^{(0)}_{10}(\ell,\ell{+}1)}
+  =
+  \frac{\bigl(\begin{smallmatrix}\ell & 1 & \ell{+}1 \\ 2 & 0 & -2\end{smallmatrix}\bigr)}
+       {\bigl(\begin{smallmatrix}\ell & 1 & \ell{+}1 \\ 0 & 0 & 0\end{smallmatrix}\bigr)}.
+\end{equation}
+This is verified to machine precision ($< 10^{-14}$) for $\ell = 2$--$60$.
+The ratio approaches unity for large $\ell$: it is $0.745$ at $\ell = 2$, $0.983$ at $\ell = 10$, and $0.999$ at $\ell = 50$.
+\end{proposition}
+
+The exact Gaunt formula for the $m$-summed squared coupling integral is
+\begin{equation}\label{eq:gaunt}
+  G(\ell) = \sum_m \left|\int Y_{\ell m}^* Y_{10} Y_{\ell+1,m}\,d\Omega\right|^2 = \frac{\ell+1}{4\pi}.
+\end{equation}
+
+\subsection{Contorsion Decoupling from Null Geodesics}\label{sec:contorsion}
+
+\begin{proposition}[Contorsion--photon decoupling]\label{prop:contorsion}
+For purely axial torsion $T^\mu{}_{\nu\rho} = \tfrac{1}{3}\varepsilon^\mu{}_{\nu\rho\sigma}\mathcal{A}^\sigma$, the contorsion coupling to null geodesics vanishes identically:
+\begin{equation}\label{eq:contorsion-vanish}
+  K^\mu{}_{\nu\rho}\,p^\nu p^\rho = \tfrac{2}{3}\,\varepsilon^\mu{}_{\nu\rho\sigma}\,\mathcal{A}^\sigma\,p^\nu p^\rho = 0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Levi-Civita symbol $\varepsilon^\mu{}_{\nu\rho\sigma}$ is totally antisymmetric in $(\nu,\rho,\sigma)$, hence antisymmetric in $(\nu,\rho)$.  The photon momentum product $p^\nu p^\rho$ is symmetric in $(\nu,\rho)$.  Contraction of an antisymmetric tensor with a symmetric one vanishes identically.
+\end{proof}
+
+This result eliminates the direct contorsion coupling to CMB temperature anisotropies.  The leading temperature modulation from a dipolar torsion gradient comes instead from the integrated Sachs--Wolfe (ISW) effect: the torsion stress-energy modifies the gravitational potential~$\Phi$, and the time-varying~$\dot\Phi$ generates a dipolar ISW signal.
+
+\subsection{Shape Functions}\label{sec:shape-functions}
+
+The physical shape function $r(\ell) \equiv \partial\!\ln C_\ell / \partial\!\ln\mathcal{A}_0$ is computed by the \emph{separate-universe} method: a superhorizon torsion gradient $\delta\mathcal{A}/\mathcal{A} = w_0\cos\theta$ causes each direction~$\hat{n}$ to see a slightly different cosmology, so we evaluate $C_\ell(\mathcal{A}_0 \pm \delta\mathcal{A})$ using a mini-Boltzmann solver (Sachs--Wolfe + Doppler + ISW line-of-sight integration with Eisenstein--Hu transfer function) and finite-difference.  The contorsion vanishing theorem (Proposition~\ref{prop:contorsion}) eliminates any direct geodesic coupling; the entire TT response comes through three physical channels operating simultaneously:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{ISW channel} (dominates at $\ell \lesssim 10$): increasing $\Omega_A$ deepens the late-time potential decay, boosting $C_\ell$ at low~$\ell$.
+\item \emph{Distance channel}: increasing $\Omega_A$ decreases the comoving distance $D_*$, compressing angular scales.  For $m_A/H_0 = 2.7$: $\partial\!\ln D_*/\partial\!\ln\mathcal{A}_0 = -0.27$.
+\item \emph{Growth channel}: changing $\Omega_A$ modifies the growth function $D_+(a)$, affecting the potential at recombination and peak heights.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{rrrll}
+\toprule
+$\ell$ & $r_{TT}(\ell)$ & $r_{EB}(\ell)$ & $r_{EB}/r_{TT}$ & Dominant mechanism \\
+\midrule
+2  & $+2.19$ & $1$ & $0.46$ & ISW + distance \\
+5  & $+1.41$ & $1$ & $0.71$ & ISW \\
+10 & $+0.66$ & $1$ & $1.52$ & ISW (declining) \\
+15 & $+0.24$ & $1$ & $4.3$  & ISW $\approx$ distance \\
+20 & $-0.03$ & $1$ & ---    & zero crossing \\
+30 & $-0.34$ & $1$ & ---    & distance (negative) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The TT shape function is positive and steep at low~$\ell$ (power-law $r_{TT} \propto \ell^{-1.3}$ for $\ell \lesssim 15$), crosses zero near $\ell \sim 20$, and turns negative at higher~$\ell$ where the distance compression dominates.  All values are for $m_A/H_0 = 2.7$ (best-fit torsion mass); other masses give qualitatively similar shapes with the zero crossing shifting to higher~$\ell$ for larger $m_A$.  The EB shape function is exactly $r_{EB} = 1$ for all~$\ell$, since the Chern--Simons rotation angle is independent of angular scale.
+
+\subsection{Five Pre-Registered Predictions}\label{sec:five-predictions}
+
+\begin{description}
+\item[Prediction 1: Birefringence dipole direction.]
+The TT asymmetry direction is measured at $(l,b) \approx (225^\circ, -27^\circ)$.
+The dipolar component of cosmic birefringence, when measured, must point in the same direction.
+
+\item[Prediction 2: Dipolar birefringence amplitude.]
+\begin{equation}
+  \frac{\delta\alpha}{\alpha_0} = A_0^* = (2-\sqrt{3})^2 \approx 0.072.
+\end{equation}
+If $\alpha_0 \approx 0.3^\circ$, then $\delta\alpha \approx 0.02^\circ$.  This is not a free parameter.
+
+\item[Prediction 3: EB BiPoSH parity alternation.]
+\begin{equation}
+  A^{EB}_{10}(\ell, \ell+1) \propto (-1)^{\ell+1}.
+\end{equation}
+A scalar modulation field produces no such alternation.
+
+\item[Prediction 4: TT/EB shape split.]
+The ratio $r_{EB}/r_{TT}$ grows from $\sim\!0.5$ at $\ell = 2$ through unity at $\ell \approx 10$ and diverges near the TT zero crossing at $\ell \sim 20$:
+\begin{equation}
+  r_{EB}(\ell)/r_{TT}(\ell) \approx 0.46,\; 0.71,\; 1.5,\; 4.3 \quad\text{at } \ell = 2,\,5,\,10,\,15.
+\end{equation}
+For $\ell > 20$, $r_{TT}$ changes sign while $r_{EB} = 1$ remains positive, so the EB and TT modulations are \emph{anti-correlated} at high~$\ell$---a distinctive signature of the two-channel mechanism that no single-field scalar modulation can produce.
+
+\item[Prediction 5: TB/EB ratio.]
+\begin{equation}
+  \frac{A^{TB}_{10}(\ell,\ell+1)}{A^{EB}_{10}(\ell,\ell+1)} = \frac{C^{TE}_\ell}{C^{EE}_\ell}.
+\end{equation}
+This is independently measurable, providing a zero-parameter consistency check.
+\end{description}
+
+Predictions 1 and 2 are testable with LiteBIRD (launch 2032, data $\sim$2035).
+Prediction 3 requires EB BiPoSH detection in individual $\ell$-bins (CMB-S4 combined with LiteBIRD).
+Prediction 4 requires both TT and EB shape functions.
+Prediction 5 functions as an internal consistency check.
+
+
+
+% ============================================================================
+% SECTION 5: TENSION WITH PLANCK DATA
+% ============================================================================
+\section{Shape Function Constraints and Tension with Planck Data}\label{sec:tension}
+
+\subsection{The Observed Signal}
+
+The Planck analysis fits a dipolar modulation $\Delta T(\hat{n})/T = A_0\,\hat{d}\cdot\hat{n}$ assuming $\ell$-independent amplitude.
+The fitted amplitude decreases with $\ell_{\max}$:
+
+\begin{center}
+\begin{tabular}{rcc}
+\toprule
+$\ell_{\max}$ & $A(\ell_{\max})$ & $A/A(64)$ \\
+\midrule
+64  & 0.066 & 1.000 \\
+128 & 0.054 & 0.818 \\
+256 & 0.040 & 0.606 \\
+512 & 0.024 & 0.364 \\
+1024 & 0.012 & 0.182 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Comparison with the Boltzmann Shape Function}
+
+The separate-universe Boltzmann computation (Section~\ref{sec:shape-functions}) gives a shape function $r_{TT}(\ell)$ that starts positive ($r_{TT}(2) \approx 2.2$), decays as $\sim\!\ell^{-1.3}$, crosses zero near $\ell \sim 20$, and turns negative at higher~$\ell$.  The $\ell_{\max}$-averaged prediction is:
+
+\begin{center}
+\begin{tabular}{rccc}
+\toprule
+$\ell_{\max}$ & $\hat{A}_{\mathrm{pred}}$ & $A_{\mathrm{obs}}$ & pred/obs \\
+\midrule
+5  & 0.12 & --- & --- \\
+10 & 0.08 & --- & --- \\
+20 & 0.03 & --- & --- \\
+64 & $-0.03$ & 0.066 & $-0.5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent At low~$\ell$ ($\ell_{\max} \lesssim 10$), the torsion framework predicts the \emph{correct order of magnitude} ($A \sim 0.07$--$0.12$) and the observed \emph{declining trend} of $A(\ell_{\max})$ is qualitatively reproduced by the zero crossing.  However, the prediction turns negative at $\ell_{\max} \gtrsim 30$, while the data remain positive through $\ell_{\max} = 1024$.  This discrepancy could arise from limitations of the simplified Boltzmann code (Eisenstein--Hu transfer function, no Silk damping evolution, no polarization feedback) or from genuine tension with the data.
+
+\subsection{Interpretation}
+
+Three interpretations remain possible:
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Partial match.}  The torsion framework successfully predicts $A(\ell_{\max} \lesssim 10) \sim 0.08$ and the declining $A(\ell_{\max})$ trend.  The zero-crossing prediction at $\ell \sim 20$ is sensitive to the transfer function approximation; a full CLASS/CAMB computation with torsion perturbations would determine whether it persists, shifts to higher~$\ell$, or softens.
+
+\item \emph{Statistical contribution.}  The $3\sigma$ detection at $\ell_{\max} = 64$ includes a look-elsewhere effect.  The torsion contributes $A \sim 0.08$ at $\ell \lesssim 10$, and the observed persistence to $\ell = 64$ may reflect a statistical fluctuation on top of the torsion signal.
+
+\item \emph{Different origin at high~$\ell$.}  The low-$\ell$ signal ($\ell \lesssim 15$) is from torsion; the high-$\ell$ continuation has a separate origin.  The birefringence predictions remain the primary observational test.
+\end{enumerate}
+
+We regard the match at low~$\ell$ as encouraging but the high-$\ell$ discrepancy as an open problem requiring full Boltzmann code refinement.
+
+\subsection{The Shape Function as a Constraint}
+
+The separate-universe computation demonstrates that a superhorizon dark-energy gradient affects $C_\ell$ through \emph{three} distinct channels (ISW, distance, and growth), not just the ISW effect assumed in earlier analyses.  The resulting $r_{TT}(\ell)$ with its zero crossing is qualitatively different from a pure power-law shape and provides a template for future CMB-S4 BiPoSH analyses.  Combined with the exact EB prediction $r_{EB} = 1$ (Chern--Simons), the framework offers a two-channel signature that is distinctive of the axial-torsion mechanism.
+
+
+
+% ============================================================================
+% SECTION 6: QUADRUPOLE--OCTUPOLE
+% ============================================================================
+\section{Quadrupole--Octupole Alignment}\label{sec:quadoct}
+
+The preferred axes of the CMB quadrupole ($\ell = 2$) and octupole ($\ell = 3$) are aligned to within $\sim 2^\circ$ in the Planck data.
+Because the dipolar torsion modulation couples $\ell$ to $\ell + 1$, it is natural to ask whether the $\ell = 2 \leftrightarrow \ell = 3$ coupling can produce the observed alignment.
+We compute this exactly and find that it cannot.
+
+The predicted cross-correlation coefficient is $\rho_{23} = 0.021$, shifting the alignment statistic by $\Delta S = 2.9 \times 10^{-4}$ ($0.002\sigma$ of the null distribution).
+Reproducing the observed alignment would require $\rho_{23} \gtrsim 0.5$, corresponding to order-unity modulation of the CMB.
+
+A further obstacle is directional: the hemispherical asymmetry dipole points toward $(l,b) \approx (225^\circ, -27^\circ)$, while the quadrupole--octupole axis points toward $(l,b) \approx (240^\circ, 63^\circ)$---a separation of $89^\circ$.
+The two anomalies are associated with different directions on the sky.
+
+The near-$m$-independence of the Gaunt coupling ($G_{\pm 2}/G_0 = 0.745$) means that the dipolar modulation does not preferentially enhance the zonal ($m = 0$) component that would create axial alignment.
+The torsion framework does not explain the quadrupole--octupole alignment: the effect is too weak by a factor of $\sim 24$, in the wrong direction by $89^\circ$, and structurally incapable of the required mode coupling.
+
+
+
+% ============================================================================
+% SECTION 7: PRODUCT GEOMETRY
+% ============================================================================
+\section{Product Geometry and Grading Violation}\label{sec:product}
+
+The full Dirac operator on the product geometry $K_4 \times F$ is
+\begin{equation}\label{eq:Dfull}
+  D_{\mathrm{full}}(t) = D_{\mathrm{space}}(t) \otimes \mathbf{1}_{N_F} + \gamma \otimes D_F,
+\end{equation}
+where $D_{\mathrm{space}}(t) = (1-t)D_{\mathrm{seq}} + t\,D_{\mathrm{hub}}$ interpolates from the Hamiltonian cycle ($t = 0$, where the grading $\gamma$ exists) to the hub-spoke ($t = 1$), and $D_F$ is the finite Dirac operator encoding Yukawa couplings.
+
+The grading $\gamma = \diag(+1,-1,+1,-1)$ anticommutes with $D_{\mathrm{seq}}$ (bipartite) but not with $D_{\mathrm{hub}}$ (non-bipartite).
+The anticommutator $C_{\mathrm{grad}} = \{D_{\mathrm{hub}}, \gamma\}$ is a rank-2 Hermitian matrix with eigenvalues $\{-2, 0, 0, +2\}$, coupling only the same-chirality vertices.
+
+Squaring:
+\begin{equation}
+  D_{\mathrm{full}}(t)^2 = D_{\mathrm{space}}(t)^2 \otimes \mathbf{1} + \mathbf{1} \otimes D_F^2 + t \cdot C_{\mathrm{grad}} \otimes D_F.
+\end{equation}
+The cross-term $t \cdot C_{\mathrm{grad}} \otimes D_F$ is the unique coupling between spacetime geometry and internal particle physics, vanishing exactly at the bipartite point $t = 0$.
+
+The Seeley--DeWitt coefficients $a_k(t) = \Tr(D_{\mathrm{full}}(t)^k)$ are all maximized at $t = 0$ and minimized at intermediate $t$: the cross-term drives the geometry toward lower total curvature.
+Whether the symmetric vacuum ($t = 0$) is destabilized depends on the ratio $f_2/f_0$ of spectral action moments and the Yukawa coupling strength, with larger Yukawas favoring destabilization.
+
+
+
+% ============================================================================
+% SECTION 8: DISCUSSION
+% ============================================================================
+\section{Discussion}\label{sec:discussion}
+
+\subsection{What Is Established}
+
+The cosmic birefringence prediction $\alpha_0 \leq 0.41^\circ$ combines two structural numbers from the $K_4$ spectral action---the eigenvalue ratio $(2-\sqrt{3})^2$ and the parity coefficient $|b_0/a_0| = 1/5$---with no free parameters beyond the torsion mass.  The prediction is consistent with the observed $0.30^\circ \pm 0.11^\circ$ and provides a firm upper bound that LiteBIRD will test decisively.
+
+The contorsion vanishing theorem eliminates a physically important channel: axial torsion does not directly deflect photons.  The temperature modulation comes entirely through the ISW effect, distance compression, and growth modification---a three-channel structure that produces the distinctive zero-crossing shape function.
+
+The five predictions are parameter-free and falsifiable.  The EB parity alternation (Prediction~3) is the most distinctive: no simple scalar modulation can produce $(-1)^{\ell+1}$ alternation in the EB BiPoSH coefficients.  If confirmed by CMB-S4, this would be strong evidence for a pseudoscalar origin of the birefringence.
+
+\subsection{What Remains Open}
+
+The shape function tension at $\ell_{\max} = 64$ is a genuine concern.  The zero crossing at $\ell \sim 20$ is computed with a simplified Boltzmann solver (Eisenstein--Hu transfer function); a full CLASS or CAMB computation with torsion perturbations is needed to determine whether the crossing persists, shifts, or softens.  This is the most important technical refinement.
+
+The torsion mass $m_A \sim H_0$ is a hierarchy problem.  The spectral action gives $m_A \sim M_P$; the ultralight value requires a protecting symmetry analogous to the QCD axion's shift symmetry.  This is not specific to our framework---it is shared by all ultralight dark energy models.
+
+The quadrupole--octupole alignment is not explained.  We have been explicit about this failure, which is too weak by a factor of $\sim 24$ and in the wrong direction.
+
+\subsection{Summary of Killed Claims}
+
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Hemispherical asymmetry as direct contorsion effect}: killed by the contorsion vanishing theorem.  The effect comes through ISW/distance/growth instead.
+\item \emph{Quadrupole--octupole alignment from torsion}: too weak by a factor of 24, wrong direction by $89^\circ$.
+\item \emph{Torsion mass prediction}: not predicted; hierarchy problem acknowledged.
+\end{enumerate}
+
+\subsection{Outlook}
+
+The primary test is LiteBIRD (launch 2032).  With projected sensitivity $\sigma(\alpha_0) \sim 0.05^\circ$, it will measure $\alpha_0$ at $6\sigma$ if the central value holds, and will test the upper bound $0.41^\circ$ at $> 8\sigma$.  The dipolar birefringence measurement (Prediction~1) requires full-sky polarization data at the same sensitivity level.
+
+CMB-S4 combined with LiteBIRD will enable EB BiPoSH analysis in individual $\ell$-bins, testing the parity alternation (Prediction~3) and shape split (Prediction~4).  These are the smoking-gun signatures of the axial-torsion mechanism.
+
+Full Boltzmann integration (CLASS/CAMB with torsion perturbations) is needed to resolve the shape function tension and determine whether the zero crossing at $\ell \sim 20$ is physical or an artifact of the simplified transfer function.
+
+
+% ============================================================================
+% ACKNOWLEDGMENTS AND REFERENCES
+% ============================================================================
+\section*{Acknowledgments}
+
+[To be added.]
+
+
+\begin{thebibliography}{99}
+
+\bibitem{PaperI}
+B.~Porter,
+``Lorentzian signature from the Pfaffian: spectral geometry of $K_4$,''
+companion paper, 2026.
+
+\bibitem{Connes1994}
+A.~Connes, \emph{Noncommutative Geometry}, Academic Press, 1994.
+
+\bibitem{ChamseddineConnes1997}
+A.H.~Chamseddine, A.~Connes,
+``The spectral action principle,''
+\emph{Commun.\ Math.\ Phys.}\ \textbf{186} (1997) 731--750.
+[arXiv:hep-th/9606001]
+
+\bibitem{Minami2020}
+Y.~Minami, E.~Komatsu,
+``New extraction of the cosmic birefringence from the Planck 2018 polarization data,''
+\emph{Phys.\ Rev.\ Lett.}\ \textbf{125} (2020) 221301.
+[arXiv:2011.11254]
+
+\bibitem{Eskilt2022}
+J.R.~Eskilt,
+``Frequency-dependent constraints on cosmic birefringence from the LFI and HFI Planck Data Release 4,''
+\emph{Astron.\ Astrophys.}\ \textbf{662} (2022) A10.
+
+\bibitem{LiteBIRD2023}
+LiteBIRD Collaboration,
+``Probing cosmic inflation with the LiteBIRD cosmic microwave background polarization survey,''
+\emph{Prog.\ Theor.\ Exp.\ Phys.}\ \textbf{2023} (2023) 042F01.
+
+\bibitem{Planck2015XVI}
+Planck Collaboration,
+``Planck 2015 results. XVI. Isotropy and statistics of the CMB,''
+\emph{Astron.\ Astrophys.}\ \textbf{594} (2016) A16.
+[arXiv:1506.07135]
+
+\bibitem{Planck2019VII}
+Planck Collaboration,
+``Planck 2018 results. VII. Isotropy and statistics of the CMB,''
+\emph{Astron.\ Astrophys.}\ \textbf{641} (2020) A7.
+[arXiv:1906.02552]
+
+\bibitem{Planck2018I}
+Planck Collaboration,
+``Planck 2018 results. I. Overview and the cosmological legacy of Planck,''
+\emph{Astron.\ Astrophys.}\ \textbf{641} (2020) A1.
+
+\bibitem{Erickcek2008}
+A.L.~Erickcek, M.~Kamionkowski, S.M.~Carroll,
+``A hemispherical power asymmetry from inflation,''
+\emph{Phys.\ Rev.\ D} \textbf{78} (2008) 123520.
+
+\bibitem{Schwarz2016}
+D.J.~Schwarz, C.J.~Copi, D.~Huterer, G.D.~Starkman,
+``CMB anomalies after Planck,''
+\emph{Class.\ Quantum Grav.}\ \textbf{33} (2016) 184001.
+
+\end{thebibliography}
+
+
+\end{document}

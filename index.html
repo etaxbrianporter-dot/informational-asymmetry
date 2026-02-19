@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informational Asymmetry Program</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #fafaf7;
+  --accent: #8b2500;
+  --accent-light: #c4532210;
+  --mid: #6b6b6b;
+  --rule: #d4d0c8;
+  --code-bg: #f0ede6;
+  --green: #2d6a2e;
+  --amber: #a67c00;
+  --serif: 'EB Garamond', Georgia, serif;
+  --sans: 'Source Sans 3', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout ── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+.narrow { max-width: 720px; }
+
+/* ── Header ── */
+header {
+  border-bottom: 1px solid var(--rule);
+  padding: 3rem 0 2rem;
+}
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.site-title {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.site-title:hover { color: var(--accent); }
+nav { display: flex; gap: 1.5rem; }
+nav a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--mid);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding-bottom: 2px;
+  border-bottom: 1.5px solid transparent;
+  transition: all 0.15s;
+}
+nav a:hover, nav a.active {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 680px;
+  margin-bottom: 1.5rem;
+}
+.hero .subtitle {
+  font-size: 1.15rem;
+  color: var(--mid);
+  max-width: 600px;
+  line-height: 1.7;
+}
+.hero .equation {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--accent);
+  margin: 2rem 0;
+  padding: 1.25rem 2rem;
+  background: var(--accent-light);
+  border-left: 3px solid var(--accent);
+  display: inline-block;
+}
+.hero .byline {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: var(--mid);
+}
+.hero .byline strong { color: var(--ink); font-weight: 600; }
+
+/* ── Verification Banner ── */
+.verify-banner {
+  background: #f7f7f2;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 2.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.verify-dot {
+  width: 10px; height: 10px;
+  background: var(--green);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.verify-banner code {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  background: var(--code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+/* ── Sections ── */
+section { padding: 3rem 0; }
+section + section { border-top: 1px solid var(--rule); }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  margin-bottom: 1rem;
+}
+
+p { margin-bottom: 1rem; max-width: 65ch; }
+p.lead { font-size: 1.1rem; line-height: 1.7; }
+
+/* ── Status Table ── */
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+}
+.status-table th {
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--rule);
+}
+.status-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eae7e0;
+  vertical-align: top;
+}
+.status-table tr:hover td { background: #f5f3ee; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.2em 0.6em;
+  border-radius: 3px;
+}
+.badge-proved { background: #e8f5e9; color: var(--green); }
+.badge-predicted { background: #fff3e0; color: var(--amber); }
+.badge-open { background: #fce4ec; color: #b71c1c; }
+.badge-resolved { background: #e8f5e9; color: var(--green); }
+.badge-computed { background: #e3f2fd; color: #1565c0; }
+
+/* ── Paper Cards ── */
+.papers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.paper-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.paper-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.paper-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.paper-card h4 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.paper-card p {
+  font-size: 0.9rem;
+  color: var(--mid);
+  margin-bottom: 0.75rem;
+}
+.paper-links { display: flex; gap: 1rem; }
+.paper-links a {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+.paper-links a:hover { text-decoration: underline; }
+
+/* ── Working Docs List ── */
+.doc-list { list-style: none; margin: 1.5rem 0; }
+.doc-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eae7e0;
+  font-size: 0.9rem;
+}
+.doc-list .doc-date {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--mid);
+  flex-shrink: 0;
+  width: 80px;
+}
+.doc-list a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+}
+.doc-list a:hover { color: var(--accent); }
+.doc-list .doc-desc {
+  color: var(--mid);
+  font-weight: 400;
+}
+
+/* ── Code Block ── */
+.code-block {
+  background: #2b2b2b;
+  color: #e0e0e0;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+.code-block .comment { color: #7a7a7a; }
+.code-block .string { color: #98c379; }
+.code-block .number { color: #d19a66; }
+
+/* ── Three Layers ── */
+.layers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.layer {
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+.layer-1 { background: #f0ede6; border-left: 3px solid var(--green); }
+.layer-2 { background: #f0ede6; border-left: 3px solid #1565c0; }
+.layer-3 { background: #f0ede6; border-left: 3px solid var(--amber); }
+.layer h4 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+.layer-1 h4 { color: var(--green); }
+.layer-2 h4 { color: #1565c0; }
+.layer-3 h4 { color: var(--amber); }
+.layer p { font-size: 0.85rem; margin-bottom: 0; }
+.layer .params {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: var(--mid);
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0;
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--mid);
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+footer a { color: var(--mid); }
+footer a:hover { color: var(--accent); }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .hero h1 { font-size: 2rem; }
+  header .container { flex-direction: column; }
+  nav { flex-wrap: wrap; }
+  .layers { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="#" class="site-title">Informational Asymmetry Program</a>
+    <nav>
+      <a href="#framework" class="active">Framework</a>
+      <a href="#papers">Papers</a>
+      <a href="#docs">Working Docs</a>
+      <a href="#verification">Verification</a>
+      <a href="#status">Status</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1>From Three Axioms to the Standard Model and Gravity</h1>
+    <p class="subtitle">
+      Matching combinatorics on complete graphs K<sub>2n</sub> uniquely determine 
+      Lorentzian signature, the gauge group, three generations, the Higgs mass, 
+      and the fermion hierarchy — with zero free parameters for particle physics 
+      and one for gravity.
+    </p>
+    <div class="equation">(2n − 1)!! = I(n) &nbsp;→&nbsp; exactly two solutions</div>
+    <p class="byline">
+      <strong>Brian Porter</strong> · February 2026 · Working in public
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="verify-banner">
+    <div class="verify-dot"></div>
+    <div>
+      <strong>Verification suite:</strong> 117 claims, all passing.
+      <code>pip install numpy scipy && python run_all.py</code>
+      — Every numerical result in this program is independently reproducible.
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ -->
+<section id="framework">
+  <div class="container">
+    <h2>The Framework</h2>
+    <p class="lead">
+      Three informational axioms — asymmetric transitions, relational comparison, 
+      finite capacity — uniquely force mathematical structures that correspond to 
+      the known physics of our universe. No parameters are chosen. No symmetry groups 
+      are assumed. Everything is derived.
+    </p>
+
+    <div class="layers">
+      <div class="layer layer-1">
+        <h4>Layer 1 · Matching Combinatorics</h4>
+        <p>K₄ → Lorentzian signature, arrow of time, parity violation, Einstein equations. 
+           K₆ → Higgs mass, gauge group, three generations. 
+           K₈ → Yukawa hierarchy.</p>
+        <div class="params">Free parameters: 0</div>
+      </div>
+      <div class="layer layer-2">
+        <h4>Layer 2 · Spectral Geometry</h4>
+        <p>Moduli flow determines coupling ratios. BZ averaging on T² determines 
+           the electroweak-scale λ/g². Heat kernels confirm convergence.</p>
+        <div class="params">Free parameters: 0</div>
+      </div>
+      <div class="layer layer-3">
+        <h4>Layer 3 · Gravitational Interface</h4>
+        <p>f₂Λ² determines M<sub>Pl</sub>. f₄Λ⁴ determines Λ<sub>CC</sub>. 
+           The hierarchy problem and cosmological constant live here.</p>
+        <div class="params">Free parameters: 1 (Λ)</div>
+      </div>
+    </div>
+
+    <p>
+      The interface between Layers 2 and 3 is clean: no information flows from 
+      Layer 3 back into Layers 1–2. Particle physics predictions are insulated 
+      from gravitational unknowns.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<section id="papers">
+  <div class="container">
+    <h2>Papers</h2>
+    <div class="papers-grid">
+      
+      <div class="paper-card">
+        <div class="paper-num">Paper I</div>
+        <h4>Lorentzian Signature from Spectral Action on K₄</h4>
+        <p>Three axioms uniquely force K₄ with V₄ matching algebra, Z₃ flux breaking 
+           time-reversal, and Chern number C = −2. The spectral action Hessian has 
+           signature (1,3) for 13 of 15 subgraphs. Proved: d = 4 uniqueness via 
+           sub-Pfaffian frustration.</p>
+        <div class="paper-links">
+          <a href="papers/paper1.pdf">PDF</a>
+          <a href="papers/paper1.tex">LaTeX source</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-num">Paper II</div>
+        <h4>Cosmic Birefringence from K₄ Torsion</h4>
+        <p>Five parameter-free, falsifiable predictions for LiteBIRD and CMB-S4. 
+           The axial torsion pseudoscalar has coupling constants fixed by K₄ 
+           combinatorics: α<sub>T</sub> = 1/8, b₀/a₀ = −1/5, A₀* = (2−√3)².</p>
+        <div class="paper-links">
+          <a href="papers/paper2.pdf">PDF</a>
+          <a href="papers/paper2.tex">LaTeX source</a>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="paper-num">Paper III</div>
+        <h4>Fermion Mass Hierarchy from K₈ on a Genus-2 Surface</h4>
+        <p>105 matchings on K₈ with Z₇ symmetry produce a 6D vacuum eigenspace 
+           decomposing as ρ₁ ⊕ ρ₂ ⊕ ρ₃. The K₆ Higgs vacuum projects purely 
+           into ρ₁, yielding Yukawa hierarchy 415 : 135 : 1 at zero parameters.</p>
+        <div class="paper-links">
+          <a href="papers/paper3.pdf">PDF</a>
+          <a href="papers/paper3.tex">LaTeX source</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<section id="verification">
+  <div class="container">
+    <h2>Verification Suite</h2>
+    <p>
+      Every numerical claim in this program has an independent computational test. 
+      The suite uses only numpy and scipy — no custom physics packages. 
+      Anyone can reproduce everything.
+    </p>
+    
+    <div class="code-block">
+<span class="comment"># Clone and run</span>
+git clone https://github.com/etaxbrianporter-dot/informational-asymmetry
+cd informational-asymmetry/verification_suite
+pip install numpy scipy
+python run_all.py
+
+<span class="comment"># Output:</span>
+<span class="string">═══════════════════════════════════════════════════════════════════════
+  INFORMATIONAL ASYMMETRY PROGRAM: VERIFICATION REPORT
+═══════════════════════════════════════════════════════════════════════
+  Test 01: Saturation ........................... PASS (9 claims)
+  Test 02: K4 Matching .......................... PASS (18 claims)
+  Test 03: K4 Pfaffian .......................... PASS (13 claims)
+  Test 05: K4 Hessian ........................... PASS (5 claims)
+  Test 06: K4 Heat Kernel ....................... PASS (3 claims)
+  Test 08: K6 Matchings ......................... PASS (9 claims)
+  Test 09: K6 Gram .............................. PASS (12 claims)
+  Test 12: Birefringence ........................ PASS (10 claims)
+  Test 13: Johnson Scheme ....................... PASS (24 claims)
+  Test 21: D4 Uniqueness ........................ PASS (10 claims)
+  Test 22: Bug Demonstration .................... PASS (4 claims)
+
+  ALL TESTS PASSED: 117 claims verified, 0 failures</span>
+    </div>
+
+    <p>
+      <strong>Test 22 is deliberate.</strong> It demonstrates two bugs we found in our own 
+      original code — a <code>.real</code> truncation and a non-deterministic enumeration — 
+      that accidentally produced m<sub>H</sub> = 125 GeV. We document our own bugs because 
+      that's how science works.
+    </p>
+
+    <p style="margin-top:1rem;">
+      <a href="verification/verification_suite.tar.gz" style="color:var(--accent);font-weight:600;">
+        Download verification suite (tar.gz)
+      </a> · 
+      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry" style="color:var(--accent);">
+        GitHub repository
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<section id="status">
+  <div class="container">
+    <h2>Program Status</h2>
+
+    <h3>Resolved</h3>
+    <table class="status-table">
+      <thead>
+        <tr><th>Result</th><th>Status</th><th>Method</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Gauge group SU(3)×SU(2)×U(1)</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>From (2n−1)!! = I(n) + complexifier</td>
+        </tr>
+        <tr>
+          <td>Three generations</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>φ(7)/2 = 3 from K₈ vacuum rank</td>
+        </tr>
+        <tr>
+          <td>Parity violation</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>Self-dual matchings span su(2)<sub>L</sub> only</td>
+        </tr>
+        <tr>
+          <td>Arrow of time</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>D ≠ D* prior to dynamics (Z₃ flux)</td>
+        </tr>
+        <tr>
+          <td>Lorentzian signature</td>
+          <td><span class="badge badge-proved">Proved</span></td>
+          <td>Pfaffian structure on K₄ forces (1,3)</td>
+        </tr>
+        <tr>
+          <td>3+1 dimensions</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>Observer finitude: d<sub>eff</sub> → 3</td>
+        </tr>
+        <tr>
+          <td>Einstein equations</td>
+          <td><span class="badge badge-resolved">Resolved</span></td>
+          <td>Jacobson's derivation (Steps 1–3 closed)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Predicted</h3>
+    <table class="status-table">
+      <thead>
+        <tr><th>Observable</th><th>Status</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Higgs mass</td>
+          <td><span class="badge badge-predicted">Predicted</span></td>
+          <td>126.1 GeV (0.81% residual), zero parameters</td>
+        </tr>
+        <tr>
+          <td>Yukawa hierarchy</td>
+          <td><span class="badge badge-predicted">Predicted</span></td>
+          <td>415 : 135 : 1 (middle ratio 1.5% from SM)</td>
+        </tr>
+        <tr>
+          <td>Cosmic birefringence</td>
+          <td><span class="badge badge-predicted">Predicted</span></td>
+          <td>α₀ ≤ 0.41° (five falsifiable predictions for LiteBIRD)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Open</h3>
+    <table class="status-table">
+      <thead>
+        <tr><th>Problem</th><th>Status</th><th>Path Forward</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Higher-spin decoupling (γ₃ > 2)</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td>QMC computation at K₄ critical point</td>
+        </tr>
+        <tr>
+          <td>Higgs normalization constant c</td>
+          <td><span class="badge badge-open">Open</span></td>
+          <td>Full product geometry Seeley–DeWitt expansion</td>
+        </tr>
+        <tr>
+          <td>Λ (hierarchy problem)</td>
+          <td><span class="badge badge-open">Reclassified</span></td>
+          <td>Gravity-only parameter; not particle physics</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<section id="docs">
+  <div class="container">
+    <h2>Working Documents</h2>
+    <p>
+      All working documents from the program, published in real time. 
+      This includes successful results, failed approaches, and honest assessments 
+      of what works and what doesn't.
+    </p>
+
+    <h3>Core Framework</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">— One-paragraph claim through five-axiom chain</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">— FORCED / SILENT / REDUCED taxonomy</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_addendum_feb18.html">Progress Addendum</a> <span class="doc-desc">— Complete status as of Feb 18</span></li>
+    </ul>
+
+    <h3>K₆ Higgs Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.html">K₆ Higgs Paper v2</a> <span class="doc-desc">— Bug discovery, 50k Monte Carlo, honest audit</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.html">Normalization v9</a> <span class="doc-desc">— R proved, c undetermined, 41 near-misses</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination.html">c-Derivation Termination</a> <span class="doc-desc">— Why the π²/8 path was abandoned</span></li>
+    </ul>
+
+    <h3>K₈ Fermion Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.html">K₈ Fermion Results</a> <span class="doc-desc">— Three generations, Z₇ decomposition</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.html">K₈ Higgs Results</a> <span class="doc-desc">— Sector separation: K₆ ≠ K₈ for Higgs</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge.html">ρ₂ Hypercharge</a> <span class="doc-desc">— Selection rule and neutrino mass implications</span></li>
+    </ul>
+
+    <h3>Mathematical Structure</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.html">Spectral Budget Identity</a> <span class="doc-desc">— Johnson scheme forces three eigenvalues</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction.html">Polynomial Reduction Theorem</a> <span class="doc-desc">— Super-exponential → polynomial complexity</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.html">Galois Disjointness</a> <span class="doc-desc">— Number fields at each level share only ℚ</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.html">Discriminant Atlas</a> <span class="doc-desc">— Arithmetic structure K₆ through K₁₆</span></li>
+    </ul>
+
+    <h3>Gravitational Sector</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements.html">Computation Requirements</a> <span class="doc-desc">— γ₃ QMC specification</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence.html">Light Emergence Theorem</a> <span class="doc-desc">— Thermodynamic preference for massless modes</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence.html">Time Emergence</a> <span class="doc-desc">— t derivation from Z₃ flux</span></li>
+    </ul>
+
+    <h3>Killed Approaches</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination.html">c = π²/8 derivation</a> <span class="doc-desc">— Computationally falsified, terminated</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall.html">Polynomial/Series Wall</a> <span class="doc-desc">— Terminal obstruction identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">— Classical motivic path blocked</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div>
+      Informational Asymmetry Program · Brian Porter · 2026<br>
+      All working documents published under CC-BY-4.0.
+    </div>
+    <div>
+      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry">GitHub</a> · 
+      <a href="/cdn-cgi/l/email-protection#6a0818030b042a0f120b071a060f44090507">Contact</a> · 
+      <a href="verification/verification_suite.tar.gz">Verification Suite</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Smooth scroll for nav links
+document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Active nav highlighting on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.i

@@ -1,0 +1,804 @@
+**Computation Requirements**
+
+*Higher-Spin Decoupling at the K₄ Quantum Critical Point*
+
+Step 4 of the Informational Asymmetry Program
+
+**Revised Edition --- v2**
+
+Brian Porter
+
+February 15, 2026
+
+*Companion documents:*
+
+Surviving Invariants of the Informational Asymmetry Program (v11)
+
+Final Synthesis: From Three Axioms to the Edge of Gravity
+
+Revision Note
+
+This is **v2** of the computation requirements document. It incorporates
+six structural changes relative to v1:
+
+-   **Phase 0 (sign diagnostic)** added as a mandatory gate before
+    GPU-scale computation.
+
+-   **Parallel methods** (Majorana decomposition, conformal bootstrap,
+    iDMRG) planned alongside DQMC, not as fallbacks.
+
+-   **Lattice operator construction** for spin-2 and spin-3 required
+    explicitly before Computation 2.
+
+-   **Resource budget** revised upward to 4,000--6,000 GPU-hours with
+    autocorrelation accounting.
+
+-   **First-order transition diagnostics** added (energy histograms,
+    Binder cumulant).
+
+-   **U**~c~ error propagation protocol added for Computation 2.
+
+Sections marked \[NEW\] or \[REVISED\] indicate material not present in
+v1.
+
+1\. Context and Purpose
+
+1.1 What Has Been Proved
+
+Three informational axioms (quadratic closure, first-order, D ≠ D\*)
+uniquely force a 2+1 Dirac operator on the K₄ lattice with V₄ = Z₂×Z₂
+matching algebra and Chern number C = −2. This is formalized across
+eleven invariants in the companion document
+(surviving_invariants_v11.docx).
+
+A fourth axiom (observer finitude) produces effective dimension d_eff =
+3 for finite subsystem observers, with verified Fisher metric isotropy
+(g_EE/g_kk = 0.985), verified first law of entanglement (δS/δS_pred =
+1.0004), and verified Bisognano--Wichmann locality (R² = 1.000). These
+close three of four steps in the gap from 2+1 to 3+1 Einstein gravity.
+
+1.2 What This Computation Determines
+
+The free K₄ Dirac model is holographically dual to Vasiliev higher-spin
+gravity in AdS₄ (Klebanov--Polyakov 2002, Giombi--Yin 2010). This is a
+theory with infinitely many massless higher-spin fields: spin-1, spin-2,
+spin-3, spin-4, and so on. Our universe has only spin-2 (gravity) plus
+lower-spin matter. The higher-spin fields must acquire large masses (and
+hence large anomalous dimensions in the boundary CFT) to decouple.
+
+This requires the boundary theory to be at a strongly interacting
+quantum critical point. The computation determines: (a) whether such a
+critical point exists for the K₄ lattice model, and (b) whether the
+operator spectrum at that critical point has a large gap above spin-2,
+signaling higher-spin decoupling.
+
+1.3 Outcome Map
+
+  ------------- ------------------------- --------------------------------
+  **Result**    **Bulk Dual**             **Implication**
+
+  **γ₃ \> 2**   Effectively Einstein      Five-axiom framework succeeds
+                gravity                   
+
+  **0.5 \< γ₃   Modified gravity with     Partial success; sixth axiom may
+  \< 2**        light higher-spin fields  be needed
+
+  **γ₃ \< 0.5** Vasiliev higher-spin      Framework gives geometry, not
+                gravity                   Einstein
+
+  **No U_c      No interacting critical   Axiom 5 has no K₄ realization;
+  found**       point                     terminal
+
+  **Sign        (Indeterminate)           Requires alternative methods
+  problem                                 (Section 6)
+  blocks DQMC**                           
+  ------------- ------------------------- --------------------------------
+
+Any of these outcomes is a clean result. The framework does not require
+γ₃ \> 2 to be valuable---it has already derived emergent 3+1 geometry
+from informational axioms. The question is whether the geometry has the
+right field content.
+
+2\. The Model
+
+2.1 Lattice Geometry
+
+Triangular lattice with lattice vectors a₁ = (1, 0) and a₂ = (−1/2,
+√3/2). Each site carries 4 orbitals corresponding to the 4 vertices of
+K₄ (labeled 1, 2, 3, 4). The Bravais lattice is triangular with one site
+per unit cell. Total sites: N = L×L on a torus (periodic boundary
+conditions in both directions).
+
+2.2 Non-Interacting Hamiltonian
+
+The single-particle hopping Hamiltonian in momentum space is the 4×4
+matrix:
+
+***D(k) = e*{ik·δ₁} M₁ + ω e{ik·δ₂} M₂ + ω² e{ik·δ₃} M₃**
+
+where ω = e\^{2πi/3} is the Z₃ flux, the displacement vectors are δ₁ =
+(1,0), δ₂ = (−1/2, √3/2), δ₃ = −δ₁ − δ₂, and the matching matrices are:
+
+-   **M₁:** permutation (12)(34), with 1s at positions (1,2), (2,1),
+    (3,4), (4,3) and 0s elsewhere.
+
+-   **M₂:** permutation (13)(24), with 1s at positions (1,3), (3,1),
+    (2,4), (4,2) and 0s elsewhere.
+
+-   **M₃:** permutation (14)(23), with 1s at positions (1,4), (4,1),
+    (2,3), (3,2) and 0s elsewhere.
+
+The many-body Hamiltonian at the non-interacting level is H₀ = ∑\_k
+c†(k) H(k) c(k), where H(k) is the 8×8 chiral Hamiltonian \[\[0, D(k)\],
+\[D†(k), 0\]\] and c(k) is an 8-component fermion operator (4 orbitals ×
+2 sublattice/chiral components). The ground state at half-filling
+occupies the 4 negative-energy bands.
+
+2.3 Interaction
+
+The V₄-invariant on-site Hubbard interaction:
+
+***H_int = U ∑\_i ∑\_{α\<β} n\_{i,α} n\_{i,β}***
+
+where i runs over lattice sites, α and β run over the 4 orbitals (K₄
+vertices), and n\_{i,α} = c†\_{i,α} c\_{i,α} is the number operator.
+This is the density--density interaction between all pairs of orbitals
+at the same site. It is the most general on-site interaction invariant
+under V₄ (which permutes the 4 orbitals via the three matchings).
+
+Equivalently, H_int = (U/2) ∑\_i (N_i − 2)² − const, where N_i = ∑\_α
+n\_{i,α}. At half-filling (average 2 particles per site out of 4
+orbitals), this is particle-hole symmetric.
+
+**Full Hamiltonian: H = H₀ + H_int**
+
+2.4 Symmetries
+
+The model has the following symmetries that must be preserved by the
+computation:
+
+-   **V₄ orbital symmetry:** The three matchings M₁, M₂, M₃ generate V₄
+    = Z₂×Z₂ acting on the 4 orbitals. All matchings commute. The
+    interaction is invariant under all three.
+
+-   **Particle-hole symmetry:** At half-filling with the interaction
+    written as (U/2)(N_i − 2)², the Hamiltonian is invariant under c ↔
+    c†. This ensures the chemical potential is exactly μ = 0.
+
+-   **Translational symmetry:** Periodic boundary conditions on the L×L
+    torus.
+
+-   **Z₃ flux structure:** The phases ω, ω² in D(k) break time-reversal
+    but preserve a Z₃ rotational symmetry of the triangular lattice.
+
+3\. Phase 0: Sign Problem Diagnostic \[NEW\]
+
+3.1 Why This Must Come First
+
+The standard DQMC sign-freedom guarantee (det(M) ≥ 0 at half-filling
+with particle-hole symmetry) relies on time-reversal symmetry on a
+bipartite lattice. The K₄ model violates both conditions: the Z₃ flux
+explicitly breaks time-reversal (proved in surviving_invariants_v11,
+Section 5.2), and the triangular lattice is not bipartite. The 4-orbital
+V₄ structure may restore an effective sign-freedom through an enlarged
+symmetry (analogous to how SU(2) models on non-bipartite lattices can be
+sign-free via Majorana decomposition), but this is not guaranteed and
+must be established before committing GPU resources.
+
+3.2 Analytical Check: Majorana Decomposition
+
+Before any simulation, check whether the K₄ model admits a sign-free
+Majorana representation:
+
+-   The V₄ = Z₂ × Z₂ structure provides three involutions on the
+    4-orbital space. Each Z₂ generator pairs two orbitals. Determine
+    whether these pairings can be used to define Majorana modes such
+    that the resulting fermion determinant factors into a product of
+    real, non-negative pieces.
+
+-   Reference framework: Li, Jiang, Yao (2015) solved the sign problem
+    for SU(2) models on non-bipartite lattices using Majorana
+    decomposition. The V₄ structure is suggestive of a similar approach.
+
+-   If the Majorana decomposition succeeds, DQMC is sign-free for all U,
+    and Phase 0 is resolved analytically. Proceed directly to
+    Computation 1.
+
+3.3 Empirical Diagnostic
+
+If the analytical check is inconclusive, run small-scale DQMC to measure
+the average sign:
+
+  ---------------- ---------------- ---------------- --------------------
+  **Parameter**    **Values**       **Resources**    **Notes**
+
+  Lattice sizes L  6, 9, 12         CPU only         Must be divisible by
+                                                     3
+
+  Coupling U/t     0.5, 1, 2, 3, 4, \~50 CPU-hours   Coarse scan
+                   6, 8             total            
+
+  Inverse          2L                                Sufficient for
+  temperature β                                      ground state
+
+  Measurement      1000--2000                        Enough for sign
+  sweeps                                             statistics
+  ---------------- ---------------- ---------------- --------------------
+
+3.4 Go/No-Go Criteria
+
+**GREEN (⟨sign⟩ \> 0.3 for all L and U):** Proceed with DQMC for
+Computations 1 and 2. The sign problem is manageable.
+
+**YELLOW (0.1 \< ⟨sign⟩ \< 0.3 at target L):** DQMC is possible but
+expensive. Double the measurement sweep budget. Consider supplementing
+with alternative methods (Section 6).
+
+**RED (⟨sign⟩ \< 0.1 for L ≥ 12):** DQMC is impractical for this model.
+Switch primary method to one of the alternatives in Section 6. Do not
+proceed to Computation 1 via DQMC.
+
+**Key diagnostic:** Plot log⟨sign⟩ vs L at fixed U. If the slope is
+steep and negative, the sign problem is exponential in system size and
+DQMC is fundamentally blocked, not just expensive.
+
+4\. Computation 1: Locate the Quantum Critical Point
+
+4.1 Objective
+
+Determine the critical coupling U_c at which the system transitions from
+a Dirac semimetal (gapless, with Dirac cones at K and K′ points) to a
+gapped insulating phase. This is the semimetal-to-insulator quantum
+phase transition.
+
+4.2 Method: Determinantal Quantum Monte Carlo
+
+Use projective (zero-temperature) or finite-temperature determinantal
+QMC (DQMC). The model has 4 orbitals per site. The interaction is a sum
+of density--density terms, each of which can be decoupled via a discrete
+Hubbard--Stratonovich (HS) transformation.
+
+**Prerequisite:** Phase 0 must return GREEN or YELLOW before proceeding.
+
+4.3 Observables
+
+-   **Single-particle gap Δ(U):** Extracted from the imaginary-time
+    Green's function G(τ) = ⟨c(τ) c†(0)⟩ at the K-point. At large τ:
+    G(τ) \~ e\^{−Δτ}. Plot Δ(U) vs U. The critical point U_c is where Δ
+    → 0.
+
+-   **Antiferromagnetic order parameter:** m² = (1/N²) ∑\_{i,j}
+    (−1)\^{i+j} ⟨S_i · S_j⟩, generalized to 4-orbital SU(4) generators.
+    Non-zero m² in the thermodynamic limit signals the insulating phase.
+
+-   **Density--density correlation at 2k_F:** To distinguish
+    antiferromagnetic from charge-density-wave order.
+
+-   **Quasiparticle residue Z(U):** From the momentum-distribution
+    discontinuity at the Fermi surface. Z → 0 signals breakdown of the
+    quasiparticle picture.
+
+-   **\[NEW\] Energy histogram P(E):** At each U near the expected
+    transition, record the full energy distribution. A double-peaked
+    distribution that sharpens with increasing L signals a first-order
+    transition.
+
+-   **\[NEW\] Binder cumulant U₄:** U₄ = 1 − ⟨m⁴⟩/(3⟨m²⟩²). A negative
+    dip in U₄ as a function of U, sharpening with L, signals
+    first-order. Crossing of U₄ curves for different L at a single point
+    signals second-order and gives U_c.
+
+-   **\[NEW\] Average sign ⟨sign⟩:** Record at every (U, L) point as
+    ongoing diagnostic. If ⟨sign⟩ degrades below 0.1 at target sizes,
+    reassess.
+
+4.4 Parameters \[REVISED\]
+
+  ------------------ --------------------- -------------------------------
+  **Parameter**      **Values**            **Notes**
+
+  Lattice sizes L    6, 9, 12, 15, 18, 24  Must be divisible by 3
+                                           (triangular)
+
+  Coupling U/t       0, 0.5, 1, 1.5, 2,    Steps of 0.5 near U_c, 1.0 far
+                     \..., 8               
+
+  Inverse            2L (projective), or T Must be ≫ 1/Δ to see ground
+  temperature β      = 0.05                state
+
+  Trotter step Δτ    0.05 -- 0.1           Systematic error O(Δτ²); check
+                                           convergence
+
+  Warmup sweeps      200--500              Discard for thermalization
+
+  Measurement sweeps 2000--10000           More at larger L and near U_c
+
+  \[NEW\] Binning    Block sizes 10, 20,   Estimate integrated
+  analysis           50, 100               autocorrelation time τ_int for
+                                           each observable at each (U, L)
+  ------------------ --------------------- -------------------------------
+
+4.5 Finite-Size Scaling
+
+At the critical point, the gap scales as Δ(L) \~ L\^{−z} where z is the
+dynamic critical exponent (z = 1 for Dirac fermions, possibly different
+at the interacting fixed point). Perform data collapse of Δ(U, L) × L\^z
+vs (U − U_c) × L\^{1/ν} to extract U_c, z, and ν simultaneously.
+
+4.6 Transition Order Diagnostic \[NEW\]
+
+Before proceeding to Computation 2, determine the order of the
+transition:
+
+-   **Second-order (continuous):** Binder cumulant curves for different
+    L cross at a single U_c. Gap closes as a power law. Proceed to
+    Computation 2 at U_c.
+
+-   **Weakly first-order:** Energy histogram shows a shallow double
+    peak; Binder cumulant has a mild negative dip. The system may have a
+    walking regime with an approximate CFT. Proceed with caution;
+    anomalous dimensions are approximate.
+
+-   **Strongly first-order:** Energy histogram shows deep double peak
+    sharpening with L; Binder cumulant has a strong negative dip. No CFT
+    exists at the transition. Holographic argument does not apply
+    directly. Consider whether intermediate phases exist between U = 0
+    and the first-order jump.
+
+-   **No transition found for U ≤ 8:** Extend U range. If no transition
+    exists, Axiom 5 has no realization in this model.
+
+4.7 Expected Outcome
+
+Based on analogous models (SU(4) Hubbard on honeycomb, N-flavor Dirac on
+triangular), U_c is expected to be in the range 2--6 in units of the
+hopping amplitude t = 1. The transition is expected to be continuous
+(second-order) into an antiferromagnetic Mott insulator, though a
+first-order transition or an intermediate spin-liquid phase are
+possible.
+
+4.8 Deliverables from Computation 1
+
+\(a\) Plot of single-particle gap Δ(U) vs U for each lattice size L.
+
+\(b\) Finite-size scaling collapse giving U_c, z, and ν with error bars.
+
+\(c\) Average sign ⟨sign⟩ vs U for each L.
+
+\(d\) Order parameter m²(U) vs U for each L.
+
+\(e\) \[NEW\] Binder cumulant U₄(U) for each L with crossing analysis.
+
+\(f\) \[NEW\] Energy histograms P(E) at three U values near U_c for L =
+12, 18, 24.
+
+\(g\) \[NEW\] Integrated autocorrelation times for gap and order
+parameter at U_c.
+
+5\. Computation 2: Operator Spectrum at the Critical Point
+
+5.1 Objective
+
+At U = U_c (from Computation 1), measure the scaling dimensions of
+operators in each spin sector. The critical quantity is the higher-spin
+gap: the difference between the scaling dimension of the lowest spin-3
+operator and the spin-2 stress tensor.
+
+5.2 Why This Matters
+
+In the holographic dual, a boundary operator of spin s and scaling
+dimension Δ corresponds to a bulk field of spin s and mass m² L²_AdS =
+Δ(Δ − d) where d = 3 is the boundary spacetime dimension. The stress
+tensor (s = 2) has Δ = 3 (protected by the Ward identity). If the spin-3
+operator has Δ = 3 + γ with γ large, the corresponding bulk field has
+mass \~ γ/L_AdS and decouples at low energies. γ ≫ 1 means the bulk is
+effectively Einstein gravity. γ = 0 means the bulk is Vasiliev
+higher-spin gravity.
+
+5.3 Lattice Operator Construction \[NEW\]
+
+**This section must be completed before Computation 2 begins.**
+
+The continuum spin-s operators must be realized as lattice operators in
+irreducible representations of the triangular lattice point group (C₆v).
+Incorrect lattice constructions can mix spin sectors, corrupting the
+measurement.
+
+5.3.1 Spin-0 (Scalar)
+
+O₀(x) = c†\_α(x) c_α(x) − 2 (particle density deviation from
+half-filling). This is straightforward---it transforms as the trivial
+representation of C₆v.
+
+5.3.2 Spin-1 (Current)
+
+J_μ(x) = c†\_α(x) γ_μ c_α(x) (conserved current). Δ = 2, protected by
+current conservation. Measure as a consistency check.
+
+5.3.3 Spin-2 (Stress Tensor)
+
+On the lattice, the stress tensor is constructed from the
+nearest-neighbor bond energy operator. The traceless symmetric tensor
+representation of C₆v decomposes into specific irreps. The
+energy--energy correlator ⟨T₀₀(x,τ) T₀₀(0,0)⟩ is a proxy but mixes with
+scalar operators unless the trace subtraction is performed using the
+lattice symmetry. Explicit construction following Assaad and Herbut
+(2013): define the bond operator B_δ(x) = c†(x) D_δ c(x + δ) + h.c. for
+each nearest-neighbor direction δ, then form the traceless combination
+using C₆v Clebsch--Gordan coefficients. Confirm Δ_T = 3 as a consistency
+check.
+
+5.3.4 Spin-3 (THE CRITICAL OBSERVABLE)
+
+**This is the measurement that determines the outcome of the program.**
+
+The lowest spin-3 operator involves second-neighbor finite-difference
+operators (lattice analogues of ∂\_ν ∂\_ρ). On the triangular lattice
+with C₆v symmetry, the spin-3 representation corresponds to the totally
+symmetric traceless rank-3 tensor. This requires:
+
+-   Constructing second-neighbor hopping expectation values along all
+    lattice directions.
+
+-   Symmetrizing over all C₆v-related directions.
+
+-   Subtracting all traces (contractions with δ\_{μν}) to isolate the
+    spin-3 component from spin-1 contamination.
+
+-   Explicit reference: Otsuka, Yunoki, and Sorella (2016) for
+    higher-spin lattice operators on triangular Dirac systems.
+
+At the free Dirac fixed point: Δ₃ = 4 (canonical dimension for a
+twist-2, spin-3 operator in d = 3). At the interacting critical point:
+Δ₃ = 4 + γ₃.
+
+5.3.5 Spin-4 (Secondary)
+
+Constructed analogously with third-neighbor finite differences. Measure
+γ₄. If γ₄ \> γ₃, the tower of higher-spin anomalous dimensions is
+growing, which is the expected pattern for Einstein gravity duals.
+
+5.4 The Higher-Spin Gap
+
+**The higher-spin gap is γ₃ = Δ₃ − 4.** This is the single number that
+determines the outcome.
+
+**γ₃ \> 2:** Strong decoupling. The bulk is effectively Einstein
+gravity. The five-axiom framework succeeds.
+
+**0.5 \< γ₃ \< 2:** Partial decoupling. The bulk has massive but
+non-negligible higher-spin fields.
+
+**γ₃ \< 0.5:** No meaningful decoupling. The bulk is Vasiliev-like.
+
+5.5 Extraction Method
+
+For each operator O\^{(s)}, measure the imaginary-time correlator at
+fixed momentum k = 0: C_s(τ) \~ τ\^{−2Δ_s} for a CFT. This is generally
+cleaner in QMC than the equal-time spatial correlator. Alternatively,
+use the equal-time correlation function C_s(r) = ⟨O\^{(s)}(r)
+O\^{(s)}(0)⟩ and extract Δ_s by fitting log C_s vs log r at intermediate
+distances (larger than lattice spacing, smaller than L/2).
+
+For finite-size scaling: at the critical point on a torus of size L,
+C_s(r) = L\^{−2Δ_s} f_s(r/L) where f_s is a universal scaling function.
+Compute C_s(r) at fixed r/L across multiple system sizes and fit the
+L-dependence.
+
+5.6 U_c Error Propagation \[NEW\]
+
+Computation 2 runs at U = U_c from Computation 1, but U_c has error bars
+δU. Near a critical point, anomalous dimensions vary rapidly with
+coupling. To control this:
+
+-   **Run at three couplings:** U_c − δU, U_c, and U_c + δU.
+
+-   **Compare γ₃:** If γ₃ varies by less than its own statistical error
+    across these three values, the result is robust. If it varies by
+    more, refine U_c with additional Computation 1 runs at finer U
+    spacing near the transition.
+
+-   **Report:** Quote final γ₃ with both statistical error (from QMC
+    sampling) and systematic error (from U_c uncertainty).
+
+5.7 Parameters \[REVISED\]
+
+  ------------------ --------------------- -------------------------------
+  **Parameter**      **Values**            **Notes**
+
+  Coupling U/t       U_c, U_c ± δU         Three-point bracket for error
+                                           propagation
+
+  Lattice sizes L    12, 18, 24, 30, 36    Larger than Comp 1 for scaling
+
+  Inverse            3L -- 4L              Must be in ground state sector
+  temperature β                            
+
+  Measurement sweeps 10000--50000          Correlator signal is weak at
+                                           large r
+
+  \[NEW\] Binning    Block sizes 50, 100,  Autocorrelation time diverges
+  analysis           200, 500              near U_c as τ_auto \~ L\^z
+  ------------------ --------------------- -------------------------------
+
+5.8 Deliverables from Computation 2
+
+\(a\) Correlation functions C_s(r) for s = 0, 1, 2, 3, 4 at U = U_c, for
+each L.
+
+\(b\) Extracted scaling dimensions Δ_s for each s, with error bars.
+
+**(c) The higher-spin gap γ₃ = Δ₃ − 4 with statistical and systematic
+error bars. This is the primary result.**
+
+\(d\) γ₄ if available, to check whether the anomalous dimension tower is
+growing.
+
+\(e\) \[NEW\] Sensitivity analysis: γ₃ at U_c ± δU.
+
+6\. Alternative and Parallel Methods \[NEW\]
+
+These methods should be scoped in parallel with DQMC, not treated as
+afterthoughts. If Phase 0 returns RED, one of these becomes the primary
+method.
+
+6.1 Majorana Decomposition QMC
+
+**When to use:** If the analytical check (Section 3.2) yields a valid
+Majorana representation.
+
+The V₄ = Z₂ × Z₂ structure on 4 orbitals provides three involutions,
+each of which pairs orbitals (1↔2 and 3↔4 under M₁, etc.). If these
+pairings can define Majorana modes such that the HS-decomposed fermion
+determinant factors into real, non-negative pieces, the sign problem is
+solved for all U. This is an analytical result that, once established,
+makes DQMC sign-free by construction. Reference: Li, Jiang, Yao,
+"Solving the fermion sign problem in quantum Monte Carlo simulations by
+Majorana representation," Phys. Rev. B 91, 241117 (2015).
+
+6.2 Conformal Bootstrap
+
+**When to use:** After Computation 1 determines the symmetry class of
+the critical point (assuming continuous transition).
+
+The conformal bootstrap bounds operator dimensions in 2+1 CFTs directly
+from crossing symmetry, unitarity, and global symmetry---no Monte Carlo
+needed. For the K₄ model at a continuous transition with V₄ global
+symmetry, the relevant bootstrap setup is:
+
+-   2+1 dimensions, Z₂ × Z₂ global symmetry, fermionic external
+    operators.
+
+-   Target: upper bound on spin-3 operator dimension Δ₃ given that
+    spin-2 has Δ = 3.
+
+-   Advantage: provides rigorous bounds, not statistical estimates. Can
+    determine whether γ₃ \> 2 is even consistent with unitarity and
+    crossing symmetry for this symmetry class.
+
+-   Limitation: requires knowing the symmetry class, which comes from
+    Computation 1. Best suited as a parallel check once the phase
+    diagram is established.
+
+Key references: Kos, Poland, Simmons-Duffin (2014) for the 3D bootstrap;
+Chester et al. (2020) for fermionic bootstrap.
+
+6.3 Tensor Network / iDMRG on Cylinders
+
+**When to use:** As an independent cross-check, or as primary method if
+DQMC sign problem is severe.
+
+Infinite DMRG (iDMRG) on infinite cylinders with finite circumference
+L_y can access the critical point and extract scaling dimensions from
+the entanglement spectrum (Li--Haldane correspondence). For a 2+1 CFT on
+a cylinder of circumference L_y, the entanglement spectrum levels are
+ξ_i = (2π/L_y) Δ_i.
+
+-   Avoids the sign problem entirely.
+
+-   Limitation: circumferences are limited (typically L_y ≤ 12 for
+    4-orbital models), introducing finite-size effects in one direction.
+
+-   For the K₄ model, the 4-orbital structure gives local Hilbert space
+    dimension 2⁴ = 16 per site. With bond dimension χ \~ 2000--4000,
+    moderate cylinder sizes are accessible.
+
+-   Provides independent cross-validation of U_c and Δ_s from DQMC.
+
+6.4 Exact Diagonalization (Computation 0.5)
+
+**When to use:** Immediately, in parallel with Phase 0. Small-cluster ED
+gives the phase diagram topology at zero cost.
+
+Exact diagonalization on L = 3 (9 sites, 36 orbitals) and L = 6 (36
+sites, 144 orbitals) tori. L = 3 is trivially exact; L = 6 requires
+Lanczos but is feasible. This gives:
+
+-   Ground-state energy E_0(U) and spectral gap for small systems.
+
+-   Qualitative phase diagram: where does the gap open?
+
+-   Order parameter and correlation functions as sanity checks.
+
+-   Sign of the fermion determinant at each (U, auxiliary field
+    configuration) for small systems---direct empirical input for Phase
+    0.
+
+7\. Software and Implementation
+
+7.1 Recommended Packages
+
+-   **ALF (Algorithms for Lattice Fermions):** Open-source Fortran/MPI
+    package for DQMC. Supports multi-orbital Hubbard models on arbitrary
+    lattices. Website: alf.physik.uni-wuerzburg.de. The K₄ model can be
+    implemented as a 4-orbital model on a triangular lattice.
+
+-   **QUEST (QUantum Electron Simulation Toolbox):** Alternative DQMC
+    package. C/Fortran with MPI.
+
+-   **SmoQyDQMC:** Julia-based DQMC with GPU support. May offer the
+    fastest path to GPU-accelerated runs for this model.
+
+-   **ITensor / TeNPy:** For iDMRG alternative method (Section 6.3).
+
+-   **SDPB:** For conformal bootstrap (Section 6.2).
+
+For custom implementations, key references: Blankenbecler, Scalapino,
+Sugar (1981) for the BSS algorithm; Assaad (2002) for projective QMC;
+Loh et al. (1990) for sign problem analysis.
+
+7.2 GPU Acceleration
+
+The bottleneck in DQMC is repeated inversion of (N_sites × N_orb)
+matrices. For L = 24: matrix size 2304 × 2304. For L = 36: matrix size
+5184 × 5184. GPU-accelerated dense linear algebra (cuBLAS, cuSOLVER)
+provides 10--50x speedup over CPU.
+
+7.3 Estimated Resources \[REVISED\]
+
+  ---------------- --------------- --------------- ------------ ------------
+  **Phase**        **GPU-hours**   **Hardware**    **Wall       **Notes**
+                                                   time**       
+
+  Phase 0: Sign    0 (CPU only)    Any workstation \< 1 day     \[NEW\]
+  diagnostic                                                    
+
+  Comp 0.5: Exact  0 (CPU only)    Any workstation \< 1 day     \[NEW\]
+  diag                                                          
+
+  Comp 1: Find U_c 200--800        2--4 A100 GPUs  2--5 days    Revised up
+
+  Comp 2: Operator 2000--5000      4--16 A100 GPUs 5--15 days   Revised up
+  spectrum                                                      
+  ---------------- --------------- --------------- ------------ ------------
+
+**Total estimated budget: 2,200--5,800 A100 GPU-hours** (previously
+600--2,500). The increase accounts for autocorrelation time divergence
+near U_c, the three-point U_c bracket for error propagation, and the
+larger sweep counts needed for reliable spin-3 correlator extraction.
+
+**Autocorrelation accounting:** Near U_c, autocorrelation times diverge
+as τ_auto \~ L\^z. At L = 36 with z ≈ 1, effective independent samples
+are reduced by a factor of \~36 relative to naive sweep count. The sweep
+budgets above already account for this, but the binning analysis is
+essential to verify.
+
+8\. Execution Sequence \[NEW\]
+
+The computations have a strict dependency structure:
+
+  ----------- ------------------- ------------------ ------------ ------------
+  **Phase**   **Task**            **Prerequisite**   **Blocks**   **Can
+                                                                  parallel**
+
+  **0**       Sign diagnostic     None               Comp 1, 2    Comp 0.5
+
+  **0.5**     Exact               None               Nothing      Phase 0
+              diagonalization                                     
+
+  **A**       Majorana analysis   None               Nothing      Phase 0, 0.5
+
+  **1**       Find U_c +          Phase 0            Comp 2       Lattice ops
+              transition order    GREEN/YELLOW                    
+
+  **B**       Lattice operator    None (analytical)  Comp 2       Comp 1
+              construction                                        
+
+  **2**       Operator spectrum   Comp 1 + Phase B   ---          Bootstrap
+              at U_c                                              
+
+  **C**       Conformal bootstrap Symmetry class     ---          Comp 2
+                                  from Comp 1                     
+  ----------- ------------------- ------------------ ------------ ------------
+
+**Critical path:** Phase 0 → Computation 1 → Computation 2. Total wall
+time on the critical path: 7--21 days assuming GPU availability.
+
+**Parallel work (no GPU needed):** Majorana decomposition analysis
+(Phase A), exact diagonalization (Phase 0.5), and lattice operator
+construction (Phase B) can all begin immediately and require only a
+workstation and analytical effort.
+
+9\. Interpretation Guide
+
+  --------------- ------------------------- --------------------------------
+  **γ₃ Value**    **Bulk Dual**             **Implication for Program**
+
+  **γ₃ \> 2**     Effectively Einstein      Five-axiom framework succeeds
+                  gravity (massive higher   
+                  spins)                    
+
+  **0.5 \< γ₃ \<  Modified gravity with     Partial success; sixth axiom may
+  2**             light higher-spin fields  be needed
+
+  **γ₃ \< 0.5**   Vasiliev higher-spin      Framework gives geometry, not
+                  gravity                   Einstein
+
+  **No U_c        No interacting critical   Axiom 5 has no K₄ realization;
+  found**         point                     terminal
+
+  **First-order   No CFT at transition      Holographic argument needs
+  transition**                              modification; check walking
+                                            regime
+
+  **Sign problem  (Indeterminate by this    Switch to alternative methods
+  blocks DQMC**   method)                   (Section 6)
+  --------------- ------------------------- --------------------------------
+
+Any of these outcomes is a clean result. The framework does not require
+γ₃ \> 2 to be valuable---it has already derived emergent 3+1 geometry
+from informational axioms. The question is whether the geometry has the
+right field content.
+
+10\. Complete Program Status
+
+For reference: the full status of the informational asymmetry program as
+of this document.
+
+  ---------------------------- -------------- ------------------------------
+  **Result**                   **Status**     **Method**
+
+  Axioms (1)--(3) → K₄, V₄,    **PROVED**     Exhaustive enumeration +
+  2+1 Dirac, C = −2                           algebra
+
+  Six-face equivalence:        **PROVED**     All candidates tested
+  quadratic closure ⇔ K₄                      
+
+  3+1 impossible from matching **PROVED**     Order-5 obstruction (Z₅ has no
+  algebra                                     involutions)
+
+  V₄ = (Z/8Z)\* exact          **PROVED**     Direct algebraic verification
+  isomorphism                                 
+
+  Four arithmetic gaps         **PROVED**     Each proved impossible
+  terminal                                    
+
+  Function field bridge (Weil  **PROVED**     Polynomial/compact domain
+  ↔ lattice)                                  
+
+  d_eff → 3 for finite         **COMPUTED**   Conditional entropy
+  subsystem observers                         
+
+  Fisher metric isotropic      **COMPUTED**   400-point sampling
+  (g_EE/g_kk = 0.985)                         
+
+  First law of entanglement    **VERIFIED**   δS/δS_pred = 1.0004
+  verified                                    
+
+  Bisognano--Wichmann (K ∝ x)  **VERIFIED**   R² = 1.000
+  verified                                    
+
+  Higher-spin decoupling at K₄ **OPEN**       This document
+  critical point                              
+  ---------------------------- -------------- ------------------------------
+
+> *Three informational axioms uniquely force a 2+1 topological phase
+> with K₄ internal space, V₄ matching algebra, and Chern number C = −2.
+> This is proved. A finite observer in this structure perceives
+> effective dimension 3, with an isotropic Fisher metric, verified
+> entanglement first law, and Bisognano--Wichmann locality. This is
+> computed. The five-axiom framework maps a concrete, step-by-step path
+> from these informational principles to 3+1 Einstein gravity, with
+> three of four steps closed. The single remaining step---whether strong
+> coupling at the K₄ quantum critical point decouples higher-spin
+> fields---is defined in this document.*

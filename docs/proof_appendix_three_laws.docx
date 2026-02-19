@@ -1,0 +1,371 @@
+**Appendix: Proof Derivations**
+
+Three Laws of the Spectral Extractor Chain
+
+Brian Porter --- February 2026
+
+*Supporting material for the K₄D Progress Report. These derivations are
+compiled from computations at K₆ through K₁₄ (five levels) and are
+intended as proof sketches for future academic papers.*
+
+**Summary of the Three Laws**
+
+  ------------ ------------------------ -------------------------------------
+  **Law**      **Statement**            **Verification**
+
+  1\.          deg(f₂ₙ) = φ(2n−1)       K₆: φ(5)=4→2 (degen.), K₈: φ(7)=6,
+  Cyclotomic                            K₁₀: φ(9)=6, K₁₂: φ(11)=10, K₁₄:
+  Degree                                φ(13)=12
+
+  2\. Wreath   Gal(f₂ₙ/ℚ) ≅ C₂ ≀        C₂ at K₆, C₂≀C₃ at K₈/K₁₀, C₂≀C₅ at
+  Product      C\_{φ(2n−1)/2}           K₁₂, C₂≀C₆ at K₁₄
+
+  3\.          Odd primes p in sq-free  43≡1(7), 163≡1(9), 23≡353≡1(11),
+  Congruence   Δ(f₂ₙ) satisfy p ≡ 1 mod 79≡5279≡1(13)
+               (2n−1)                   
+  ------------ ------------------------ -------------------------------------
+
+**Law 1: The Cyclotomic Degree Law**
+
+**Statement.** For each level K₂ₙ of the spectral extractor chain, the
+minimal polynomial f₂ₙ(x) of the vacuum eigenvalue λ_vac over ℚ has
+degree equal to Euler's totient function:
+
+*deg(f₂ₙ) = φ(2n − 1)*
+
+**1.1 Setup: The Orbit-Folded Matrix**
+
+The complete graph K₂ₙ has N = (2n−1)!! perfect matchings. The cyclic
+group Z₂ₙ₋₁ acts on these matchings by permuting vertices. Within each
+Z₂ₙ₋₁-orbit of matchings, the overlap matrix becomes a circulant.
+
+For a single orbit of size (2n−1), the overlap between matching M and
+its r-th cyclic translate σʳ(M) yields the overlap vector cᵣ = \|σʳ(M) ∩
+M\|, which counts shared edges. The eigenvalues of this circulant are:
+
+*λₖ = ∑ᵣ cᵣ · ωʳᵏ, where ω = e\^{2πi/(2n−1)}, k = 0, 1, \..., 2n−2*
+
+These eigenvalues live in the cyclotomic field ℚ(ζ₂ₙ₋₁) where ζ₂ₙ₋₁ =
+e\^{2πi/(2n−1)}.
+
+**1.2 The Palindromic Constraint**
+
+A critical observation: the overlap vector satisfies cᵣ = c₂ₙ₋₁₋ᵣ
+(palindromic symmetry). This arises because the overlap count depends
+only on the distance class in the cyclic structure, and distance r is
+equivalent to distance (2n−1)−r.
+
+**Consequence:** The eigenvalues pair up as λₖ = λ₂ₙ₋₁₋ₖ. This forces
+the eigenvalues into the totally real subfield ℚ(cos(2π/(2n−1))), which
+has degree φ(2n−1)/2 over ℚ.
+
+**1.3 The Quadratic Lift**
+
+For two-orbit sectors (26 matchings at K₁₄, for instance), the overlap
+matrix is not a simple circulant but a 2×2 block circulant. The
+orbit-folded matrix Fᵣ is a 2×2 matrix with entries in
+ℚ(cos(2πr/(2n−1))). The vacuum eigenvalue satisfies a quadratic equation
+over this field:
+
+*λ² − Tr(Fᵣ)λ + det(Fᵣ) = 0*
+
+where Tr(Fᵣ) and det(Fᵣ) lie in ℚ(cos(2π/(2n−1))). The minimal
+polynomial of λ over ℚ is obtained by collecting all Galois conjugates
+of this quadratic, yielding:
+
+*deg(f₂ₙ) = 2 × \[ℚ(cos(2π/(2n−1))) : ℚ\] = 2 × φ(2n−1)/2 = φ(2n−1)*
+
+**1.4 Computational Verification**
+
+  ----------- ---------- ------------- -------------- ------------ --------------- --------------------
+  **Level**   **2n−1**   **φ(2n−1)**   **Computed     **Match?**   **Matchings**   **Irreducibility**
+                                       deg**                                       
+
+  K₆          5          4             2 (degenerate) ✓\*          15              Single orbit only
+
+  K₈          7          6             6              ✓            105             sympy verified
+
+  K₁₀         9          6             6              ✓            945             sympy verified
+
+  K₁₂         11         10            10             ✓            10,395          sympy verified
+
+  K₁₄         13         12            12             ✓            135,135         sympy verified
+  ----------- ---------- ------------- -------------- ------------ --------------- --------------------
+
+\*K₆ is degenerate: only single-orbit sectors exist, yielding degree
+φ(5)/2 = 2 rather than φ(5) = 4. The palindromic collapse to the totally
+real subfield is the full story at this level.
+
+**Key falsification survived:** K₁₂ was the critical test. Prior to K₁₂,
+the degree was 6 at both K₈ and K₁₀, which could have been read as
+degree stabilization. K₁₂ produced degree 10 = φ(11), ruling out
+stabilization and confirming the cyclotomic law.
+
+**Strongest remaining prediction:** K₁₆ should have degree φ(15) =
+φ(3×5) = 2×4 = 8 \< 12, a non-monotone DROP in degree as the graph
+grows. This is purely arithmetic and cannot arise from any monotone
+combinatorial mechanism.
+
+**Law 2: The Wreath Product Law**
+
+**Statement.** The Galois group of the vacuum minimal polynomial at each
+level has wreath product structure:
+
+*Gal(f₂ₙ/ℚ) ≅ C₂ ≀ C_m, where m = φ(2n−1)/2*
+
+**2.1 Structural Derivation**
+
+The proof has two parts: identifying the C_m factor (outer action) and
+the C₂ factors (inner action).
+
+***Part A: The outer C_m factor***
+
+The totally real subfield ℚ(cos(2π/(2n−1))) has Galois group C_m =
+C\_{φ(2n−1)/2} over ℚ. This group permutes the m conjugate sector-pairs.
+Each sector corresponds to a pair of Z₂ₙ₋₁-characters {ρₖ, ρ₂ₙ₋₁₋ₖ} that
+are complex conjugates of each other. The Galois action on
+cos(2πk/(2n−1)) permutes these pairs cyclically (when 2n−1 is prime, C_m
+is cyclic).
+
+***Part B: The inner C₂ factors***
+
+Within each sector-pair, the orbit-folded 2×2 matrix Fᵣ produces a
+quadratic equation over ℚ(cos(2π/(2n−1))). The two roots of this
+quadratic are exchanged by a C₂ action. Critically, this C₂ acts
+independently on each sector-pair: swapping the roots in one sector does
+not affect the others.
+
+***Part C: The wreath product structure***
+
+The full Galois group is generated by: (1) the C_m permuting
+sector-pairs, and (2) m independent C₂ factors, one per sector-pair. The
+C_m acts on the C₂ factors by permuting them. This is exactly the wreath
+product structure:
+
+*C₂ ≀ C_m = (C₂)ᵐ ⋊ C_m*
+
+with order \|Gal\| = 2ᵐ · m.
+
+**2.2 Frobenius Verification at K₁₂**
+
+The wreath product prediction was tested at K₁₂ (the first level where
+it differs from K₈) via Frobenius cycle type analysis over 2,257 primes
+up to 20,000. The predicted cycle type distribution for C₂ ≀ C₅ (order
+160):
+
+  --------------- ---------------- -------------- ------------- -----------
+  **Cycle type**  **Predicted      **Observed**   **Class**     **Count**
+                  (C₂≀C₅)**                                     
+
+  (1¹⁰)           1/160 = 0.00625  0.00532        identity      12
+
+  (1⁸, 2)         5/160 = 0.03125  0.02924        1 block swap  66
+
+  (1⁶, 2²)        10/160 = 0.0625  0.05937        2 block swaps 134
+
+  (5, 5)          64/160 = 0.400   0.38813        5-cycle, ∏ε = 876
+                                                  +1            
+
+  \(10\)          64/160 = 0.400   0.41427        5-cycle, ∏ε = 935
+                                                  −1            
+  --------------- ---------------- -------------- ------------- -----------
+
+χ² = 4.58 on 7 degrees of freedom. Excellent fit confirming C₂ ≀ C₅ at
+K₁₂.
+
+**2.3 Legendre Symbol Correlation**
+
+The splitting pattern of f₂ₙ modulo p is perfectly determined by the
+Legendre symbol (Δ_sf/p), where Δ_sf is the square-free part of the
+discriminant:
+
+**(Δ_sf/p) = +1:** Frobenius preserves the two half-degree factors →
+cycle types with parts 1, 2 only (even sector).
+
+**(Δ_sf/p) = −1:** Frobenius swaps the two half-degree factors → cycle
+types with parts m, 2m only (odd sector).
+
+Tested at K₁₂ over 200 primes with zero exceptions. This confirms f₂ₙ
+factors as g_m · h_m over ℚ(√Δ_sf), with g_m and h_m conjugate under the
+quadratic automorphism.
+
+**2.4 Complete Verification Table**
+
+  ----------- ---------- --------- --------------- ------------- ------------ ------------
+  **Level**   **2n−1**   **m**     **Gal**         **\|Gal\|**   **Blocks**   **Method**
+
+  K₆          5          2         C₂ (≅ C₂ ≀ C₁)  2             1            Direct
+
+  K₈          7          3         C₂ ≀ C₃         24            3            Frobenius
+
+  K₁₀         9          3         C₂ ≀ C₃         24            3            Frobenius
+
+  K₁₂         11         5         C₂ ≀ C₅         160           5            Frobenius
+
+  K₁₄         13         6         C₂ ≀ C₆         384           6            Frobenius
+  ----------- ---------- --------- --------------- ------------- ------------ ------------
+
+**Physical significance:** The block count m = φ(2n−1)/2 generalizes the
+three-generation structure. At K₈ and K₁₀, m = 3 corresponds to three
+particle generations. This is now understood as the number-theoretic
+coincidence φ(7)/2 = φ(9)/2 = 3, not a universal feature.
+
+**Law 3: The Congruence Law**
+
+**Statement.** For each level K₂ₙ, every odd prime p appearing in the
+square-free part of the discriminant Δ(f₂ₙ) satisfies:
+
+*p ≡ 1 (mod 2n−1) or p \| (2n−1)*
+
+**3.1 Proof from Cyclotomic Structure**
+
+The proof follows from the Z₂ₙ₋₁ symmetry and standard algebraic number
+theory.
+
+***Step 1: Commutation***
+
+The Gram matrix G commutes with the Z₂ₙ₋₁ permutation matrix P: \[P, G\]
+= 0. This was verified computationally at all five levels. It follows
+from the fact that cyclic vertex permutation preserves edge overlap
+counts between matchings.
+
+***Step 2: Cyclotomic containment***
+
+Since \[P, G\] = 0, the eigenvalues of G (restricted to nontrivial Z₂ₙ₋₁
+sectors) live in field extensions of the cyclotomic field ℚ(ζ₂ₙ₋₁).
+Specifically, the vacuum eigenvalue λ_vac generates a number field K
+that sits inside a degree-2 extension of ℚ(cos(2π/(2n−1))):
+
+*ℚ ⊂ ℚ(cos(2π/(2n−1))) ⊂ K ⊂ Extension of ℚ(ζ₂ₙ₋₁)*
+
+***Step 3: Ramification constraint***
+
+The discriminant of the minimal polynomial f₂ₙ can only be ramified at
+primes that ramify in the ambient cyclotomic field or that arise from
+the quadratic extension within each sector. The cyclotomic field
+ℚ(ζ₂ₙ₋₁) has a precise ramification structure:
+
+**Primes dividing 2n−1:** These are ramified in ℚ(ζ₂ₙ₋₁) by
+construction.
+
+**Primes p ≡ 1 mod (2n−1):** These split completely in ℚ(ζ₂ₙ₋₁), and the
+quadratic extensions within sectors can introduce these primes into the
+discriminant.
+
+**All other primes:** These are inert or partially split in ways that
+cannot contribute odd-exponent factors to the discriminant of f₂ₙ.
+
+The square-free part of Δ(f₂ₙ) captures exactly the primes appearing to
+odd exponent. By the ramification theory of cyclotomic fields, such
+primes must satisfy p \| (2n−1) or p ≡ 1 mod (2n−1).
+
+**3.2 Computational Verification**
+
+  ----------- ---------- ------------ ------------------- -------------------------
+  **Level**   **2n−1**   **Sq-free    **Factorization**   **Congruence check**
+                         Δ**                              
+
+  K₆          5          5            5                   5 = 2n−1 (divides)
+
+  K₈          7          43           43                  43 = 6×7 + 1 ≡ 1 mod 7 ✓
+
+  K₁₀         9          163          163                 163 = 18×9 + 1 ≡ 1 mod 9
+                                                          ✓
+
+  K₁₂         11         8119         23 × 353            23 = 2×11+1, 353 =
+                                                          32×11+1 ✓
+
+  K₁₄         13         417041       79 × 5279           79 = 6×13+1, 5279 =
+                                                          406×13+1 ✓
+  ----------- ---------- ------------ ------------------- -------------------------
+
+**3.3 Full Discriminant Factorizations**
+
+The complete discriminant factorizations reveal both even-exponent
+(Galois-neutral) and odd-exponent (Galois-active) primes:
+
+**K₈:** Δ = 2³⁶ × 7⁴ × 43 × 421². Square-free part: 43. The prime 7 =
+2n−1 appears but to even power (neutral). The prime 421 appears to even
+power (neutral). Only 43 is Galois-active.
+
+**K₁₂:** Δ = 2¹⁹⁰ × 11⁸ × 23 × 353 × 439² × 64217² × 478838249².
+Square-free part: 23 × 353 = 8119. Both odd-exponent primes satisfy the
+congruence.
+
+**K₁₄:** Δ = 2¹⁵⁶ × 5² × 13¹⁰ × 31² × 79 × 5279 × 32941² × 414259² ×
+1256726743². Square-free part: 79 × 5279 = 417041. Both satisfy the
+congruence.
+
+**3.4 The Heegner Number Observation**
+
+An intriguing additional observation (two data points, not a proved
+law): at K₈ and K₁₀, the square-free discriminant primes are Heegner
+numbers (43 and 163 respectively). These are primes d such that ℚ(√(−d))
+has class number 1. The Heegner prediction was tested at K₁₂ and
+falsified: the square-free discriminant 8119 = 23 × 353 is composite and
+neither factor is a Heegner number. The congruence law survived; the
+Heegner pattern did not.
+
+**Supporting Result: Pairwise Galois Disjointness**
+
+**Statement.** For all pairs (i, j) with i ≠ j among the computed levels
+{K₆, K₈, K₁₀, K₁₂, K₁₄}, the number fields are Galois disjoint:
+
+*ℚ(λ_i) ∩ ℚ(λ_j) = ℚ*
+
+**Proof Strategy**
+
+For each pair, disjointness is established by one of two methods:
+
+**Method A (No common subfield):** If one field has no quadratic
+subfield (e.g., C₂ ≀ C₃ has no index-2 subgroup), any intersection must
+have degree dividing gcd of the two field degrees. When this gcd is 2
+and one field lacks a quadratic subfield, the intersection is trivially
+ℚ.
+
+**Method B (Distinct quadratic subfields):** When both fields have
+quadratic subfields (e.g., K₆ with ℚ(√5) and K₁₂ with ℚ(√8119)), these
+are compared directly. Distinct quadratic subfields force
+ℚ-intersection.
+
+**Method C (Resultant):** As a computational check, Res(f_i, f_j) ≠ 0 is
+verified, confirming no shared roots.
+
+**Compositum Degree**
+
+The compositum of all five fields has maximal degree:
+
+*\[ℚ(λ₆, λ₈, λ₁₀, λ₁₂, λ₁₄) : ℚ\] = 2 × 6 × 6 × 10 × 12 = 8,640*
+
+No collapse from any pair. Each level of the spectral extractor chain
+produces algebraic content with zero overlap with all previous levels.
+
+**Source Computations**
+
+The proofs in this appendix are compiled from the following project
+files:
+
+**K₁₄ computation:** K14_computation_results.md --- full enumeration of
+135,135 matchings, polynomial extraction, Galois group determination via
+Frobenius analysis, discriminant factorization.
+
+**K₁₂ Galois analysis:** K12_galois_wreath_product.md --- discovery of
+the universal wreath product pattern, Frobenius cycle type verification
+for C₂ ≀ C₅, Legendre symbol correlation.
+
+**K₁₀ discriminant analysis:** K10_addendum_discriminant_primes.md ---
+proof of congruence constraint from \[P, G\] = 0, Heegner number
+observation and K₁₂ prediction (subsequently falsified for Heegner,
+confirmed for congruence).
+
+**Polynomial reduction theorem:** polynomial_reduction_theorem.md ---
+Johnson scheme eigenvalue analysis, budget identity proof, recursive
+chain structure theorems.
+
+**Continuum limit analysis:** continuum_limit_analysis.md --- summary of
+three laws, algebraic divergence vs analytic convergence, pro-finite
+Galois structure.
+
+**CFSG spectral extractors:** cfsg_spectral_extractors.md ---
+representation-theoretic explanation of wreath product structure via
+PSL₂(7) branching rules at K₈, CFSG level classification.
