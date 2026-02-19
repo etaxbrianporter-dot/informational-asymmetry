@@ -5,352 +5,304 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Informational Asymmetry Program</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #1a1a1a;
-  --paper: #fafaf7;
-  --accent: #8b2500;
-  --accent-light: #c4532210;
-  --mid: #6b6b6b;
-  --rule: #d4d0c8;
-  --code-bg: #f0ede6;
-  --green: #2d6a2e;
-  --amber: #a67c00;
-  --serif: 'EB Garamond', Georgia, serif;
-  --sans: 'Source Sans 3', system-ui, sans-serif;
+  --bg: #ffffff;
+  --bg2: #f6f5f1;
+  --bg3: #efeee8;
+  --surface: #f9f8f5;
+  --ink: #1c1c1f;
+  --ink2: #5a5860;
+  --ink3: #8a8890;
+  --accent: #b33d1a;
+  --accent2: #d4501f;
+  --accent-bg: #fdf5f2;
+  --green: #1a7a42;
+  --green-bg: #eef7f1;
+  --amber: #9a6e00;
+  --amber-bg: #fdf8ec;
+  --red: #b33d3d;
+  --red-bg: #fdf2f2;
+  --blue: #2c5ea0;
+  --blue-bg: #f0f4fa;
+  --rule: #e2e0d8;
+  --rule2: #d0cec4;
+  --serif: 'Crimson Pro', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Consolas', monospace;
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
+::selection { background: var(--accent); color: #fff; }
 body {
   font-family: var(--sans);
   color: var(--ink);
-  background: var(--paper);
+  background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-
-/* ── Layout ── */
-.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
-.narrow { max-width: 720px; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2.5rem; }
 
 /* ── Header ── */
 header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
-  padding: 3rem 0 2rem;
 }
 header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: flex; justify-content: space-between; align-items: center; height: 56px;
 }
 .site-title {
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-  text-decoration: none;
+  font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+  color: var(--ink); text-decoration: none; letter-spacing: 0.01em;
 }
-.site-title:hover { color: var(--accent); }
-nav { display: flex; gap: 1.5rem; }
+.site-title span { color: var(--accent); }
+nav { display: flex; gap: 1.75rem; }
 nav a {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--mid);
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  padding-bottom: 2px;
-  border-bottom: 1.5px solid transparent;
-  transition: all 0.15s;
+  font-size: 0.8rem; font-weight: 500; color: var(--ink3);
+  text-decoration: none; letter-spacing: 0.02em; transition: color 0.15s;
 }
-nav a:hover, nav a.active {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
-}
+nav a:hover, nav a.active { color: var(--ink); }
 
 /* ── Hero ── */
 .hero {
-  padding: 4rem 0 3rem;
+  padding: 8rem 0 4rem;
+  background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
   border-bottom: 1px solid var(--rule);
 }
-.hero h1 {
-  font-family: var(--serif);
-  font-size: 2.8rem;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  max-width: 680px;
-  margin-bottom: 1.5rem;
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
 }
-.hero .subtitle {
-  font-size: 1.15rem;
-  color: var(--mid);
-  max-width: 600px;
-  line-height: 1.7;
+.hero-text h1 {
+  font-family: var(--serif); font-size: 3rem; font-weight: 400;
+  line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.5rem;
+  color: var(--ink);
 }
-.hero .equation {
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-style: italic;
-  color: var(--accent);
-  margin: 2rem 0;
-  padding: 1.25rem 2rem;
-  background: var(--accent-light);
-  border-left: 3px solid var(--accent);
-  display: inline-block;
+.hero-text h1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+.hero-text .subtitle {
+  font-size: 1.05rem; color: var(--ink2); line-height: 1.75; max-width: 480px;
 }
-.hero .byline {
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: var(--mid);
-}
-.hero .byline strong { color: var(--ink); font-weight: 600; }
 
-/* ── Verification Banner ── */
-.verify-banner {
-  background: #f7f7f2;
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 1rem 1.5rem;
-  margin: 2.5rem 0;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-size: 0.9rem;
+/* ── Graph Cards ── */
+.graph-panel { display: flex; flex-direction: column; gap: 0.75rem; }
+.graph-row { display: flex; gap: 0.75rem; justify-content: center; }
+.graph-card {
+  background: var(--bg); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 1.25rem; text-align: center; flex: 1;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
+.graph-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.graph-card svg { display: block; margin: 0 auto 0.75rem; }
+.graph-label {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem;
+}
+.graph-desc { font-size: 0.75rem; color: var(--ink2); line-height: 1.4; }
+.graph-edge { stroke: #d5d3cc; stroke-width: 1.5; }
+.graph-match { stroke-width: 2.5; stroke-linecap: round; }
+.graph-node { fill: var(--ink); }
+.match-1 { stroke: var(--accent); }
+.match-2 { stroke: var(--green); }
+.match-3 { stroke: var(--blue); }
+
+/* ── Verification Strip ── */
+.verify-strip {
+  border-bottom: 1px solid var(--rule);
+  background: var(--green-bg); padding: 1.75rem 0;
+}
+.verify-grid {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 2rem; align-items: center;
+}
+.verify-status { display: flex; align-items: center; gap: 0.75rem; }
 .verify-dot {
-  width: 10px; height: 10px;
-  background: var(--green);
-  border-radius: 50%;
-  flex-shrink: 0;
-  animation: pulse 2s ease-in-out infinite;
+  width: 10px; height: 10px; background: var(--green); border-radius: 50%;
+  box-shadow: 0 0 8px rgba(26,122,66,0.3);
+  animation: pulse 2.5s ease-in-out infinite;
 }
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
-.verify-banner code {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  background: var(--code-bg);
-  padding: 0.15em 0.4em;
-  border-radius: 3px;
+.verify-number {
+  font-family: var(--mono); font-size: 1.6rem; font-weight: 700;
+  color: var(--green); line-height: 1;
 }
+.verify-label {
+  font-size: 0.72rem; color: var(--ink2); text-transform: uppercase; letter-spacing: 0.06em;
+}
+.verify-cmd {
+  font-family: var(--mono); font-size: 0.78rem; color: var(--ink2);
+  padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--rule); border-radius: 4px;
+}
+.verify-cmd span { color: var(--green); }
+.verify-link {
+  font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: 500;
+}
+.verify-link:hover { text-decoration: underline; }
+
+/* ── Equation Banner ── */
+.equation-banner {
+  padding: 2.5rem 0; text-align: center; border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+.equation-main {
+  font-family: var(--serif); font-size: 1.75rem; font-weight: 300;
+  font-style: italic; color: var(--ink); margin-bottom: 0.4rem;
+}
+.equation-main .hl { color: var(--accent); font-weight: 500; }
+.equation-note { font-size: 0.82rem; color: var(--ink3); }
 
 /* ── Sections ── */
-section { padding: 3rem 0; }
+section { padding: 4rem 0; }
 section + section { border-top: 1px solid var(--rule); }
-
+.section-label {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;
+}
 h2 {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.01em;
+  font-family: var(--serif); font-size: 1.9rem; font-weight: 500;
+  margin-bottom: 1.25rem; letter-spacing: -0.01em; color: var(--ink);
 }
 h3 {
-  font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--mid);
-  margin-bottom: 1rem;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3);
+  margin-bottom: 0.75rem; margin-top: 2.5rem;
 }
-
-p { margin-bottom: 1rem; max-width: 65ch; }
-p.lead { font-size: 1.1rem; line-height: 1.7; }
-
-/* ── Status Table ── */
-.status-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-  margin: 1.5rem 0;
-}
-.status-table th {
-  text-align: left;
-  font-weight: 600;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--mid);
-  padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--rule);
-}
-.status-table td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #eae7e0;
-  vertical-align: top;
-}
-.status-table tr:hover td { background: #f5f3ee; }
-
-.badge {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 0.2em 0.6em;
-  border-radius: 3px;
-}
-.badge-proved { background: #e8f5e9; color: var(--green); }
-.badge-predicted { background: #fff3e0; color: var(--amber); }
-.badge-open { background: #fce4ec; color: #b71c1c; }
-.badge-resolved { background: #e8f5e9; color: var(--green); }
-.badge-computed { background: #e3f2fd; color: #1565c0; }
-
-/* ── Paper Cards ── */
-.papers-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  margin: 1.5rem 0;
-}
-.paper-card {
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 1.5rem 2rem;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.paper-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-.paper-num {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-}
-.paper-card h4 {
-  font-family: var(--serif);
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.paper-card p {
-  font-size: 0.9rem;
-  color: var(--mid);
-  margin-bottom: 0.75rem;
-}
-.paper-links { display: flex; gap: 1rem; }
-.paper-links a {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--accent);
-  text-decoration: none;
-}
-.paper-links a:hover { text-decoration: underline; }
-
-/* ── Working Docs List ── */
-.doc-list { list-style: none; margin: 1.5rem 0; }
-.doc-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid #eae7e0;
-  font-size: 0.9rem;
-}
-.doc-list .doc-date {
-  font-family: var(--mono);
-  font-size: 0.75rem;
-  color: var(--mid);
-  flex-shrink: 0;
-  width: 80px;
-}
-.doc-list a {
-  color: var(--ink);
-  text-decoration: none;
-  font-weight: 500;
-}
-.doc-list a:hover { color: var(--accent); }
-.doc-list .doc-desc {
-  color: var(--mid);
-  font-weight: 400;
-}
-
-/* ── Code Block ── */
-.code-block {
-  background: #2b2b2b;
-  color: #e0e0e0;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  line-height: 1.6;
-  padding: 1.5rem 2rem;
-  border-radius: 6px;
-  overflow-x: auto;
-  margin: 1.5rem 0;
-}
-.code-block .comment { color: #7a7a7a; }
-.code-block .string { color: #98c379; }
-.code-block .number { color: #d19a66; }
+h3:first-of-type { margin-top: 1.5rem; }
+p { margin-bottom: 1rem; max-width: 65ch; color: var(--ink2); }
+p.lead { font-size: 1.05rem; line-height: 1.75; }
 
 /* ── Three Layers ── */
 .layers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin: 1.5rem 0;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); border-radius: 8px;
+  overflow: hidden; margin: 2rem 0;
 }
-.layer {
-  padding: 1.5rem;
-  border-radius: 4px;
+.layer { background: var(--bg); padding: 2rem; transition: background 0.2s; }
+.layer:hover { background: var(--bg2); }
+.layer-num {
+  font-family: var(--mono); font-size: 0.63rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.75rem;
 }
-.layer-1 { background: #f0ede6; border-left: 3px solid var(--green); }
-.layer-2 { background: #f0ede6; border-left: 3px solid #1565c0; }
-.layer-3 { background: #f0ede6; border-left: 3px solid var(--amber); }
 .layer h4 {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 500;
+  margin-bottom: 0.75rem; color: var(--ink);
 }
-.layer-1 h4 { color: var(--green); }
-.layer-2 h4 { color: #1565c0; }
-.layer-3 h4 { color: var(--amber); }
-.layer p { font-size: 0.85rem; margin-bottom: 0; }
+.layer p { font-size: 0.85rem; line-height: 1.6; color: var(--ink2); }
 .layer .params {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: var(--mid);
+  font-family: var(--mono); font-size: 0.72rem; color: var(--green);
+  margin-top: 0.75rem; font-weight: 600;
+}
+
+/* ── Status Tables ── */
+.status-table {
+  width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 0.75rem 0 2rem;
+}
+.status-table th {
+  text-align: left; font-weight: 600; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--ink3); padding: 0.65rem 1rem;
+  border-bottom: 2px solid var(--rule);
+}
+.status-table td {
+  padding: 0.65rem 1rem; border-bottom: 1px solid var(--rule); color: var(--ink2);
+}
+.status-table td:first-child { color: var(--ink); font-weight: 500; }
+.status-table tr:hover td { background: var(--bg2); }
+.badge {
+  display: inline-block; font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.04em; padding: 0.2em 0.55em; border-radius: 3px;
+}
+.badge-proved { background: var(--green-bg); color: var(--green); }
+.badge-predicted { background: var(--amber-bg); color: var(--amber); }
+.badge-open { background: var(--red-bg); color: var(--red); }
+.badge-resolved { background: var(--green-bg); color: var(--green); }
+.badge-reclassified { background: var(--blue-bg); color: var(--blue); }
+
+/* ── Paper Cards ── */
+.papers-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); border-radius: 8px;
+  overflow: hidden; margin: 1.5rem 0;
+}
+.paper-card { background: var(--bg); padding: 2rem; transition: background 0.2s; }
+.paper-card:hover { background: var(--bg2); }
+.paper-num {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem;
+}
+.paper-card h4 {
+  font-family: var(--serif); font-size: 1.05rem; font-weight: 500;
+  margin-bottom: 0.75rem; line-height: 1.3; color: var(--ink);
+}
+.paper-card p { font-size: 0.8rem; color: var(--ink2); margin-bottom: 1rem; line-height: 1.55; }
+.paper-links { display: flex; gap: 1rem; }
+.paper-links a {
+  font-family: var(--mono); font-size: 0.68rem; font-weight: 500; color: var(--accent);
+  text-decoration: none; text-transform: uppercase; letter-spacing: 0.04em;
+}
+.paper-links a:hover { text-decoration: underline; }
+
+/* ── Verification Detail ── */
+.verify-detail {
+  background: #1e1e2a; border: 1px solid #2a2a38; border-radius: 8px;
+  overflow: hidden; margin: 1.5rem 0;
+}
+.verify-output {
+  font-family: var(--mono); font-size: 0.73rem; line-height: 1.7;
+  padding: 1.75rem 2rem; color: #9b98a0; overflow-x: auto;
+}
+.verify-output .pass { color: #3dd68c; }
+.verify-output .header { color: #e8e6e1; font-weight: 600; }
+.verify-output .result { color: #3dd68c; font-weight: 600; }
+
+/* ── Doc List ── */
+.doc-list { list-style: none; margin: 0.75rem 0; }
+.doc-list li {
+  display: flex; align-items: baseline; gap: 1rem; padding: 0.45rem 0;
+  border-bottom: 1px solid var(--rule); font-size: 0.85rem;
+}
+.doc-list .doc-date {
+  font-family: var(--mono); font-size: 0.68rem; color: var(--ink3);
+  flex-shrink: 0; width: 72px;
+}
+.doc-list a { color: var(--ink); text-decoration: none; font-weight: 500; transition: color 0.15s; }
+.doc-list a:hover { color: var(--accent); }
+.doc-list .doc-desc { color: var(--ink3); font-weight: 300; font-size: 0.8rem; }
+
+/* ── Callout ── */
+.callout {
+  background: var(--accent-bg); border: 1px solid #f0ddd6; border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 1.25rem 1.75rem; margin: 1.75rem 0;
+}
+.callout p { margin-bottom: 0; color: var(--ink2); }
+.callout code {
+  font-family: var(--mono); font-size: 0.85em; background: var(--bg);
+  padding: 0.15em 0.4em; border-radius: 3px;
 }
 
 /* ── Footer ── */
 footer {
-  border-top: 1px solid var(--rule);
-  padding: 2rem 0;
-  margin-top: 2rem;
-  font-size: 0.8rem;
-  color: var(--mid);
+  border-top: 1px solid var(--rule); padding: 2rem 0; font-size: 0.75rem; color: var(--ink3);
+  background: var(--bg2);
 }
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-footer a { color: var(--mid); }
+footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+footer a { color: var(--ink3); text-decoration: none; }
 footer a:hover { color: var(--accent); }
 
 /* ── Responsive ── */
-@media (max-width: 640px) {
-  .hero h1 { font-size: 2rem; }
-  header .container { flex-direction: column; }
-  nav { flex-wrap: wrap; }
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-text h1 { font-size: 2.2rem; }
+  .graph-row { flex-direction: column; }
+  .verify-grid { grid-template-columns: 1fr; gap: 1rem; }
   .layers { grid-template-columns: 1fr; }
+  .papers-grid { grid-template-columns: 1fr; }
+  nav { gap: 1rem; }
+  .equation-main { font-size: 1.3rem; }
 }
 </style>
 </head>
@@ -358,369 +310,369 @@ footer a:hover { color: var(--accent); }
 
 <header>
   <div class="container">
-    <a href="#" class="site-title">Informational Asymmetry Program</a>
+    <a href="#" class="site-title"><span>//</span> informational-asymmetry</a>
     <nav>
-      <a href="#framework" class="active">Framework</a>
+      <a href="#framework">Framework</a>
       <a href="#papers">Papers</a>
-      <a href="#docs">Working Docs</a>
       <a href="#verification">Verification</a>
       <a href="#status">Status</a>
+      <a href="#docs">Docs</a>
+      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry">GitHub</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h1>From Three Axioms to the Standard Model and Gravity</h1>
-    <p class="subtitle">
-      Matching combinatorics on complete graphs K<sub>2n</sub> uniquely determine 
-      Lorentzian signature, the gauge group, three generations, the Higgs mass, 
-      and the fermion hierarchy — with zero free parameters for particle physics 
-      and one for gravity.
-    </p>
-    <div class="equation">(2n − 1)!! = I(n) &nbsp;→&nbsp; exactly two solutions</div>
-    <p class="byline">
-      <strong>Brian Porter</strong> · February 2026 · Working in public
-    </p>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Three axioms.<br>Zero parameters.<br><em>All of particle physics.</em></h1>
+        <p class="subtitle">
+          Matching combinatorics on complete graphs K<sub>2n</sub> uniquely determine
+          Lorentzian signature, the gauge group, three fermion generations, the Higgs mass,
+          and the Yukawa hierarchy. Every claim is computationally verified. Run it yourself.
+        </p>
+      </div>
+      <div class="graph-panel">
+        <div class="graph-row">
+          <div class="graph-card">
+            <svg width="120" height="100" viewBox="0 0 120 100">
+              <line x1="60" y1="10" x2="20" y2="90" class="graph-edge"/>
+              <line x1="60" y1="10" x2="100" y2="90" class="graph-edge"/>
+              <line x1="60" y1="10" x2="60" y2="70" class="graph-edge"/>
+              <line x1="20" y1="90" x2="100" y2="90" class="graph-edge"/>
+              <line x1="20" y1="90" x2="60" y2="70" class="graph-edge"/>
+              <line x1="100" y1="90" x2="60" y2="70" class="graph-edge"/>
+              <line x1="60" y1="10" x2="20" y2="90" class="graph-match match-1"/>
+              <line x1="100" y1="90" x2="60" y2="70" class="graph-match match-1"/>
+              <line x1="60" y1="10" x2="100" y2="90" class="graph-match match-2"/>
+              <line x1="20" y1="90" x2="60" y2="70" class="graph-match match-2"/>
+              <line x1="60" y1="10" x2="60" y2="70" class="graph-match match-3"/>
+              <line x1="20" y1="90" x2="100" y2="90" class="graph-match match-3"/>
+              <circle cx="60" cy="10" r="4" class="graph-node"/>
+              <circle cx="20" cy="90" r="4" class="graph-node"/>
+              <circle cx="100" cy="90" r="4" class="graph-node"/>
+              <circle cx="60" cy="70" r="4" class="graph-node"/>
+            </svg>
+            <div class="graph-label">K&#x2084; &middot; 3 matchings</div>
+            <div class="graph-desc">Lorentzian signature<br>Arrow of time &middot; (1,3)</div>
+          </div>
+        </div>
+        <div class="graph-row">
+          <div class="graph-card">
+            <svg width="120" height="110" viewBox="0 0 120 110">
+              <line x1="60" y1="5" x2="105" y2="30" class="graph-edge"/>
+              <line x1="105" y1="30" x2="105" y2="80" class="graph-edge"/>
+              <line x1="105" y1="80" x2="60" y2="105" class="graph-edge"/>
+              <line x1="60" y1="105" x2="15" y2="80" class="graph-edge"/>
+              <line x1="15" y1="80" x2="15" y2="30" class="graph-edge"/>
+              <line x1="15" y1="30" x2="60" y2="5" class="graph-edge"/>
+              <line x1="60" y1="5" x2="105" y2="80" class="graph-edge"/>
+              <line x1="60" y1="5" x2="15" y2="80" class="graph-edge"/>
+              <line x1="105" y1="30" x2="15" y2="80" class="graph-edge"/>
+              <line x1="105" y1="30" x2="60" y2="105" class="graph-edge"/>
+              <line x1="15" y1="30" x2="105" y2="80" class="graph-edge"/>
+              <line x1="15" y1="30" x2="60" y2="105" class="graph-edge"/>
+              <line x1="60" y1="5" x2="60" y2="105" class="graph-match match-1" opacity="0.9"/>
+              <line x1="105" y1="30" x2="15" y2="80" class="graph-match match-1" opacity="0.9"/>
+              <line x1="15" y1="30" x2="105" y2="80" class="graph-match match-1" opacity="0.9"/>
+              <circle cx="60" cy="5" r="3.5" class="graph-node"/>
+              <circle cx="105" cy="30" r="3.5" class="graph-node"/>
+              <circle cx="105" cy="80" r="3.5" class="graph-node"/>
+              <circle cx="60" cy="105" r="3.5" class="graph-node"/>
+              <circle cx="15" cy="80" r="3.5" class="graph-node"/>
+              <circle cx="15" cy="30" r="3.5" class="graph-node"/>
+            </svg>
+            <div class="graph-label">K&#x2086; &middot; 15 matchings</div>
+            <div class="graph-desc">Higgs mass 126.1 GeV<br>Gauge group &middot; Generations</div>
+          </div>
+          <div class="graph-card">
+            <svg width="120" height="110" viewBox="0 0 120 110">
+              <line x1="60" y1="5" x2="95" y2="17" class="graph-edge"/>
+              <line x1="95" y1="17" x2="110" y2="52" class="graph-edge"/>
+              <line x1="110" y1="52" x2="95" y2="87" class="graph-edge"/>
+              <line x1="95" y1="87" x2="60" y2="100" class="graph-edge"/>
+              <line x1="60" y1="100" x2="25" y2="87" class="graph-edge"/>
+              <line x1="25" y1="87" x2="10" y2="52" class="graph-edge"/>
+              <line x1="10" y1="52" x2="25" y2="17" class="graph-edge"/>
+              <line x1="25" y1="17" x2="60" y2="5" class="graph-edge"/>
+              <line x1="60" y1="5" x2="110" y2="52" class="graph-edge"/>
+              <line x1="60" y1="5" x2="95" y2="87" class="graph-edge"/>
+              <line x1="60" y1="5" x2="60" y2="100" class="graph-edge"/>
+              <line x1="60" y1="5" x2="25" y2="87" class="graph-edge"/>
+              <line x1="60" y1="5" x2="10" y2="52" class="graph-edge"/>
+              <line x1="95" y1="17" x2="95" y2="87" class="graph-edge"/>
+              <line x1="95" y1="17" x2="25" y2="87" class="graph-edge"/>
+              <line x1="95" y1="17" x2="10" y2="52" class="graph-edge"/>
+              <line x1="110" y1="52" x2="60" y2="100" class="graph-edge"/>
+              <line x1="110" y1="52" x2="25" y2="17" class="graph-edge"/>
+              <line x1="25" y1="17" x2="95" y2="87" class="graph-edge"/>
+              <line x1="10" y1="52" x2="95" y2="87" class="graph-edge"/>
+              <line x1="60" y1="5" x2="60" y2="100" class="graph-match match-2"/>
+              <line x1="95" y1="17" x2="25" y2="87" class="graph-match match-2"/>
+              <line x1="110" y1="52" x2="10" y2="52" class="graph-match match-2"/>
+              <line x1="95" y1="87" x2="25" y2="17" class="graph-match match-2"/>
+              <circle cx="60" cy="5" r="3" class="graph-node"/>
+              <circle cx="95" cy="17" r="3" class="graph-node"/>
+              <circle cx="110" cy="52" r="3" class="graph-node"/>
+              <circle cx="95" cy="87" r="3" class="graph-node"/>
+              <circle cx="60" cy="100" r="3" class="graph-node"/>
+              <circle cx="25" cy="87" r="3" class="graph-node"/>
+              <circle cx="10" cy="52" r="3" class="graph-node"/>
+              <circle cx="25" cy="17" r="3" class="graph-node"/>
+            </svg>
+            <div class="graph-label">K&#x2088; &middot; 105 matchings</div>
+            <div class="graph-desc">Yukawa hierarchy<br>415 : 135 : 1</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="container">
-  <div class="verify-banner">
-    <div class="verify-dot"></div>
-    <div>
-      <strong>Verification suite:</strong> 117 claims, all passing.
-      <code>pip install numpy scipy && python run_all.py</code>
-      — Every numerical result in this program is independently reproducible.
+<div class="verify-strip">
+  <div class="container">
+    <div class="verify-grid">
+      <div class="verify-status">
+        <div class="verify-dot"></div>
+        <div>
+          <div class="verify-number">117</div>
+          <div class="verify-label">Claims verified</div>
+        </div>
+      </div>
+      <div class="verify-cmd">$ <span>pip install numpy scipy &amp;&amp; python run_all.py</span></div>
+      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry" class="verify-link">Run it yourself &rarr;</a>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ -->
+<div class="equation-banner">
+  <div class="container">
+    <div class="equation-main">(2n &minus; 1)!! = I(n) &nbsp;&rarr;&nbsp; <span class="hl">exactly two solutions</span></div>
+    <div class="equation-note">The saturation equation admits only n = 1 (trivial) and n = 3 (the universe). Everything follows.</div>
+  </div>
+</div>
+
 <section id="framework">
   <div class="container">
-    <h2>The Framework</h2>
+    <div class="section-label">Framework</div>
+    <h2>Three Axioms, Three Layers</h2>
     <p class="lead">
-      Three informational axioms — asymmetric transitions, relational comparison, 
-      finite capacity — uniquely force mathematical structures that correspond to 
-      the known physics of our universe. No parameters are chosen. No symmetry groups 
-      are assumed. Everything is derived.
+      Asymmetric transitions. Relational comparison. Finite capacity. These three
+      informational axioms uniquely force the mathematics of our universe. No symmetry
+      groups are assumed. No parameters are chosen. Everything is derived.
     </p>
-
     <div class="layers">
-      <div class="layer layer-1">
-        <h4>Layer 1 · Matching Combinatorics</h4>
-        <p>K₄ → Lorentzian signature, arrow of time, parity violation, Einstein equations. 
-           K₆ → Higgs mass, gauge group, three generations. 
-           K₈ → Yukawa hierarchy.</p>
+      <div class="layer">
+        <div class="layer-num">Layer 1 &middot; Combinatorics</div>
+        <h4>Matching Algebra</h4>
+        <p>K&#x2084; &rarr; Lorentzian signature, arrow of time, parity violation.
+           K&#x2086; &rarr; Higgs mass, gauge group, three generations.
+           K&#x2088; &rarr; Yukawa hierarchy, &#x03C1;&#x2082; selection rule.</p>
         <div class="params">Free parameters: 0</div>
       </div>
-      <div class="layer layer-2">
-        <h4>Layer 2 · Spectral Geometry</h4>
-        <p>Moduli flow determines coupling ratios. BZ averaging on T² determines 
-           the electroweak-scale λ/g². Heat kernels confirm convergence.</p>
+      <div class="layer">
+        <div class="layer-num">Layer 2 &middot; Spectral Geometry</div>
+        <h4>Moduli &amp; Coupling</h4>
+        <p>BZ averaging on T&sup2; determines electroweak-scale &lambda;/g&sup2;.
+           Gram matrix eigenvalues fix the Higgs spectral ratio a&#x2084;/a&#x2082; = 0.3722.
+           Heat kernels confirm convergence.</p>
         <div class="params">Free parameters: 0</div>
       </div>
-      <div class="layer layer-3">
-        <h4>Layer 3 · Gravitational Interface</h4>
-        <p>f₂Λ² determines M<sub>Pl</sub>. f₄Λ⁴ determines Λ<sub>CC</sub>. 
-           The hierarchy problem and cosmological constant live here.</p>
-        <div class="params">Free parameters: 1 (Λ)</div>
+      <div class="layer">
+        <div class="layer-num">Layer 3 &middot; Gravity</div>
+        <h4>Gravitational Interface</h4>
+        <p>f&#x2082;&Lambda;&sup2; sets M<sub>Pl</sub>. f&#x2084;&Lambda;&#x2074; sets &Lambda;<sub>CC</sub>.
+           The hierarchy problem and cosmological constant live here.
+           No information flows back into Layers 1&ndash;2.</p>
+        <div class="params">Free parameters: 1 (&Lambda;)</div>
       </div>
     </div>
-
-    <p>
-      The interface between Layers 2 and 3 is clean: no information flows from 
-      Layer 3 back into Layers 1–2. Particle physics predictions are insulated 
-      from gravitational unknowns.
-    </p>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
 <section id="papers">
   <div class="container">
-    <h2>Papers</h2>
+    <div class="section-label">Papers</div>
+    <h2>Three Papers</h2>
     <div class="papers-grid">
-      
       <div class="paper-card">
         <div class="paper-num">Paper I</div>
-        <h4>Lorentzian Signature from Spectral Action on K₄</h4>
-        <p>Three axioms uniquely force K₄ with V₄ matching algebra, Z₃ flux breaking 
-           time-reversal, and Chern number C = −2. The spectral action Hessian has 
-           signature (1,3) for 13 of 15 subgraphs. Proved: d = 4 uniqueness via 
-           sub-Pfaffian frustration.</p>
-        <div class="paper-links">
-          <a href="papers/paper1.pdf">PDF</a>
-          <a href="papers/paper1.tex">LaTeX source</a>
-        </div>
+        <h4>Lorentzian Signature from Spectral Action on K&#x2084;</h4>
+        <p>V&#x2084; matching algebra, Z&#x2083; flux, Chern number C = &minus;2.
+           Hessian signature (1,3) for 13/15 subgraphs.
+           d = 4 uniqueness via sub-Pfaffian frustration.</p>
+        <div class="paper-links"><a href="papers/paper1.tex">Source</a></div>
       </div>
-
       <div class="paper-card">
         <div class="paper-num">Paper II</div>
-        <h4>Cosmic Birefringence from K₄ Torsion</h4>
-        <p>Five parameter-free, falsifiable predictions for LiteBIRD and CMB-S4. 
-           The axial torsion pseudoscalar has coupling constants fixed by K₄ 
-           combinatorics: α<sub>T</sub> = 1/8, b₀/a₀ = −1/5, A₀* = (2−√3)².</p>
-        <div class="paper-links">
-          <a href="papers/paper2.pdf">PDF</a>
-          <a href="papers/paper2.tex">LaTeX source</a>
-        </div>
+        <h4>Cosmic Birefringence from K&#x2084; Torsion</h4>
+        <p>Five parameter-free predictions for LiteBIRD &amp; CMB-S4.
+           &alpha;<sub>T</sub> = 1/8, b&#x2080;/a&#x2080; = &minus;1/5, A&#x2080;* = (2&minus;&radic;3)&sup2;.
+           Observed 0.30&deg; &plusmn; 0.11&deg; within bound.</p>
+        <div class="paper-links"><a href="papers/paperII.tex">Source</a></div>
       </div>
-
       <div class="paper-card">
         <div class="paper-num">Paper III</div>
-        <h4>Fermion Mass Hierarchy from K₈ on a Genus-2 Surface</h4>
-        <p>105 matchings on K₈ with Z₇ symmetry produce a 6D vacuum eigenspace 
-           decomposing as ρ₁ ⊕ ρ₂ ⊕ ρ₃. The K₆ Higgs vacuum projects purely 
-           into ρ₁, yielding Yukawa hierarchy 415 : 135 : 1 at zero parameters.</p>
-        <div class="paper-links">
-          <a href="papers/paper3.pdf">PDF</a>
-          <a href="papers/paper3.tex">LaTeX source</a>
-        </div>
+        <h4>Fermion Mass Hierarchy from K&#x2088; on Genus-2</h4>
+        <p>105 matchings, Z&#x2087; symmetry, 6D vacuum eigenspace
+           &#x03C1;&#x2081; &oplus; &#x03C1;&#x2082; &oplus; &#x03C1;&#x2083;. K&#x2086; Higgs projects into &#x03C1;&#x2081; only.
+           Yukawa hierarchy 415 : 135 : 1 at zero parameters.</p>
+        <div class="paper-links"><a href="papers/paperIII.tex">Source</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
 <section id="verification">
   <div class="container">
-    <h2>Verification Suite</h2>
-    <p>
-      Every numerical claim in this program has an independent computational test. 
-      The suite uses only numpy and scipy — no custom physics packages. 
-      Anyone can reproduce everything.
+    <div class="section-label">Verification</div>
+    <h2>Every Number Has a Test</h2>
+    <p class="lead">
+      No trust required. The verification suite uses only numpy and scipy &mdash; no custom
+      physics packages. Every numerical claim in every paper has an independent computational
+      test. Anyone can reproduce everything.
     </p>
-    
-    <div class="code-block">
-<span class="comment"># Clone and run</span>
-git clone https://github.com/etaxbrianporter-dot/informational-asymmetry
-cd informational-asymmetry/verification_suite
-pip install numpy scipy
-python run_all.py
-
-<span class="comment"># Output:</span>
-<span class="string">═══════════════════════════════════════════════════════════════════════
+    <div class="verify-detail">
+      <div class="verify-output">
+<span class="header">&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;
   INFORMATIONAL ASYMMETRY PROGRAM: VERIFICATION REPORT
-═══════════════════════════════════════════════════════════════════════
-  Test 01: Saturation ........................... PASS (9 claims)
-  Test 02: K4 Matching .......................... PASS (18 claims)
-  Test 03: K4 Pfaffian .......................... PASS (13 claims)
-  Test 05: K4 Hessian ........................... PASS (5 claims)
-  Test 06: K4 Heat Kernel ....................... PASS (3 claims)
-  Test 08: K6 Matchings ......................... PASS (9 claims)
-  Test 09: K6 Gram .............................. PASS (12 claims)
-  Test 12: Birefringence ........................ PASS (10 claims)
-  Test 13: Johnson Scheme ....................... PASS (24 claims)
-  Test 21: D4 Uniqueness ........................ PASS (10 claims)
-  Test 22: Bug Demonstration .................... PASS (4 claims)
+&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;&#x2550;</span>
+  Test 01: Saturation ............................ <span class="pass">PASS</span> (9 claims)
+  Test 02: K4 Matching ........................... <span class="pass">PASS</span> (18 claims)
+  Test 03: K4 Pfaffian ........................... <span class="pass">PASS</span> (13 claims)
+  Test 05: K4 Hessian ............................ <span class="pass">PASS</span> (5 claims)
+  Test 06: K4 Heat Kernel ........................ <span class="pass">PASS</span> (3 claims)
+  Test 08: K6 Matchings .......................... <span class="pass">PASS</span> (9 claims)
+  Test 09: K6 Gram ............................... <span class="pass">PASS</span> (12 claims)
+  Test 12: Birefringence ......................... <span class="pass">PASS</span> (10 claims)
+  Test 13: Johnson Scheme ........................ <span class="pass">PASS</span> (24 claims)
+  Test 21: D4 Uniqueness ......................... <span class="pass">PASS</span> (10 claims)
+  Test 22: Bug Demonstration ..................... <span class="pass">PASS</span> (4 claims)
 
-  ALL TESTS PASSED: 117 claims verified, 0 failures</span>
+  <span class="result">ALL TESTS PASSED: 117 claims verified, 0 failures</span>
+      </div>
     </div>
-
-    <p>
-      <strong>Test 22 is deliberate.</strong> It demonstrates two bugs we found in our own 
-      original code — a <code>.real</code> truncation and a non-deterministic enumeration — 
-      that accidentally produced m<sub>H</sub> = 125 GeV. We document our own bugs because 
-      that's how science works.
-    </p>
-
-    <p style="margin-top:1rem;">
-      <a href="verification/verification_suite.tar.gz" style="color:var(--accent);font-weight:600;">
-        Download verification suite (tar.gz)
-      </a> · 
-      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry" style="color:var(--accent);">
-        GitHub repository
-      </a>
-    </p>
+    <div class="callout">
+      <p>
+        <strong>Test 22 is deliberate.</strong> It demonstrates two bugs we found in our own
+        code &mdash; a <code>.real</code> truncation and a non-deterministic enumeration &mdash;
+        that accidentally produced m<sub>H</sub> = 125 GeV. We document our own bugs because
+        that's how science works.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
 <section id="status">
   <div class="container">
-    <h2>Program Status</h2>
+    <div class="section-label">Program Status</div>
+    <h2>What's Resolved, What's Predicted, What's Open</h2>
 
     <h3>Resolved</h3>
     <table class="status-table">
-      <thead>
-        <tr><th>Result</th><th>Status</th><th>Method</th></tr>
-      </thead>
+      <thead><tr><th>Result</th><th>Status</th><th>Method</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Gauge group SU(3)×SU(2)×U(1)</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>From (2n−1)!! = I(n) + complexifier</td>
-        </tr>
-        <tr>
-          <td>Three generations</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>φ(7)/2 = 3 from K₈ vacuum rank</td>
-        </tr>
-        <tr>
-          <td>Parity violation</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>Self-dual matchings span su(2)<sub>L</sub> only</td>
-        </tr>
-        <tr>
-          <td>Arrow of time</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>D ≠ D* prior to dynamics (Z₃ flux)</td>
-        </tr>
-        <tr>
-          <td>Lorentzian signature</td>
-          <td><span class="badge badge-proved">Proved</span></td>
-          <td>Pfaffian structure on K₄ forces (1,3)</td>
-        </tr>
-        <tr>
-          <td>3+1 dimensions</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>Observer finitude: d<sub>eff</sub> → 3</td>
-        </tr>
-        <tr>
-          <td>Einstein equations</td>
-          <td><span class="badge badge-resolved">Resolved</span></td>
-          <td>Jacobson's derivation (Steps 1–3 closed)</td>
-        </tr>
+        <tr><td>Lorentzian signature</td><td><span class="badge badge-proved">Proved</span></td><td>Pfaffian structure on K&#x2084; forces (1,3)</td></tr>
+        <tr><td>Gauge group SU(3)&times;SU(2)&times;U(1)</td><td><span class="badge badge-resolved">Resolved</span></td><td>From (2n&minus;1)!! = I(n) + complexifier</td></tr>
+        <tr><td>Three generations</td><td><span class="badge badge-resolved">Resolved</span></td><td>&phi;(7)/2 = 3 from K&#x2088; vacuum rank</td></tr>
+        <tr><td>Parity violation</td><td><span class="badge badge-resolved">Resolved</span></td><td>Self-dual matchings span su(2)<sub>L</sub> only</td></tr>
+        <tr><td>Arrow of time</td><td><span class="badge badge-resolved">Resolved</span></td><td>D &ne; D* prior to dynamics (Z&#x2083; flux)</td></tr>
+        <tr><td>3+1 dimensions</td><td><span class="badge badge-resolved">Resolved</span></td><td>Observer finitude: d<sub>eff</sub> &rarr; 3</td></tr>
+        <tr><td>Einstein equations</td><td><span class="badge badge-resolved">Resolved</span></td><td>Jacobson's derivation (Steps 1&ndash;3 closed)</td></tr>
       </tbody>
     </table>
 
     <h3>Predicted</h3>
     <table class="status-table">
-      <thead>
-        <tr><th>Observable</th><th>Status</th><th>Value</th></tr>
-      </thead>
+      <thead><tr><th>Observable</th><th>Status</th><th>Value</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Higgs mass</td>
-          <td><span class="badge badge-predicted">Predicted</span></td>
-          <td>126.1 GeV (0.81% residual), zero parameters</td>
-        </tr>
-        <tr>
-          <td>Yukawa hierarchy</td>
-          <td><span class="badge badge-predicted">Predicted</span></td>
-          <td>415 : 135 : 1 (middle ratio 1.5% from SM)</td>
-        </tr>
-        <tr>
-          <td>Cosmic birefringence</td>
-          <td><span class="badge badge-predicted">Predicted</span></td>
-          <td>α₀ ≤ 0.41° (five falsifiable predictions for LiteBIRD)</td>
-        </tr>
+        <tr><td>Higgs mass</td><td><span class="badge badge-predicted">Predicted</span></td><td>126.1 GeV (0.81% from experiment), zero parameters</td></tr>
+        <tr><td>Yukawa hierarchy</td><td><span class="badge badge-predicted">Predicted</span></td><td>415 : 135 : 1 (middle ratio 1.5% from SM)</td></tr>
+        <tr><td>Cosmic birefringence</td><td><span class="badge badge-predicted">Predicted</span></td><td>&alpha;&#x2080; &le; 0.41&deg; &mdash; five falsifiable predictions for LiteBIRD</td></tr>
       </tbody>
     </table>
 
     <h3>Open</h3>
     <table class="status-table">
-      <thead>
-        <tr><th>Problem</th><th>Status</th><th>Path Forward</th></tr>
-      </thead>
+      <thead><tr><th>Problem</th><th>Status</th><th>Path Forward</th></tr></thead>
       <tbody>
-        <tr>
-          <td>Higher-spin decoupling (γ₃ > 2)</td>
-          <td><span class="badge badge-open">Open</span></td>
-          <td>QMC computation at K₄ critical point</td>
-        </tr>
-        <tr>
-          <td>Higgs normalization constant c</td>
-          <td><span class="badge badge-open">Open</span></td>
-          <td>Full product geometry Seeley–DeWitt expansion</td>
-        </tr>
-        <tr>
-          <td>Λ (hierarchy problem)</td>
-          <td><span class="badge badge-open">Reclassified</span></td>
-          <td>Gravity-only parameter; not particle physics</td>
-        </tr>
+        <tr><td>Higher-spin decoupling (&gamma;&#x2083; &gt; 2)</td><td><span class="badge badge-open">Open</span></td><td>QMC computation at K&#x2084; critical point</td></tr>
+        <tr><td>Higgs normalization constant c</td><td><span class="badge badge-open">Open</span></td><td>Full product geometry Seeley&ndash;DeWitt expansion</td></tr>
+        <tr><td>&Lambda; (hierarchy problem)</td><td><span class="badge badge-reclassified">Reclassified</span></td><td>Gravity-only parameter; decoupled from particle physics</td></tr>
       </tbody>
     </table>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
 <section id="docs">
   <div class="container">
-    <h2>Working Documents</h2>
+    <div class="section-label">Working Documents</div>
+    <h2>Published in Real Time</h2>
     <p>
-      All working documents from the program, published in real time. 
-      This includes successful results, failed approaches, and honest assessments 
-      of what works and what doesn't.
+      Every working document from the program &mdash; successful results, failed approaches,
+      and honest assessments of what works and what doesn't. All timestamped by git.
     </p>
 
     <h3>Core Framework</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">— One-paragraph claim through five-axiom chain</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">— FORCED / SILENT / REDUCED taxonomy</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_addendum_feb18.html">Progress Addendum</a> <span class="doc-desc">— Complete status as of Feb 18</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">&mdash; One-paragraph claim through five-axiom chain</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">&mdash; FORCED / SILENT / REDUCED taxonomy</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_addendum_feb18.html">Progress Addendum</a> <span class="doc-desc">&mdash; Complete status as of Feb 18</span></li>
     </ul>
 
-    <h3>K₆ Higgs Sector</h3>
+    <h3>K&#x2086; Higgs Sector</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.html">K₆ Higgs Paper v2</a> <span class="doc-desc">— Bug discovery, 50k Monte Carlo, honest audit</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.html">Normalization v9</a> <span class="doc-desc">— R proved, c undetermined, 41 near-misses</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination.html">c-Derivation Termination</a> <span class="doc-desc">— Why the π²/8 path was abandoned</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.html">K&#x2086; Higgs Paper v2</a> <span class="doc-desc">&mdash; Bug discovery, 50k Monte Carlo, honest audit</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.html">Normalization v9</a> <span class="doc-desc">&mdash; R proved, c undetermined, 41 near-misses</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination_analysis.html">c-Derivation Termination</a> <span class="doc-desc">&mdash; Why the &pi;&sup2;/8 path was abandoned</span></li>
     </ul>
 
-    <h3>K₈ Fermion Sector</h3>
+    <h3>K&#x2088; Fermion Sector</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.html">K₈ Fermion Results</a> <span class="doc-desc">— Three generations, Z₇ decomposition</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.html">K₈ Higgs Results</a> <span class="doc-desc">— Sector separation: K₆ ≠ K₈ for Higgs</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge.html">ρ₂ Hypercharge</a> <span class="doc-desc">— Selection rule and neutrino mass implications</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.html">K&#x2088; Fermion Results</a> <span class="doc-desc">&mdash; Three generations, Z&#x2087; decomposition</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.html">K&#x2088; Higgs Results</a> <span class="doc-desc">&mdash; Sector separation: K&#x2086; &ne; K&#x2088; for Higgs</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge_results.html">&#x03C1;&#x2082; Hypercharge</a> <span class="doc-desc">&mdash; Selection rule and neutrino mass implications</span></li>
     </ul>
 
     <h3>Mathematical Structure</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.html">Spectral Budget Identity</a> <span class="doc-desc">— Johnson scheme forces three eigenvalues</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction.html">Polynomial Reduction Theorem</a> <span class="doc-desc">— Super-exponential → polynomial complexity</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.html">Galois Disjointness</a> <span class="doc-desc">— Number fields at each level share only ℚ</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.html">Discriminant Atlas</a> <span class="doc-desc">— Arithmetic structure K₆ through K₁₆</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.html">Spectral Budget Identity</a> <span class="doc-desc">&mdash; Johnson scheme forces three eigenvalues</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction_theorem.html">Polynomial Reduction Theorem</a> <span class="doc-desc">&mdash; Super-exponential &rarr; polynomial complexity</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.html">Galois Disjointness</a> <span class="doc-desc">&mdash; Number fields at each level share only &#x211A;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.html">Discriminant Atlas</a> <span class="doc-desc">&mdash; Arithmetic structure K&#x2086; through K&#x2081;&#x2086;</span></li>
     </ul>
 
     <h3>Gravitational Sector</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements.html">Computation Requirements</a> <span class="doc-desc">— γ₃ QMC specification</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence.html">Light Emergence Theorem</a> <span class="doc-desc">— Thermodynamic preference for massless modes</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence.html">Time Emergence</a> <span class="doc-desc">— t derivation from Z₃ flux</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements_v2.html">Computation Requirements</a> <span class="doc-desc">&mdash; &gamma;&#x2083; QMC specification</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence_theorem.html">Light Emergence Theorem</a> <span class="doc-desc">&mdash; Thermodynamic preference for massless modes</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence_t_derivation.html">Time Emergence</a> <span class="doc-desc">&mdash; t derivation from Z&#x2083; flux</span></li>
     </ul>
 
     <h3>Killed Approaches</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination.html">c = π²/8 derivation</a> <span class="doc-desc">— Computationally falsified, terminated</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall.html">Polynomial/Series Wall</a> <span class="doc-desc">— Terminal obstruction identified</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">— Classical motivic path blocked</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_terminated.html">c = &pi;&sup2;/8 derivation</a> <span class="doc-desc">&mdash; Computationally falsified, terminated</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall_analysis.html">Polynomial/Series Wall</a> <span class="doc-desc">&mdash; Terminal obstruction identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">&mdash; Classical motivic path blocked</span></li>
     </ul>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════ -->
 <footer>
   <div class="container">
+    <div>Brian Porter &middot; 2026 &middot; Working in public<br>Code: MIT &middot; Documents: CC-BY-4.0</div>
     <div>
-      Informational Asymmetry Program · Brian Porter · 2026<br>
-      All working documents published under CC-BY-4.0.
-    </div>
-    <div>
-      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry">GitHub</a> · 
-      <a href="/cdn-cgi/l/email-protection#6a0818030b042a0f120b071a060f44090507">Contact</a> · 
-      <a href="verification/verification_suite.tar.gz">Verification Suite</a>
+      <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry">GitHub</a> &middot;
+      <a href="verification_suite/">Verification Suite</a>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Smooth scroll for nav links
-document.querySelectorAll('nav a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-});
-
-// Active nav highlighting on scroll
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if (window.scrollY >= s.offsetTop - 100) current = s.i
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+const sections=document.querySelectorAll('section[id]'),navLinks=document.querySelectorAll('nav a');
+window.addEventListener('scroll',()=>{let c='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)c=s.id});navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c)})});
+</script>
+</body>
+</html>
