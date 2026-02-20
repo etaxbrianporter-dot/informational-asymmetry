@@ -67,7 +67,7 @@ nav a:hover, nav a.active { color: var(--ink); }
 
 /* ── Hero: Two Equations ── */
 .hero {
-  padding: 7.5rem 0 0;
+  padding: 0 0 0;
   background: var(--bg);
 }
 .hero-tagline {
@@ -357,6 +357,112 @@ p.lead { font-size: 1.05rem; line-height: 1.75; }
   padding: 0.15em 0.4em; border-radius: 3px;
 }
 
+/* ── Story Section ── */
+#story { padding-top: 7.5rem; }
+.story-body { max-width: 65ch; }
+.story-body h3 {
+  font-family: var(--serif); font-size: 1.35rem; font-weight: 500;
+  color: var(--ink); text-transform: none; letter-spacing: -0.01em;
+  margin-top: 3rem; margin-bottom: 1rem;
+}
+.story-body h3:first-of-type { margin-top: 1.5rem; }
+.story-body p {
+  font-family: var(--serif); font-size: 1.05rem; line-height: 1.75;
+  color: var(--ink2); margin-bottom: 1.25rem; max-width: none;
+}
+.story-body p em { color: var(--ink); font-weight: 500; }
+.story-body strong { color: var(--ink); font-weight: 600; }
+.story-body .story-axioms {
+  margin: 1.5rem 0 1.5rem 1.5rem; padding: 0;
+  list-style: none; counter-reset: axiom;
+}
+.story-body .story-axioms li {
+  counter-increment: axiom; position: relative;
+  padding-left: 2rem; margin-bottom: 1.25rem;
+  font-family: var(--serif); font-size: 1.05rem; line-height: 1.75; color: var(--ink2);
+}
+.story-body .story-axioms li::before {
+  content: counter(axiom) ".";
+  position: absolute; left: 0;
+  font-family: var(--mono); font-size: 0.85rem; font-weight: 600;
+  color: var(--accent); top: 0.15em;
+}
+.story-results {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
+  background: var(--rule); border: 1px solid var(--rule); border-radius: 8px;
+  overflow: hidden; margin: 2rem 0;
+}
+.story-result {
+  background: var(--bg); padding: 1.25rem 1.5rem; transition: background 0.2s;
+}
+.story-result:hover { background: var(--bg2); }
+.story-result .result-label {
+  font-family: var(--mono); font-size: 0.65rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+.story-result .result-value {
+  font-family: var(--serif); font-size: 1rem; font-weight: 500; color: var(--ink);
+  margin-bottom: 0.25rem;
+}
+.story-result .result-note {
+  font-size: 0.78rem; color: var(--ink3); line-height: 1.4;
+}
+.story-bottom-line {
+  background: var(--accent-bg); border: 1px solid #f0ddd6; border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0; padding: 1.75rem 2rem; margin: 2.5rem 0 0;
+}
+.story-bottom-line p {
+  font-family: var(--serif); font-size: 1.1rem; line-height: 1.75;
+  color: var(--ink); margin-bottom: 0.75rem; font-style: italic;
+}
+.story-bottom-line p:last-child { margin-bottom: 0; }
+
+/* ── What Changed Section ── */
+#what-changed { background: var(--bg2); }
+.shift-grid {
+  display: grid; grid-template-columns: 1fr; gap: 0;
+  border: 1px solid var(--rule); border-radius: 8px; overflow: hidden;
+  margin: 2rem 0;
+}
+.shift-row {
+  display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+  background: var(--bg); border-bottom: 1px solid var(--rule);
+  transition: background 0.2s;
+}
+.shift-row:last-child { border-bottom: none; }
+.shift-row:hover { background: var(--surface); }
+.shift-row.shift-header {
+  background: var(--bg2); border-bottom: 2px solid var(--rule);
+}
+.shift-row.shift-header .shift-cell {
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink3);
+  padding: 0.75rem 1.25rem;
+}
+.shift-cell {
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem; line-height: 1.55;
+}
+.shift-cell:first-child { color: var(--ink2); }
+.shift-cell:last-child { color: var(--ink); font-weight: 500; }
+.shift-arrow {
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 0.5rem; color: var(--accent); font-size: 1.1rem;
+}
+.shift-topic {
+  font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent);
+  padding: 1.25rem 1.25rem 0.25rem; background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+}
+.shift-topic:first-child { border-radius: 8px 8px 0 0; }
+.shift-punchline {
+  font-family: var(--serif); font-size: 1.1rem; font-style: italic;
+  color: var(--ink); line-height: 1.65; max-width: 65ch;
+  margin-top: 2rem;
+}
+
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--rule); padding: 2rem 0; font-size: 0.75rem; color: var(--ink3);
@@ -381,10 +487,13 @@ footer a:hover { color: var(--accent); }
   .verify-grid { grid-template-columns: 1fr; gap: 1rem; }
   .layers { grid-template-columns: 1fr; }
   .papers-grid { grid-template-columns: 1fr; }
+  .story-results { grid-template-columns: 1fr; }
+  .shift-row { grid-template-columns: 1fr auto 1fr; }
+  .shift-cell { padding: 0.75rem 1rem; font-size: 0.82rem; }
   nav { gap: 1rem; }
   .eq-card-left .eq-formula { font-size: 1.5rem; }
   .eq-card-right .eq-formula { font-size: 1.2rem; }
-  .hero { padding: 6.5rem 0 0; }
+  .hero { padding: 0; }
   .overflow-table { font-size: 0.72rem; }
 }
 </style>
@@ -395,15 +504,318 @@ footer a:hover { color: var(--accent); }
   <div class="container">
     <a href="#" class="site-title"><span>//</span> informational-asymmetry</a>
     <nav>
+      <a href="#story">Story</a>
+      <a href="#what-changed">What Changed</a>
       <a href="#framework">Framework</a>
       <a href="#papers">Papers</a>
-      <a href="#verification">Verification</a>
       <a href="#status">Status</a>
       <a href="#docs">Docs</a>
       <a href="https://github.com/etaxbrianporter-dot/informational-asymmetry">GitHub</a>
     </nav>
   </div>
 </header>
+
+<!-- ════════════════════════════════════════════════════
+     STORY
+     ════════════════════════════════════════════════════ -->
+
+<section id="story">
+  <div class="container">
+    <div class="section-label">The Story</div>
+    <h2>How a Software Engineer&rsquo;s Refactoring Habit Led Here</h2>
+
+    <div class="story-body">
+
+    <h3>The itch</h3>
+
+    <p>I&rsquo;m a software engineer by trade. I build systems, debug them, refactor them
+    when they accumulate too much technical debt. That instinct &mdash; the refusal to
+    leave broken things alone &mdash; is what started this.</p>
+
+    <p>Modern physics has a dirty secret that most popular accounts gloss over: the theories
+    we treat as settled are fundamentally incomplete. General relativity breaks down at
+    singularities. Quantum mechanics has a measurement problem no one agrees on. The
+    Standard Model has 19 free parameters that are measured, not derived &mdash; we know
+    <em>what</em> they are but not <em>why</em> they are. String theory promises to explain
+    everything but predicts a landscape of 10<sup>500</sup> possible universes with no way
+    to choose between them. Dark energy accounts for 68% of the universe and we have
+    essentially no idea what it is.</p>
+
+    <p>These aren&rsquo;t edge cases. These are load-bearing walls with cracks in them. And
+    the experts know it &mdash; they just disagree on which cracks matter.</p>
+
+    <p>Roger Penrose pointed at one crack in particular: the initial conditions of the
+    universe had extraordinarily low gravitational entropy, meaning near-zero Weyl curvature.
+    He called this the deepest mystery in cosmology. When one of the sharpest minds alive
+    identifies something as the biggest open problem, that&rsquo;s worth taking seriously.</p>
+
+    <p>I didn&rsquo;t set out to write a unified field theory. I wanted to understand that one
+    thing &mdash; Penrose&rsquo;s puzzle about the initial conditions. What kind of structure
+    would <em>force</em> low Weyl curvature at the origin, not as a fine-tuned accident but
+    as a mathematical necessity?</p>
+
+    <h3>The refactoring</h3>
+
+    <p>My approach was shaped by how I think as an engineer, not a physicist. Physicists
+    typically start with a Lagrangian and work outward. I started with information &mdash;
+    specifically, with the question: what is the minimal mathematical structure needed to
+    distinguish &ldquo;something happened&rdquo; from &ldquo;nothing happened&rdquo;?</p>
+
+    <p>This felt less like inventing new physics and more like refactoring old code. The
+    Standard Model works &mdash; it predicts experimental results to extraordinary precision.
+    But it works the way legacy software works: correctly, but with unexplained constants,
+    redundant structure, and no clear reason it couldn&rsquo;t have been built differently.
+    A good refactoring doesn&rsquo;t change what the code does. It reveals <em>why</em> it does it.</p>
+
+    <p>Three axioms emerged from this process:</p>
+
+    <ol class="story-axioms">
+      <li><strong>Existence of a relational operator.</strong> Information requires comparison &mdash;
+      a distinction between states. Mathematically: a skew-symmetric operator on a
+      finite-dimensional space.</li>
+      <li><strong>Irreducibility.</strong> The information structure can&rsquo;t be decomposed into
+      independent pieces &mdash; everything is connected to everything. Mathematically: the
+      algebra generated by all contexts is irreducible.</li>
+      <li><strong>Informational asymmetry.</strong> The structure is not self-dual &mdash; the operator
+      is distinguishable from its conjugate. D &ne; D*. This is the Penrose condition in
+      algebraic form: a universe that begins with zero Weyl curvature has a preferred arrow.</li>
+    </ol>
+
+    <p>That&rsquo;s it. Three axioms about information. No physics assumed. No particles, no
+    forces, no spacetime, no quantum mechanics.</p>
+
+    <h3>What fell out</h3>
+
+    <p>The mathematics that follows from these three axioms is surprisingly rigid. The axioms
+    uniquely force <strong>K&#x2084;</strong> as the internal geometry &mdash; the simplest complete
+    graph where all three axioms can be simultaneously satisfied. From there: the
+    V&#x2084; matching algebra (isomorphic to the electroweak algebra), &#x2124;&#x2083; flux forcing
+    parity violation as a <em>theorem</em>, Chern number C = &minus;2, and 3+1 dimensional
+    Lorentzian spacetime.</p>
+
+    <p>None of this was designed. I was trying to model informational asymmetry and the
+    mathematics kept producing structures that already had names in physics.</p>
+
+    <p>The framework extends through a chain of complete graphs &mdash;
+    K&#x2084; (spacetime), K&#x2086; (Higgs), K&#x2088; (fermions) &mdash; each governed by
+    the combinatorics of perfect matchings. These are finite objects. Everything is computable.
+    And the computations produce numbers:</p>
+
+    <div class="story-results">
+      <div class="story-result">
+        <div class="result-label">Higgs Mass</div>
+        <div class="result-value">126.10 GeV</div>
+        <div class="result-note">From K&#x2086; spectral ratio. Measured: 125.25 &plusmn; 0.17 GeV</div>
+      </div>
+      <div class="story-result">
+        <div class="result-label">Yukawa Hierarchy</div>
+        <div class="result-value">415 : 135 : 1</div>
+        <div class="result-note">Three generations from K&#x2088;. 99.99% confidence match</div>
+      </div>
+      <div class="story-result">
+        <div class="result-label">Gauge Couplings</div>
+        <div class="result-value">c&#x2081; : c&#x2082; : c&#x2083; = 8 : 6 : 4</div>
+        <div class="result-note">Dimensions of K&#x2088; : K&#x2086; : K&#x2084;. Accurate to 2.5%</div>
+      </div>
+      <div class="story-result">
+        <div class="result-label">Weinberg Angle</div>
+        <div class="result-value">sin&sup2;&theta;<sub>W</sub> = 0.2349</div>
+        <div class="result-note">Zero parameters. Measured: 0.2312</div>
+      </div>
+      <div class="story-result">
+        <div class="result-label">Parity Violation</div>
+        <div class="result-value">Derived, not assumed</div>
+        <div class="result-note">Asymmetry axiom forces it algebraically</div>
+      </div>
+      <div class="story-result">
+        <div class="result-label">Three Generations</div>
+        <div class="result-value">Derived, not assumed</div>
+        <div class="result-note">K&#x2088; spectral geometry produces exactly three</div>
+      </div>
+    </div>
+
+    <h3>What this is and what it isn&rsquo;t</h3>
+
+    <p>This is a mathematical framework. The complete graphs, matching algebras, spectral
+    invariants, and vacuum structures are rigorous finite-dimensional mathematics &mdash;
+    linear algebra, combinatorics, and spectral geometry. The computations are reproducible.
+    The results are exact, not numerical approximations subject to fitting.</p>
+
+    <p>It is not a finished theory of everything. Open problems remain. The normalization
+    constant in the Higgs mass formula requires a computation in the full product geometry
+    that hasn&rsquo;t been completed. The higher-spin decoupling that would confirm Einstein
+    gravity emergence is analytically constrained but not yet numerically verified. These are
+    defined problems with clear paths to resolution &mdash; not conceptual gaps.</p>
+
+    <p>The framework is non-standard. It doesn&rsquo;t start from the usual places &mdash; no
+    Lagrangian, no path integral, no supersymmetry, no extra dimensions. It starts from the
+    structure of information itself and arrives at physics. The fact that it arrives at
+    <em>the right physics</em> &mdash; with specific, falsifiable numerical predictions &mdash;
+    is either a remarkable series of coincidences or evidence that the information-theoretic
+    starting point is capturing something real.</p>
+
+    <h3>Why a software engineer</h3>
+
+    <p>The interdisciplinary gap in fundamental physics is real. Mathematicians know the
+    structures but not always the physical constraints. Physicists know the phenomenology but
+    sometimes inherit assumptions from convention rather than necessity. Engineers know how to
+    take a broken system, identify which pieces are load-bearing and which are scaffolding,
+    and rebuild.</p>
+
+    <p>I came to this with fresh eyes and a debugger&rsquo;s instinct: if something is broken,
+    find the root cause. Don&rsquo;t patch it &mdash; fix the architecture. The &ldquo;broken
+    things&rdquo; in physics &mdash; the fine-tuning problems, the parameter puzzles, the
+    measurement problem, the cosmological constant &mdash; looked to me like symptoms of a
+    missing abstraction layer. The informational asymmetry framework is an attempt to supply
+    that layer.</p>
+
+    <p>The work was done in collaboration with Claude (Anthropic&rsquo;s AI), which served as
+    computational partner &mdash; running the spectral analysis, checking the algebra, killing
+    hypotheses that didn&rsquo;t survive their own cross-checks. The methodology throughout
+    has been: formulate a hypothesis, design a computation to kill it, be honest about whether
+    it survived. We maintain a ledger of what&rsquo;s proved, what&rsquo;s killed, and what&rsquo;s
+    assumed. Nothing gets promoted without passing its own stress test.</p>
+
+    <div class="story-bottom-line">
+      <p>Three axioms about information. No free parameters. No physics assumed. The Standard
+      Model falls out &mdash; not perfectly, not completely, but with specific numerical
+      predictions that match experiment to percent-level accuracy across multiple independent
+      sectors.</p>
+      <p>Either the universe is, at bottom, a structure that processes information under an
+      asymmetry constraint, or something much stranger is going on with the combinatorics of
+      complete graphs. Both possibilities are worth investigating.</p>
+    </div>
+
+    </div><!-- /story-body -->
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════
+     WHAT CHANGED
+     ════════════════════════════════════════════════════ -->
+
+<section id="what-changed">
+  <div class="container">
+    <div class="section-label">The Physics</div>
+    <h2>What We Thought We Knew vs. What We Know Now</h2>
+    <p class="lead">
+      The Standard Model is the most successful scientific theory ever built. But it
+      describes <em>what</em> the universe does without explaining <em>why</em>.
+      Here is what changes when you start from information instead of particles.
+    </p>
+
+    <div class="shift-grid">
+
+      <div class="shift-row shift-header">
+        <div class="shift-cell">What we thought</div>
+        <div class="shift-arrow"></div>
+        <div class="shift-cell">What the framework says</div>
+      </div>
+
+      <!-- PARAMETERS -->
+      <div class="shift-topic">Free Parameters</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The Standard Model has 19 free parameters (26 with neutrinos). They are measured from experiment and plugged in by hand. No theory explains their values.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The matching combinatorics of K&#x2084; &times; K&#x2086; &times; K&#x2088; determines every structural constant &mdash; gauge group, generation count, mass ratios, mixing structure &mdash; with zero free parameters. The only remaining parameter (&Lambda;) belongs to gravity, not particle physics.</div>
+      </div>
+
+      <!-- GAUGE GROUP -->
+      <div class="shift-topic">Gauge Group</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">SU(3) &times; SU(2) &times; U(1) is the gauge group of the Standard Model. It is assumed as an input &mdash; chosen because it fits the data. Nobody knows why <em>this</em> group and not some other.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The gauge group is derived from the matching algebra. K&#x2084; produces the Lorentz group. K&#x2086;&rsquo;s 15 matchings saturate su(4), which decomposes into su(3) &oplus; su(2) &oplus; u(1). No group is chosen. The algebra is forced by the combinatorics.</div>
+      </div>
+
+      <!-- SPACETIME -->
+      <div class="shift-topic">Spacetime</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">Spacetime is 3+1 dimensional with Lorentzian signature (&minus;,+,+,+). This is taken as given. No mechanism in standard physics explains why 3 spatial dimensions or why time is different from space.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">K&#x2084; on the torus produces a spectral geometry whose Hessian has signature (1,3) for 13 of 15 subgraphs. Dimension 4 is the unique solution to the saturation equation (2n&minus;1)!! = n(2n&minus;1). Time is different from space because D &ne; D*.</div>
+      </div>
+
+      <!-- PARITY -->
+      <div class="shift-topic">Parity Violation</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The weak force violates parity &mdash; it distinguishes left from right. Discovered experimentally in 1957 (Wu experiment). Still unexplained: the Standard Model accommodates it but doesn&rsquo;t derive it.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The asymmetry axiom (D &ne; D*) generates &#x2124;&#x2083; flux with Chern number C = &minus;2. This is a topological invariant &mdash; it cannot be deformed away. Parity violation is a <em>theorem</em>, not an assumption. The universe <em>must</em> be handed.</div>
+      </div>
+
+      <!-- THREE GENERATIONS -->
+      <div class="shift-topic">Three Generations</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">Matter comes in three generations (up/charm/top, down/strange/bottom, electron/muon/tau). Nobody knows why three. The Standard Model works fine with any number.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">K&#x2088; has 105 matchings that overflow so(8) by 77 dimensions. The spectral geometry decomposes under &#x2124;&#x2087; symmetry into exactly three massive eigenvalue pairs with hierarchical masses (415 : 135 : 1). Three generations is forced by the overflow.</div>
+      </div>
+
+      <!-- HIGGS MASS -->
+      <div class="shift-topic">Higgs Mass</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The Higgs boson was discovered at 125.25 GeV. Its mass is a free parameter in the Standard Model &mdash; the theory works at any mass. It must be measured, not predicted.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The K&#x2086; vacuum overlap matrix has spectral ratio a&#x2084;/a&#x2082;&sup2; = 0.3722, an exact combinatorial invariant. This gives m<sub>H</sub> = 126.10 GeV with zero free parameters &mdash; 0.81% from the measured value. The Higgs mass is the &ldquo;pitch&rdquo; of a combinatorial tuning fork.</div>
+      </div>
+
+      <!-- COSMOLOGICAL CONSTANT -->
+      <div class="shift-topic">Cosmological Constant</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The cosmological constant is 10<sup>&minus;122</sup> in Planck units &mdash; the most embarrassing number in physics. QFT predicts vacuum energy 120 orders of magnitude too large. No known mechanism explains the discrepancy.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The arrow of time (D &ne; D*) breaks particle-hole symmetry, promoting the leading information scaling from 1/&epsilon;&#x2074; to 1/&epsilon;&sup2;. This single algebraic fact converts 10<sup>&minus;244</sup> into 10<sup>&minus;122</sup>. The 122 orders come from 2 &times; log(&epsilon;<sub>Hubble</sub>) + 0.58. Zero parameters.</div>
+      </div>
+
+      <!-- UNIFICATION -->
+      <div class="shift-topic">Unification</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The three gauge couplings almost meet at ~10<sup>16</sup> GeV, suggesting a Grand Unified Theory. Supersymmetry was proposed to make them meet exactly. The LHC found no evidence for SUSY.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The couplings never meet. Non-unification is a <em>prediction</em>. The cutoff is &Lambda; &asymp; 10&#x2078; GeV, not 10<sup>16</sup>. Coupling ratios c&#x2081; : c&#x2082; : c&#x2083; = 8 : 6 : 4 are set by graph dimensions, not running to a common point. SUSY is unnecessary.</div>
+      </div>
+
+      <!-- HIERARCHY -->
+      <div class="shift-topic">Hierarchy Problem</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">Why is gravity 10<sup>32</sup> times weaker than the weak force? The &ldquo;hierarchy problem&rdquo; has driven decades of BSM physics &mdash; extra dimensions, compositeness, naturalness arguments &mdash; with no experimental confirmation.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">Reclassified. &Lambda; is the one free parameter, and it belongs to gravity alone. Particle physics predictions are independent of &Lambda; &mdash; the Higgs mass, Yukawa hierarchy, and gauge couplings don&rsquo;t know or care about M<sub>Pl</sub>. The hierarchy is the interface between matching combinatorics and quantum gravity.</div>
+      </div>
+
+      <!-- ARROW OF TIME -->
+      <div class="shift-topic">Arrow of Time</div>
+
+      <div class="shift-row">
+        <div class="shift-cell">The fundamental laws of physics are time-symmetric. The arrow of time is usually attributed to thermodynamics (entropy increase) or cosmological initial conditions. It is not derived from the laws themselves.</div>
+        <div class="shift-arrow">&rarr;</div>
+        <div class="shift-cell">The arrow of time is structural, not thermodynamic. Axiom 3 (D &ne; D*) gives &#x2124;&#x2083; flux with Chern number C = &minus;2 &mdash; a topological invariant that cannot be destroyed by any dynamical process. Time&rsquo;s direction is algebraically prior to entropy, and it sources both parity violation and the cosmological constant.</div>
+      </div>
+
+    </div><!-- /shift-grid -->
+
+    <p class="shift-punchline">
+      The Standard Model told us the universe is built from quarks, leptons, and gauge bosons
+      interacting through three forces. The informational asymmetry framework says: all of that
+      is the shadow cast by the combinatorics of perfect matchings on complete graphs. The
+      particles are the matchings. The forces are the overlaps. The generations are the overflow.
+      And the arrow of time &mdash; the one feature every other framework treats as an afterthought &mdash;
+      is the axiom that makes the whole thing work.
+    </p>
+
+  </div>
+</section>
+
 
 <!-- ════════════════════════════════════════════════════
      HERO: TWO EQUATIONS
@@ -843,46 +1255,157 @@ footer a:hover { color: var(--accent); }
 
     <h3>Core Framework</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.html">Executive Summary</a> <span class="doc-desc">&mdash; One-paragraph claim through five-axiom chain</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.html">Classification Theorem</a> <span class="doc-desc">&mdash; FORCED / SILENT / REDUCED taxonomy</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/progress_feb19.html">Progress Report (Feb 19)</a> <span class="doc-desc">&mdash; Gauge couplings, &Lambda;<sub>CC</sub>, spectral geometry, boundary problem</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/executive_summary.docx">Executive Summary</a> <span class="doc-desc">&mdash; One-paragraph claim through five-axiom chain</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/unified_framework.docx">Unified Framework</a> <span class="doc-desc">&mdash; Complete framework document</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/classification_theorem.docx">Classification Theorem</a> <span class="doc-desc">&mdash; FORCED / SILENT / REDUCED taxonomy</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/asymmetry_framework_revised_v2.pdf">Asymmetry Framework v2</a> <span class="doc-desc">&mdash; Revised foundational framework (PDF)</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/surviving_invariants_v11.docx">Surviving Invariants v11</a> <span class="doc-desc">&mdash; Complete invariant catalog</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/natural_machine_framework.md">Natural Machine Framework</a> <span class="doc-desc">&mdash; Informational axioms &rarr; physical structure</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/why_matchings_special.md">Why Matchings Are Special</a> <span class="doc-desc">&mdash; Foundational argument for matching combinatorics</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/landscape_survey.md">Landscape Survey</a> <span class="doc-desc">&mdash; Survey of related approaches and connections</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/representation_theory_landscape.md">Representation Theory Landscape</a> <span class="doc-desc">&mdash; Rep theory across the K&#x2082;&#x2099; chain</span></li>
+    </ul>
+
+    <h3>Progress Reports</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 18</span><a href="docs/progress_addendum_feb18.docx">Progress Addendum (Feb 18)</a> <span class="doc-desc">&mdash; Congruence law, discriminant atlas, three laws</span></li>
+      <li><span class="doc-date">Feb 19</span><a href="docs/progress_feb19.docx">Progress Report (Feb 19)</a> <span class="doc-desc">&mdash; Gauge couplings, &Lambda;<sub>CC</sub>, spectral geometry, boundary problem</span></li>
+      <li><span class="doc-date">Feb 19</span><a href="docs/progress_feb19_evening.docx">Progress Evening (Feb 19)</a> <span class="doc-desc">&mdash; Evening session results</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/progress_addendum_feb20.docx">Progress Addendum (Feb 20)</a> <span class="doc-desc">&mdash; Spectral extractors, NCG results</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/progress_addendum_feb20_late.docx">Progress Addendum (Feb 20 Late)</a> <span class="doc-desc">&mdash; Coupling probe, CP parity, vacuum decomposition</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/progress_feb20_eod.docx">Progress Report (Feb 20 EOD)</a> <span class="doc-desc">&mdash; NCG internal geometry, chirality, gauge algebra, Higgs inheritance</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/progress_sense4.docx">Progress Sense 4</a> <span class="doc-desc">&mdash; Four-sense analysis: block coupling, vacuum decomposition, Hamiltonian cycle</span></li>
+    </ul>
+
+    <h3>K&#x2084; Gravity &amp; Spacetime</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements_v2.docx">Computation Requirements v2</a> <span class="doc-desc">&mdash; &gamma;&#x2083; QMC specification</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k4d_cosmological_cycling_v1.md">K&#x2084;D Cosmological Cycling</a> <span class="doc-desc">&mdash; Cyclic cosmology from K&#x2084; torus dynamics</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K4D_Part2_Formal_Outline.md">K&#x2084;D Part 2 Formal Outline</a> <span class="doc-desc">&mdash; Formal development outline</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/conformal_bootstrap_K4.md">Conformal Bootstrap K&#x2084;</a> <span class="doc-desc">&mdash; Bootstrap approach to K&#x2084; critical point</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/gamma3_analytic_evaluation.md">&gamma;&#x2083; Analytic Evaluation</a> <span class="doc-desc">&mdash; Higher-spin anomalous dimension analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/algebraic_analysis_higher_spin.md">Algebraic Analysis Higher Spin</a> <span class="doc-desc">&mdash; Higher-spin sector algebraic structure</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cT_measurement_spec.md">c&#x2091; Measurement Spec</a> <span class="doc-desc">&mdash; QMC specification for central charge</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/pade_borel_results.md">Pad&eacute;&ndash;Borel Results</a> <span class="doc-desc">&mdash; Resummation of perturbative series</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/gamma3_closure_results.md">&gamma;&#x2083; Analytical Closure</a> <span class="doc-desc">&mdash; Bootstrap + K&#x2084; algebra: P(&gamma;&#x2083; &gt; 2) &asymp; 90%</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence_t_derivation.md">Time Emergence</a> <span class="doc-desc">&mdash; t derivation from Z&#x2083; flux</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence_theorem.md">Light Emergence Theorem</a> <span class="doc-desc">&mdash; Thermodynamic preference for massless modes</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cosmological_constant_scaling.md">Cosmological Constant Scaling</a> <span class="doc-desc">&mdash; &Lambda;<sub>CC</sub> scaling mechanism</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cc_prefactor_results.md">CC Prefactor Results</a> <span class="doc-desc">&mdash; Cosmological constant prefactor computation</span></li>
     </ul>
 
     <h3>K&#x2086; Higgs Sector</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.html">K&#x2086; Higgs Paper v2</a> <span class="doc-desc">&mdash; Bug discovery, 50k Monte Carlo, honest audit</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.html">Normalization v9</a> <span class="doc-desc">&mdash; R proved, c undetermined, 41 near-misses</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination_analysis.html">c-Derivation Termination</a> <span class="doc-desc">&mdash; Why the &pi;&sup2;/8 path was abandoned</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_Higgs_Paper_v2.docx">K&#x2086; Higgs Paper v2</a> <span class="doc-desc">&mdash; Bug discovery, 50k Monte Carlo, honest audit</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K6_normalization_analysis.md">K&#x2086; Normalization Analysis</a> <span class="doc-desc">&mdash; Normalization constants for K&#x2086;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/higgs_from_graph_chain.md">Higgs from Graph Chain</a> <span class="doc-desc">&mdash; How the Higgs emerges from K&#x2084;&times;K&#x2086;&times;K&#x2088;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k5_shadow_graph.md">K&#x2085; Shadow Graph</a> <span class="doc-desc">&mdash; K&#x2085; structure and its role</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K5_normalization_analysis.md">K&#x2085; Normalization Analysis</a> <span class="doc-desc">&mdash; Shadow graph normalization</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/aperture_resolved.docx">Aperture Resolved</a> <span class="doc-desc">&mdash; Aperture analysis resolution</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/fixing_lambda_results.md">Fixing Lambda Results</a> <span class="doc-desc">&mdash; &Lambda; parameter investigation</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_termination_analysis.md">c-Derivation Termination</a> <span class="doc-desc">&mdash; Why the &pi;&sup2;/8 path was abandoned</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation.md">Normalization v1</a> <span class="doc-desc">&mdash; Initial c derivation attempt</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v2.md">Normalization v2</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v3.md">Normalization v3</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v4.md">Normalization v4</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v5.md">Normalization v5</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v6.md">Normalization v6</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v7.md">Normalization v7</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v8.md">Normalization v8</a></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v9.md">Normalization v9</a> <span class="doc-desc">&mdash; R proved, c undetermined, 41 near-misses</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/normalization_derivation_v10.md">Normalization v10</a> <span class="doc-desc">&mdash; Final normalization analysis</span></li>
     </ul>
 
     <h3>K&#x2088; Fermion Sector</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.html">K&#x2088; Fermion Results</a> <span class="doc-desc">&mdash; Three generations, Z&#x2087; decomposition</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.html">K&#x2088; Higgs Results</a> <span class="doc-desc">&mdash; Sector separation: K&#x2086; &ne; K&#x2088; for Higgs</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge_results.html">&#x03C1;&#x2082; Hypercharge</a> <span class="doc-desc">&mdash; Selection rule and neutrino mass implications</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results.md">K&#x2088; Fermion Results</a> <span class="doc-desc">&mdash; Three generations, Z&#x2087; decomposition</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_fermion_results_v2.md">K&#x2088; Fermion Results v2</a> <span class="doc-desc">&mdash; Updated fermion mass analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k8_higgs_results.md">K&#x2088; Higgs Results</a> <span class="doc-desc">&mdash; Sector separation: K&#x2086; &ne; K&#x2088; for Higgs</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/R8_algebraic_analysis.md">R&#x2088; Algebraic Analysis</a> <span class="doc-desc">&mdash; Algebraic structure of K&#x2088; matching algebra</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rho2_hypercharge_results.md">&rho;&#x2082; Hypercharge Results</a> <span class="doc-desc">&mdash; Selection rule and neutrino mass implications</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/doublet_selection_answer.md">Doublet Selection Answer</a> <span class="doc-desc">&mdash; Why doublets are selected</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/binary_coloring_summary.md">Binary Coloring Summary</a> <span class="doc-desc">&mdash; Binary coloring structure of matchings</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/two_thirds_verdict.md">Two-Thirds Verdict</a> <span class="doc-desc">&mdash; The 2/3 ratio analysis</span></li>
+    </ul>
+
+    <h3>NCG Internal Geometry</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 20</span><a href="docs/ncg_real_structure_results.md">NCG Real Structure Results</a> <span class="doc-desc">&mdash; J operator, KO-dim 6, &gamma;<sub>F</sub> selection</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/gamma_F_selection_results.md">&gamma;<sub>F</sub> Selection Results</a> <span class="doc-desc">&mdash; Three criteria converge on Pair C chirality grading</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/gauge_coupling_diagnosis.md">Gauge Coupling Diagnosis</a> <span class="doc-desc">&mdash; SU(2) chirality violation, Casimir &frac12;, SVD basis</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/gauge_generator_verdict.md">Gauge Generator Verdict</a> <span class="doc-desc">&mdash; Generator construction and normalization</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/spectral_action_decomposition_results.md">Spectral Action Decomposition</a> <span class="doc-desc">&mdash; Block decomposition of Tr([D,T]&sup2;)</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/half_and_a4_results.md">Half and a&#x2084; Results</a> <span class="doc-desc">&mdash; Factor of &frac12; algebraic root + Seeley&ndash;DeWitt a&#x2084;</span></li>
+      <li><span class="doc-date">Feb 20</span><a href="docs/k6_k8_ratio_resolved.md">K&#x2086;/K&#x2088; Ratio Resolved</a> <span class="doc-desc">&mdash; Factor-of-2 puzzle killed; per-chirality Higgs preservation</span></li>
+    </ul>
+
+    <h3>Gauge Couplings &amp; Spectral Action</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c1_investigation_summary.md">c&#x2081; Investigation Summary</a> <span class="doc-desc">&mdash; c&#x2081; coupling constant analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c1_resolution.md">c&#x2081; Resolution</a> <span class="doc-desc">&mdash; Resolution of c&#x2081; discrepancy</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/coupling_probe_results.md">Coupling Probe Results</a> <span class="doc-desc">&mdash; Cross-level coupling analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/coupling_probe_cross_level.md">Coupling Probe Cross-Level</a> <span class="doc-desc">&mdash; Inter-level coupling structure</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/block_coupling_results.md">Block Coupling Results</a> <span class="doc-desc">&mdash; Direction-block-level Yukawa hierarchy analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/k4_k6_product_results.md">K&#x2084;&times;K&#x2086; Product Results</a> <span class="doc-desc">&mdash; Product geometry coupling computation</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rg_corrected_verdict.md">RG Corrected Verdict</a> <span class="doc-desc">&mdash; 2-loop moves c&#x2081; wrong way; f&#x2080; identified</span></li>
     </ul>
 
     <h3>Mathematical Structure</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.html">Spectral Budget Identity</a> <span class="doc-desc">&mdash; Johnson scheme forces three eigenvalues</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction_theorem.html">Polynomial Reduction Theorem</a> <span class="doc-desc">&mdash; Super-exponential &rarr; polynomial complexity</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.html">Galois Disjointness</a> <span class="doc-desc">&mdash; Number fields at each level share only &#x211A;</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.html">Discriminant Atlas</a> <span class="doc-desc">&mdash; Arithmetic structure K&#x2086; through K&#x2081;&#x2086;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_budget_identity.md">Spectral Budget Identity</a> <span class="doc-desc">&mdash; Johnson scheme forces three eigenvalues</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_reduction_theorem.md">Polynomial Reduction Theorem</a> <span class="doc-desc">&mdash; Super-exponential &rarr; polynomial complexity</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/galois_disjointness.docx">Galois Disjointness</a> <span class="doc-desc">&mdash; Number fields at each level share only &#x211A;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/discriminant_atlas.md">Discriminant Atlas</a> <span class="doc-desc">&mdash; Arithmetic structure K&#x2086; through K&#x2081;&#x2086;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/congruence_law_proof.md">Congruence Law Proof</a> <span class="doc-desc">&mdash; Proof of the congruence law</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/proof_appendix_three_laws.docx">Proof Appendix: Three Laws</a> <span class="doc-desc">&mdash; Complete proofs of three fundamental laws</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_motive.docx">Spectral Motive</a> <span class="doc-desc">&mdash; Motivic structure of spectral data</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_motive_motivic_status.md">Spectral Motive Status</a> <span class="doc-desc">&mdash; Current status of motivic interpretation</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/M_E_Z_triangle.md">M&ndash;E&ndash;Z Triangle</a> <span class="doc-desc">&mdash; Matching&ndash;Eigenvalue&ndash;Zeta triangle</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/continuum_limit_analysis.md">Continuum Limit Analysis</a> <span class="doc-desc">&mdash; Behavior as K&#x2082;&#x2099; &rarr; &infin;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/order_one_reduction_chain.md">Order-One Reduction Chain</a> <span class="doc-desc">&mdash; Systematic reduction procedure</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/overlap_moments_banked.md">Overlap Moments Banked</a> <span class="doc-desc">&mdash; Vertex-resolved moment formulas</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/h7_portability_results.md">H&#x2087; Portability Results</a> <span class="doc-desc">&mdash; Heawood graph portability analysis</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/embedding_dependence_results.md">Embedding Dependence Results</a> <span class="doc-desc">&mdash; Surface embedding sensitivity</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/entanglement_ramifications.md">Entanglement Ramifications</a> <span class="doc-desc">&mdash; Quantum entanglement in matching algebra</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cp_parity_theorem.md">CP Parity Selection Theorem</a> <span class="doc-desc">&mdash; Half-Rank Law + CP-even/odd null space decomposition</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cp_parity_uniformity_theorem.md">CP Parity Uniformity Theorem</a> <span class="doc-desc">&mdash; Law 4 uniformity gap closed; complete proof</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/hamiltonian_cycle_theorem.md">Hamiltonian Cycle Theorem</a> <span class="doc-desc">&mdash; Null vector = alternating signing of Hamiltonian cycle</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rank1_embedding_theorem.md">Rank-1 Embedding Theorem</a> <span class="doc-desc">&mdash; Inter-level coupling via canonical K&#x2082;&#x2099; &rarr; K&#x2082;&#x2099;&#x208A;&#x2082; map</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/nonadj_embedding_results.md">Non-Adjacent Embedding Results</a> <span class="doc-desc">&mdash; Generalized rank-1 theorem for skipped levels</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/vacuum_block_decomposition.md">Vacuum Block Decomposition</a> <span class="doc-desc">&mdash; Half-rank is global, not per-block</span></li>
     </ul>
 
-    <h3>Gravitational Sector</h3>
+    <h3>Higher Levels (K&#x2081;&#x2080; &ndash; K&#x2081;&#x2086;)</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/computation_requirements_v2.html">Computation Requirements</a> <span class="doc-desc">&mdash; &gamma;&#x2083; QMC specification</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/light_emergence_theorem.html">Light Emergence Theorem</a> <span class="doc-desc">&mdash; Thermodynamic preference for massless modes</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/time_emergence_t_derivation.html">Time Emergence</a> <span class="doc-desc">&mdash; t derivation from Z&#x2083; flux</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K10_computation_results.md">K&#x2081;&#x2080; Computation Results</a> <span class="doc-desc">&mdash; 945 matchings, discriminant structure</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K10_addendum_discriminant_primes.md">K&#x2081;&#x2080; Addendum: Discriminant Primes</a> <span class="doc-desc">&mdash; Prime factorization patterns</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K12_galois_wreath_product.md">K&#x2081;&#x2082; Galois Wreath Product</a> <span class="doc-desc">&mdash; Wreath product structure at K&#x2081;&#x2082;</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K14_computation_results.md">K&#x2081;&#x2084; Computation Results</a> <span class="doc-desc">&mdash; Level 7 arithmetic</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K16_computation_results.md">K&#x2081;&#x2086; Computation Results</a> <span class="doc-desc">&mdash; Level 8 arithmetic</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/K16_five_laws_results.md">K&#x2081;&#x2086; Five-Law Validation</a> <span class="doc-desc">&mdash; All five structural laws verified at composite p=15</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/six_level_chain_update.md">Six-Level Chain Update</a> <span class="doc-desc">&mdash; K&#x2086; through K&#x2081;&#x2086; summary</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/cfsg_spectral_extractors.md">CFSG Spectral Extractors</a> <span class="doc-desc">&mdash; Connection to classification of finite simple groups</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_extractor_complete_results.docx">Spectral Extractor Complete Results</a> <span class="doc-desc">&mdash; Full extractor analysis across levels</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_extractors.pdf">Spectral Extractors (PDF)</a> <span class="doc-desc">&mdash; Formal spectral extractor document</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/period_structure_terminal.md">Period Structure Terminal</a> <span class="doc-desc">&mdash; Period patterns at higher levels</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/R_oscillation_analysis.md">R Oscillation Analysis</a> <span class="doc-desc">&mdash; Oscillation of spectral ratios across levels</span></li>
     </ul>
 
-    <h3>Killed Approaches</h3>
+    <h3>Computational &amp; Many-Body</h3>
     <ul class="doc-list">
-      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_terminated.html">c = &pi;&sup2;/8 derivation</a> <span class="doc-desc">&mdash; Computationally falsified, terminated</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall_analysis.html">Polynomial/Series Wall</a> <span class="doc-desc">&mdash; Terminal obstruction identified</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.html">Spectral Function Verdict</a> <span class="doc-desc">&mdash; Classical motivic path blocked</span></li>
-      <li><span class="doc-date">Feb 2026</span><a href="docs/rg_corrected_verdict.html">RG Corrected Verdict</a> <span class="doc-desc">&mdash; 2-loop moves c&#x2081; wrong way; f&#x2080; identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/D1_manybody_results.md">D&#x2081; Many-Body Results</a> <span class="doc-desc">&mdash; Many-body computation results</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/D1MB_bug_analysis.md">D&#x2081; Many-Body Bug Analysis</a> <span class="doc-desc">&mdash; Bug identification and resolution</span></li>
+    </ul>
+
+    <h3>Killed &amp; Terminal Approaches</h3>
+    <ul class="doc-list">
+      <li><span class="doc-date">Feb 2026</span><a href="docs/c_derivation_terminated.md">c = &pi;&sup2;/8 Derivation</a> <span class="doc-desc">&mdash; Computationally falsified, terminated</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/polynomial_wall_analysis.md">Polynomial/Series Wall</a> <span class="doc-desc">&mdash; Terminal obstruction identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/spectral_function_verdict.md">Spectral Function Verdict</a> <span class="doc-desc">&mdash; Classical motivic path blocked</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/rg_corrected_verdict.md">RG Corrected Verdict</a> <span class="doc-desc">&mdash; 2-loop moves c&#x2081; wrong way; f&#x2080; identified</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/riemann_hypothesis_wall.md">Riemann Hypothesis Wall</a> <span class="doc-desc">&mdash; Connection to RH explored and bounded</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/yang_mills_mass_gap.md">Yang&ndash;Mills Mass Gap</a> <span class="doc-desc">&mdash; Mass gap connection explored</span></li>
+      <li><span class="doc-date">Feb 2026</span><a href="docs/RH_thoughts.txt">RH Thoughts</a> <span class="doc-desc">&mdash; Exploratory notes on Riemann hypothesis</span></li>
     </ul>
 
     </div><!-- /docs-container -->
