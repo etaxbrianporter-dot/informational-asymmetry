@@ -1,0 +1,12 @@
+K₄ D1-MB v2 (CORRECTED): N=4, dim=12870
+Bond deduplication fix applied.
+
+U=0.0 flux=True <r>=0.5088 Im/Re=1.0000 -> GOE
+U=1.0 flux=True <r>=0.4023 Im/Re=0.4044 -> Poisson
+U=2.0 flux=True <r>=0.3772 Im/Re=0.2159 -> Poisson
+U=3.0 flux=True <r>=0.3621 Im/Re=0.1458 -> Poisson
+U=4.0 flux=True <r>=0.3878 Im/Re=0.1099 -> Poisson
+U=5.0 flux=True <r>=0.3957 Im/Re=0.0881 -> Poisson
+U=6.0 flux=True <r>=0.3995 Im/Re=0.0735 -> Poisson
+U=7.0 flux=True <r>=0.3865 Im/Re=0.0630 -> Poisson
+U=8.0 flux=True <r>=0.3935 Im/Re=0.0552 -> Poisson
