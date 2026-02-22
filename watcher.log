@@ -1,0 +1,37 @@
+2026-02-21 14:36:20  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:36:27  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:36:31  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:36:41  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:36:51  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:01  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:12  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:22  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:32  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:42  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:37:53  ERROR    Watch directory does not exist: /home/brian/Downloads
+2026-02-21 14:38:03  INFO     ══════════════════════════════════════════════════
+2026-02-21 14:38:03  INFO       Informational Asymmetry — File Watcher
+2026-02-21 14:38:03  INFO     ══════════════════════════════════════════════════
+2026-02-21 14:38:03  INFO       Watching:  /mnt/c/Users/brian/Downloads
+2026-02-21 14:38:03  INFO       Repo:      /home/brian/scripts/informational-asymmetry
+2026-02-21 14:38:03  INFO       Dry run:   False
+2026-02-21 14:38:03  INFO       Routing:
+2026-02-21 14:38:03  INFO         *.py              → code/
+2026-02-21 14:38:03  INFO         paper1/II/III.*   → papers/
+2026-02-21 14:38:03  INFO         test_*/verify*    → verification_suite/
+2026-02-21 14:38:03  INFO         everything else   → docs/
+2026-02-21 14:38:03  INFO     
+2026-02-21 14:38:34  INFO     ══════════════════════════════════════════════════
+2026-02-21 14:38:34  INFO       Informational Asymmetry — File Watcher
+2026-02-21 14:38:34  INFO     ══════════════════════════════════════════════════
+2026-02-21 14:38:34  INFO       Watching:  /mnt/c/Users/brian/Downloads
+2026-02-21 14:38:34  INFO       Repo:      /home/brian/scripts/informational-asymmetry
+2026-02-21 14:38:34  INFO       Dry run:   True
+2026-02-21 14:38:34  INFO       Routing:
+2026-02-21 14:38:34  INFO         *.py              → code/
+2026-02-21 14:38:34  INFO         paper1/II/III.*   → papers/
+2026-02-21 14:38:34  INFO         test_*/verify*    → verification_suite/
+2026-02-21 14:38:34  INFO         everything else   → docs/
+2026-02-21 14:38:34  INFO     
+2026-02-21 14:48:51  INFO     
+Shutting down watcher...

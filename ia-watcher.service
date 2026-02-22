@@ -1,0 +1,20 @@
+[Unit]
+Description=Informational Asymmetry file watcher — routes Downloads to repo and pushes
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/brian/scripts/informational-asymmetry/.venv/bin/python /home/brian/scripts/informational-asymmetry/ia_watcher.py
+WorkingDirectory=/home/brian/scripts/informational-asymmetry
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Environment — adjust if your conda/venv needs specific PATH
+Environment="HOME=/home/brian"
+Environment="PATH=/home/brian/scripts/informational-asymmetry/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+
+[Install]
+WantedBy=default.target
